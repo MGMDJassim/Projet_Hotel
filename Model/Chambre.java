@@ -6,7 +6,6 @@ import java.util.*;
  * 
  */
 public class Chambre {
-    
     public int etage;
     public int numeroPorte;
     public boolean fenetre;
@@ -14,6 +13,7 @@ public class Chambre {
     public Hotel hôtel;
 
     public Chambre() {
+        
     }
 
 
