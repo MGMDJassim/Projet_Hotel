@@ -5,12 +5,12 @@ import java.util.*;
 /**
  * 
  */
-public class Suite Simple extends Chambre {
+public class Suite_Simple extends Chambre {
 
     /**
      * Default constructor
      */
-    public Suite Simple() {
+    public Suite_Simple() {
     }
 
     /**
