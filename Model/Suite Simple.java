@@ -21,6 +21,6 @@ public class Suite Simple extends Chambre {
     /**
      * 
      */
-    public Int litSimple;
+    public int litSimple;
 
 }
