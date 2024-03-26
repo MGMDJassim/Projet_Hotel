@@ -12,7 +12,8 @@ public class Suite_Double extends Chambre {
     public boolean belleVue;
     
 
-    public Suite_Double(boolean fenetre, int litDouble, boolean belleVue) {
+    public Suite_Double() {
+    
         this.fenetre = fenetre;
         this.litDouble = litDouble;
         this.belleVue = belleVue;
@@ -36,6 +37,6 @@ public class Suite_Double extends Chambre {
     public boolean getBelleVue() {
         return belleVue;
     }
-    
+
 
 }

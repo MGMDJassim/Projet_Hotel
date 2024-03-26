@@ -14,8 +14,9 @@ public class Client {
     public int telClient;
     public int codePostale;
     public String villeClient;
-    public Set<Reservation> listReservation;
+    public Set<Reservation> listReservation = new HashSet<Reservation>();
     public Hotel hôtel;
+
     public Client(String nomClient, String prenomClient, int dateDeNaissance, String adresseClient, int telClient, int codePostale, String villeClient, Set<Reservation> listReservation, Hotel hôtel) {
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
