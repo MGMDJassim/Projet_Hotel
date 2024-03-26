@@ -12,5 +12,10 @@ public class AgentEntretien extends Employe {
     public AgentEntretien() {
     }
 
+    public void menageEffectue() {
+        // TODO implement here
+        
+    }
+
 
 }
