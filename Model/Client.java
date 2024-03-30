@@ -14,7 +14,7 @@ public class Client {
     public Vector<Reservation> listReservation;
     public Hotel hôtel;
 
-    public Client(String nomClient, String prenomClient, int dateDeNaissance, String adresseClient, int telClient, int codePostale, String villeClient, Set<Reservation> listReservation, Hotel hôtel) {
+    public Client(String nomClient, String prenomClient, int dateDeNaissance, String adresseClient, int telClient, int codePostale, String villeClient, Hotel hôtel) {
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
         this.dateDeNaissance = dateDeNaissance;
@@ -22,9 +22,7 @@ public class Client {
         this.telClient = telClient;
         this.codePostale = codePostale;
         this.villeClient = villeClient;
-        this.listReservation = listReservation;
         this.hôtel = hôtel;
-
     }
 
     public void setNomClient(String nomClient) {
