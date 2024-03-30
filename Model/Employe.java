@@ -2,19 +2,13 @@
 //import java.io.*;
 //import java.util.*;
 
-/**
- * 
- */
 public class Employe {
 
     public String nomEmploye;
     public int numEmploye;
     public String prenomEmploye;
     
-    public Employe(String nomEmploye, int numEmploye, String prenomEmploye) {
-        this.nomEmploye = nomEmploye;
-        this.numEmploye = numEmploye;
-        this.prenomEmploye = prenomEmploye;
+    public Employe() {
     }
 
     public void setNomEmploye(String nomEmploye) {

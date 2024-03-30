@@ -2,9 +2,6 @@
 //import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Client {
 
     public String nomClient;
@@ -14,7 +11,7 @@ public class Client {
     public int telClient;
     public int codePostale;
     public String villeClient;
-    public Set<Reservation> listReservation = new HashSet<Reservation>();
+    public Vector<Reservation> listReservation;
     public Hotel hôtel;
 
     public Client(String nomClient, String prenomClient, int dateDeNaissance, String adresseClient, int telClient, int codePostale, String villeClient, Set<Reservation> listReservation, Hotel hôtel) {
@@ -84,14 +81,6 @@ public class Client {
 
     public String getVilleClient() {
         return villeClient;
-    }
-
-    public void setListReservation(Set<Reservation> listReservation) {
-        this.listReservation = listReservation;
-    }
-
-    public Set<Reservation> getListReservation() {
-        return listReservation;
     }
 
     public void setHôtel(Hotel hôtel) {
