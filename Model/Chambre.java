@@ -10,6 +10,7 @@ public class Chambre {
     public Hotel hôtel;
     public Date debutLibre;
     public Date finLibre;
+    private double prix;
 
     public Chambre(int etage, int numeroPorte) {
         this.etage = etage;
@@ -63,6 +64,14 @@ public class Chambre {
         return false; 
     }
 
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+    
     
 
 }
