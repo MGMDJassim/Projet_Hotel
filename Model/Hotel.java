@@ -75,4 +75,40 @@ public class Hotel {
     }
 
 
+    public Client getClientbyname(String n)
+    {for(int i=0;i<listClient.size();i++)
+        {
+            if(listClient.get(i).getNomClient().equals(n))
+            {
+                return listClient.get(i);
+            }
+        }
+
+        return null;
+
+    }
+
+
+public Vector<Chambre> getFreeRooms(Date dateDebut, Date dateFin)
+{
+    Vector<Chambre> freeRooms = new Vector<Chambre>();
+    for(int i=0;i<listechambre.size();i++)
+    {
+        if(listechambre.get(i).isFree(dateDebut, dateFin))
+        {
+            freeRooms.add(listechambre.get(i));
+        }
+    }
+    return freeRooms;
+}
+
+public boolean isFree(Date dateDebut, Date dateFin) {
+    for (Chambre chambre : listechambre) {
+        if (chambre.isFree(dateDebut, dateFin)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 }

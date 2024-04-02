@@ -89,6 +89,16 @@ public class Client {
         return hôtel;
     }
 
-    
+    public String addReservation(Reservation r) {
+        try {
+            listReservation.add(r);
+        } catch (Exception e) {
+            System.out.println("Erreur lors de l'ajout de la réservation");
+        }
+        System.out.println("Réservation ajoutée avec succès");
+        return adresseClient+" "+ codePostale +" " + " " + villeClient + " " + telClient + " " + dateDeNaissance + " " + prenomClient + " " + nomClient;
+    }
 
-}
+
+    }
+

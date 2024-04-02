@@ -22,15 +22,15 @@ public class Reservation {
         this.dateD = dateD;
     }
 
-    public Date getDateD() {
+    public Date getDateDebut() {
         return dateD;
     }
 
-    public void setDatef(Date datef) {
+    public void setDateFin(Date datef) {
         this.datef = datef;
     }
 
-    public Date getDatef() {
+    public Date getDateFin() {
         return datef;
     }
 
