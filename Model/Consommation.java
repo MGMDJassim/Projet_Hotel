@@ -35,8 +35,4 @@ public class Consommation {
     public Produit getProduit() {
         return produit;
     }
-    
-
-
-
 }
