@@ -55,6 +55,14 @@ public class Chambre {
         return debutLibre;
     }
 
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+    //Recherche des chambres libres
     public boolean isFree(Date debutD, Date finD) {
         for (Reservation reservation : listReservation) {
             if (reservation.getDateDebut().before(debutD) && reservation.getDateFin().after(finD)) {
@@ -64,14 +72,6 @@ public class Chambre {
         return false; 
     }
 
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-    
     
 
 }
