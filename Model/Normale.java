@@ -6,8 +6,8 @@ public class Normale extends Chambre {
 
     public int litSimple;
 
-    public Normale(int numPorte, int prix, int litSimple) {
-        super(numPorte, prix);
+    public Normale(int numPorte, int etage, Hotel hotel, String type, int litSimple) {
+        super(numPorte, etage, type, hotel);
         this.litSimple = litSimple;
     }
 

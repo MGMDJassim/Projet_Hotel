@@ -3,13 +3,10 @@ import java.io.*;
 import java.util.*;
 
 public class Receptionniste extends Employe {
-    
-    public String nomEmploye;
-    public int numEmploye;
     public Vector<Reservation> listResa;
-    public Receptionniste(String nomEmploye, int numEmploye) {
-        this.nomEmploye = nomEmploye;
-        this.numEmploye = numEmploye;
+    public Receptionniste(String nomEmploye, int numEmploye, String prenomEmploye, Vector<Reservation> listResa) {
+        super(nomEmploye, numEmploye,prenomEmploye);
+        this.listResa = listResa;
 
     }
 

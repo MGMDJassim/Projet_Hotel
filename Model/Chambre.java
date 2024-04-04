@@ -8,13 +8,13 @@ public class Chambre {
     public int numeroPorte;
     private Vector<Reservation> listReservation;
     public Hotel hôtel;
-    public Date debutLibre;
-    public Date finLibre;
-    private double prix;
+    public String type;
 
-    public Chambre(int etage, int numeroPorte) {
+    public Chambre(int etage, int numeroPorte, String type, Hotel hôtel) {
         this.etage = etage;
         this.numeroPorte = numeroPorte;
+        this.type = type;
+        this.hôtel = hôtel;
     }
 
     public void setEtage(int etage) {
@@ -42,25 +42,6 @@ public class Chambre {
     }
     public Hotel getHotel() {
         return hôtel;
-    }
-
-    public void setDateDebut(Date debutLibre){
-        this.debutLibre = debutLibre;
-    }
-
-    public void setDateFin(Date finLibre){
-        this.finLibre = finLibre;
-    }
-    public Date getDateDebut(){
-        return debutLibre;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
-
-    public double getPrix() {
-        return prix;
     }
     //Recherche des chambres libres
     public boolean isFree(Date debutD, Date finD) {
