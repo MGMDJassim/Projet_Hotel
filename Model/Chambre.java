@@ -53,6 +53,11 @@ public class Chambre {
         return false; 
     }
 
+    // Méthode pour afficher les informations de la chambre
+    public void afficherInformations() {
+        System.out.println("Chambre " + type + " - Étage " + etage + ", Porte " + numeroPorte);
+    }
+
     
 
 }
