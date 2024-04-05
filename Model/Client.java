@@ -89,9 +89,8 @@ public class Client {
         return hôtel;
     }
 
-    public String addReservation(Reservation r) {
-        System.out.println("Réservation ajoutée avec succès");
-        return adresseClient+" "+ codePostale +" " + " " + villeClient + " " + telClient + " " + dateDeNaissance + " " + prenomClient + " " + nomClient;
+    public void addReservation(Reservation reservation) {
+        this.listReservation.add(reservation);
     }
 
 

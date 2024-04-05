@@ -1,12 +1,12 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
 
 public class Chambre {
     public int etage;
     public int numeroPorte;
-    private List<Reservation> listReservation;
+    private Vector<Reservation> listReservation = new Vector<>();
     public Hotel hotel;
     public String type;
 
@@ -25,7 +25,7 @@ public class Chambre {
         this.numeroPorte = numeroPorte;
     }
 
-    public void setListReservation(List<Reservation> listReservation) {
+    public void setListReservation(Vector<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
 
@@ -50,13 +50,19 @@ public class Chambre {
     }
 
     // Recherche des chambres libres
-    public boolean isFree(Date debutD, Date finD) {
+    public boolean isFree (Date debut, Date fin) {
         for (Reservation reservation : listReservation) {
-            if (reservation.getDateDebut().before(debutD) && reservation.getDateFin().after(finD)) {
-                return true; 
+            if (reservation.dateD.before(debut) && reservation.datef.after(debut)) {
+                return false;
+            }
+            if (reservation.dateD.before(fin) && reservation.datef.after(fin)) {
+                return false;
+            }
+            if (reservation.dateD.after(debut) && reservation.datef.before(fin)) {
+                return false;
             }
         }
-        return false; 
+        return true;
     }
 
     // Méthode pour afficher les chambres libres
@@ -74,4 +80,4 @@ public class Chambre {
     }
 
     }
-}
+

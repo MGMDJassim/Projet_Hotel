@@ -8,8 +8,8 @@ public class Hotel {
     public int telephone;
     public String mail;
     public Vector<Chambre> listechambre = new Vector<Chambre>();
-    public Vector<Client> listClient;
-    public Vector<Produit> listProduit;
+    public Vector<Client> listClient = new Vector<Client>();
+    public Vector<Produit> listProduit = new Vector<Produit>();
     
     public Hotel (String nom, String adresse, int telephone, String mail){
         this.nom = nom;

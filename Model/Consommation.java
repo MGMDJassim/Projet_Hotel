@@ -3,9 +3,9 @@
 //import java.util.*;
 
 public class Consommation {
-    public int quatité;
+    public int quantite;
     public boolean consomme;
-    public Sejour Sejour;
+    public Sejour sejour;
     public Produit produit;
 
  public Consommation(Sejour s, Produit p) {
@@ -15,11 +15,11 @@ public class Consommation {
         this.produit = p;
     }
 
-    public void setQuatité(int quatité) {
-        this.quatité = quatité;
+    public void setQuantite(int quatité) {
+        this.quantite = quatité;
     }
-    public int getQuatité() {
-        return quatité;
+    public int getQuantite() {
+        return quantite;
     }
     public void setConsomme(boolean consomme) {
         this.consomme = consomme;
@@ -28,10 +28,10 @@ public class Consommation {
         return consomme;
     }
     public void setSejour(Sejour Sejour) {
-        this.Sejour = Sejour;
+        this.sejour = Sejour;
     }
     public Sejour getSejour() {
-        return Sejour;
+        return sejour;
     }
     public void setProduit(Produit produit) {
         this.produit = produit;
@@ -56,5 +56,6 @@ public class Consommation {
     	} else { 
     		System.out.println("la quantité à retirer est supérieur à la quantité consommée");
     	}
+    }
     }
 }
