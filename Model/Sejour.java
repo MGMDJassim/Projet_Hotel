@@ -37,7 +37,16 @@ public class Sejour {
     public AgentEntretien getAgent() {
         return agent;
     }
-
-    
+    // Methode facturation
+    public double facturationSejour()
+    {
+        double total = 0.0;
+        for (int i = 0; i < listeConsommation.length; i++){
+            Consommation consommation = listeConsommation.get(i);
+            Produit produit = consommation.getProduit();
+            total += produit.getPrix() * consommation.getQuantite();
+        }
+        return total;
+    }
 
 }
