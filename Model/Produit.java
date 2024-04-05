@@ -55,6 +55,6 @@ public class Produit {
         System.out.println("Hôtel" + hotel.getNom());
         System.out.println("Consommation");
         for(Consommation cons : consommation){
-            System.out.println("," + cons.getNom());
+            System.out.println("," + cons.produit.nom);
         }
 }
