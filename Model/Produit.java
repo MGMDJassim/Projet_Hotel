@@ -48,6 +48,13 @@ public class Produit {
     public void setConsommation(Vector<Consommation> consommation) {
         this.consommation = consommation;
     }
-    // methode
-    }
+    // methode affichage
+    public void afficherInfo(){
+        System.out.println("Nom du produit :" + porduit);
+        System.out.println("Prix :" + prix + "euros");
+        System.out.println("Hôtel" + hotel.getNom());
+        System.out.println("Consommation");
+        for(Consommation cons : consommation){
+            System.out.println("," + cons.getNom());
+        }
 }
