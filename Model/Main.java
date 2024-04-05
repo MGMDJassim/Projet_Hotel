@@ -19,4 +19,7 @@ public class Main {
       e.printStackTrace();
     }
   }
+
+  Hotel hotel = new Hotel("HotelParis", "91 boulevard de l'essone", 0101010101, "mail@example.com");
+  
 }
