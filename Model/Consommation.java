@@ -8,7 +8,7 @@ public class Consommation {
     public Sejour Sejour;
     public Produit produit;
 
-       public Consommation(Sejour s, Produit p) {
+ public Consommation(Sejour s, Produit p) {
         this.quantite = 0;
         this.consomme = false;
         this.sejour = s;
@@ -39,4 +39,22 @@ public class Consommation {
     public Produit getProduit() {
         return produit;
     }
+    //Methode ajout de conso
+    
+    public void ajoutConsommation(int quantite) {
+    	this.quantite += quantite;
+    	this.consomme = true;
+    }
+    
+    // Methode suppression conso
+    
+    public void retirerConsommation(int quantite) {
+    		if (this.quantite >= quantite){
+    			this.quantite -= quantite;
+                   if(this.quantite == 0) {
+    		        this.consomme = true;
+    	} else { // else ou catch ??
+    		System.out.println("la quantité à retirer est supérieur à la quantité consommée");
+    	}
+    	}
 }
