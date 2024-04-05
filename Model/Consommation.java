@@ -8,7 +8,11 @@ public class Consommation {
     public Sejour Sejour;
     public Produit produit;
 
-    public Consommation() {
+       public Consommation(Sejour s, Produit p) {
+        this.quantite = 0;
+        this.consomme = false;
+        this.sejour = s;
+        this.produit = p;
     }
 
     public void setQuatité(int quatité) {
