@@ -35,9 +35,10 @@ public class Employe {
 
     // methode affichage info employe
      public void afficherInfo() { 
-        System.out.println("Nom: " + nomEmploye);
-        System.out.println("Numéro: " + numEmploye);
-        System.out.println("Prénom: " + prenomEmploye);
+        System.out.println("Informations de l'employé ci-dessous : ");
+        System.out.println("-Nom: " + nomEmploye);
+        System.out.println("-Numéro: " + numEmploye);
+        System.out.println("-Prénom: " + prenomEmploye);
     }
 
 }
