@@ -53,8 +53,8 @@ public class Consommation {
     			this.quantite -= quantite;
                    if(this.quantite == 0) {
     		        this.consomme = true;
-    	} else { // else ou catch ??
+    	} else { 
     		System.out.println("la quantité à retirer est supérieur à la quantité consommée");
     	}
-    	}
+    }
 }
