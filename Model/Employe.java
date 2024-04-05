@@ -32,11 +32,9 @@ public class Employe {
     public String getPrenomEmploye() {
         return this.prenomEmploye;
     }
-
-    // methode affichage info employe
-      @Override
-    public String toString() {
-        return "Employe{" + "nomEmploye='" + nomEmploye + '\'' + ", numEmploye=" + numEmploye + ", prenomEmploye='" + prenomEmploye + '\'' + '}';
-    }
-
+//   public void afficherInfo() {
+        System.out.println("Nom: " + nomEmploye);
+        System.out.println("Numéro: " + numEmploye);
+        System.out.println("Prénom: " + prenomEmploye);
+    }// 
 }

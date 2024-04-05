@@ -47,10 +47,10 @@ public class Chambre {
     public boolean isFree(Date debutD, Date finD) {
         for (Reservation reservation : listReservation) {
             if (reservation.getDateDebut().before(debutD) && reservation.getDateFin().after(finD)) {
-                return true; 
+                return false; 
             }
         }
-        return false; 
+        return true; 
     }
 
     

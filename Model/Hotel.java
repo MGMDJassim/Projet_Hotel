@@ -109,26 +109,11 @@ public class Hotel {
     }
 
     //Affichage des chambres libres
-
     public void displayFreeRooms(Date dateDebut, Date dateFin){
         Vector<Chambre> freeRooms = getFreeRooms(dateDebut, dateFin);
         for(int i=0;i<freeRooms.size();i++){
             System.out.println("Chambre: "+freeRooms.get(i).getNumeroPorte());
         }
     }
-
-    //Recherche des chambres occupées
-    public Vector<Chambre> getOccupiedRooms(Date dateDebut, Date dateFin){
-        Vector<Chambre> occupiedRooms = new Vector<Chambre>();
-        for(int i=0;i<listechambre.size();i++){
-            if(!listechambre.get(i).isFree(dateDebut, dateFin)){
-                occupiedRooms.add(listechambre.get(i));
-            }   
-        }
-    
-        return occupiedRooms;
-    }
-
-    
 
 }
