@@ -37,6 +37,17 @@ public class Sejour {
     public AgentEntretien getAgent() {
         return agent;
     }
+    // consommation bar
+
+    public boolean consommationBar(){
+         for (int i = 0; i < listConsommation.size(); i++) {
+            Consommation consommation = listConsommation.get(i);
+            if (consommation.getQuantite() > 0) {
+                return true; 
+            }
+        }
+        return false;
+    }
     // Methode facturation
     public double facturationSejour()
     {
