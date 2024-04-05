@@ -21,5 +21,9 @@ public class Main {
   }
 
   Hotel hotel = new Hotel("HotelParis", "91 boulevard de l'essone", 0101010101, "mail@example.com");
+    Chambre c = new Chambre(4, 24, "presidentielle", hotel());
+    Employe employe = new Employe("MORIN", 27, "Thomas");
+    Sejour s = new Sejour(Reservation(), Vector<consommation>, employe());
+    Consommation cons = new Consommation(Sejour(),Produit());
   
 }
