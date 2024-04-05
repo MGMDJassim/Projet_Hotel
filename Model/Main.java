@@ -1,7 +1,7 @@
 import java.io.File;  
 import java.io.IOException; 
 
-public class CreateFile {
+public class Main {
   public static void main(String[] args) {
     try {
       File myObj = new File("projet.txt");
