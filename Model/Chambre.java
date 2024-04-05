@@ -73,19 +73,5 @@ public class Chambre {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            File myObj = new File("chambre.txt");
-            if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
-                writer.write("crée");
-                writer.close();
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
     }
 }
