@@ -32,7 +32,10 @@ public class Employe {
     public String getPrenomEmploye() {
         return this.prenomEmploye;
     }
-
-
+//   public void afficherInfo() {
+        System.out.println("Nom: " + nomEmploye);
+        System.out.println("Numéro: " + numEmploye);
+        System.out.println("Prénom: " + prenomEmploye);
+    }// 
 
 }
