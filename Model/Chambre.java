@@ -1,59 +1,65 @@
-
-//import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 public class Chambre {
     public int etage;
     public int numeroPorte;
-    private Vector<Reservation> listReservation;
-    public Hotel hôtel;
+    private List<Reservation> listReservation;
+    public Hotel hotel;
     public String type;
 
-    public Chambre(int etage, int numeroPorte, String type, Hotel hôtel) {
+    public Chambre(int etage, int numeroPorte, String type, Hotel hotel) {
         this.etage = etage;
         this.numeroPorte = numeroPorte;
         this.type = type;
-        this.hôtel = hôtel;
+        this.hotel = hotel;
     }
 
     public void setEtage(int etage) {
         this.etage = etage;
     }
+
     public void setNumeroPorte(int numeroPorte) {
         this.numeroPorte = numeroPorte;
     }
 
-    public void setListReservation(Vector<Reservation> listReservation) {
+    public void setListReservation(List<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
-    public void setHotel(Hotel hôtel) {
-        this.hôtel = hôtel;
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
+
     public int getEtage() {
         return etage;
     }
+
     public int getNumeroPorte() {
         return numeroPorte;
     }
 
-    public Vector<Reservation> getListReservation() {
+    public List<Reservation> getListReservation() {
         return listReservation;
     }
+
     public Hotel getHotel() {
-        return hôtel;
+        return hotel;
     }
-    //Recherche des chambres libres
+
+    // Recherche des chambres libres
     public boolean isFree(Date debutD, Date finD) {
         for (Reservation reservation : listReservation) {
             if (reservation.getDateDebut().before(debutD) && reservation.getDateFin().after(finD)) {
-                return true; 
+                return true;
             }
         }
-        return false; 
+        return false;
     }
 
-   // Méthode pour afficher les chambres libres
+    // Méthode pour afficher les chambres libres
     public static void afficherChambresLibres(List<Chambre> chambres, Date debut, Date fin) {
         boolean libre = false;
         for (Chambre chambre : chambres) {
@@ -65,5 +71,21 @@ public class Chambre {
         if (libre = false) {
             System.out.println("Aucune chambre n'est disponible sur la période du " + debut + " au " + fin + ".");
         }
+    }
 
+    public static void main(String[] args) {
+        try {
+            File myObj = new File("chambre.txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+                writer.write("crée");
+                writer.close();
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 }
