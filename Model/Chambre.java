@@ -50,13 +50,19 @@ public class Chambre {
     }
 
     // Recherche des chambres libres
-    public boolean isFree(Date debutD, Date finD) {
+    public boolean isFree(Date debut, Date fin) {
         for (Reservation reservation : listReservation) {
-            if (reservation.getDateDebut().before(debutD) && reservation.getDateFin().after(finD)) {
-                return true;
+            if (reservation.dateD.before(debut) && reservation.datef.after(debut)) {
+                return false;
+            }
+            if (reservation.dateD.before(fin) && reservation.datef.after(fin)) {
+                return false;
+            }
+            if (reservation.dateD.after(debut) && reservation.datef.before(fin)) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     // Méthode pour afficher les chambres libres
@@ -73,5 +79,5 @@ public class Chambre {
         }
     }
 
-    }
 }
+

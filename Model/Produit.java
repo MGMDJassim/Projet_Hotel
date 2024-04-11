@@ -49,5 +49,6 @@ public class Produit {
         this.consommation = consommation;
     }
     // methode
-    }
+    
 }
+

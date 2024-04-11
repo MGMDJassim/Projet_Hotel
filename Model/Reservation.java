@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Reservation {
 
+    public int numRes;
     public Date dateD;
     public Date datef;
     public Vector<Sejour> sejour;
@@ -81,6 +82,13 @@ public class Reservation {
     public void removeClient(Client client) {
         this.client = null;
     }
+    public void setNumRes(int numRes) {
+        this.numRes = numRes;
+    }
+    
+    public int getNumRes() {
+        return numRes;
+    }
 
     public void addReservation(Reservation reservation) {
         this.sejour.add(reservation.getSejour().get(0));
@@ -100,6 +108,8 @@ public class Reservation {
         }
         return false;
     }
+
+
 
     
 

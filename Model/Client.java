@@ -89,16 +89,34 @@ public class Client {
         return hôtel;
     }
 
-    public String addReservation(Reservation r) {
-        try {
-            listReservation.add(r);
-        } catch (Exception e) {
-            System.out.println("Erreur lors de l'ajout de la réservation");
+    public void setListReservation(Vector<Reservation> listReservation) {
+        this.listReservation = listReservation;
+    }
+
+    public Vector<Reservation> getListReservation() {
+        return listReservation;
+    }
+
+    //ajout de reservation
+    public void ajoutReservation(Reservation reservation) {
+        listReservation.add(reservation);
+    }
+
+    //suppression de reservation
+    public void retirerReservation(Reservation reservation) {
+        listReservation.remove(reservation);
+    }
+
+    //recherche de reservation
+
+    public Reservation rechercheReservation(int numRes) {
+        for (Reservation reservation : listReservation) {
+            if (reservation.getNumRes() == numRes) {
+                return reservation;
+            }
         }
-        System.out.println("Réservation ajoutée avec succès");
-        return adresseClient+" "+ codePostale +" " + " " + villeClient + " " + telClient + " " + dateDeNaissance + " " + prenomClient + " " + nomClient;
+        return null;
     }
 
-
-    }
+}
 
