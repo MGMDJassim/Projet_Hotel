@@ -52,8 +52,8 @@ public class Sejour {
     public double facturationSejour()
     {
         double total = 0.0;
-        for (int i = 0; i < listeConsommation.length; i++){
-            Consommation consommation = listeConsommation.get(i);
+        for (int i = 0; i < listConsommation.size(); i++){
+            Consommation consommation = listConsommation.get(i);
             Produit produit = consommation.getProduit();
             total += produit.getPrix() * consommation.getQuantite();
         }

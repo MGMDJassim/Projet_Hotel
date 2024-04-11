@@ -48,7 +48,25 @@ public class Produit {
     public void setConsommation(Vector<Consommation> consommation) {
         this.consommation = consommation;
     }
+<<<<<<< HEAD
     // methode
     
 }
 
+=======
+    // methode affichage
+/*
+ * il fallait faire des return au lieux de S.O.P dans la méthodes afficherInfo() pour que les informations soient retournées
+ */
+
+    public void afficherInfo(){
+        System.out.println("Nom du produit :" + getNom());
+        System.out.println("Prix :" + getPrix() + "euros");
+        System.out.println("Hôtel" + hotel.getNom());
+        System.out.println("Consommation");
+        for(Consommation cons : consommation){
+            System.out.println("," + cons.produit.nom);
+        }
+    }
+}
+>>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4

@@ -89,6 +89,7 @@ public class Client {
         return hôtel;
     }
 
+<<<<<<< HEAD
     public void setListReservation(Vector<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
@@ -116,6 +117,10 @@ public class Client {
             }
         }
         return null;
+=======
+    public void addReservation(Reservation reservation) {
+        this.listReservation.add(reservation);
+>>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4
     }
 
 }

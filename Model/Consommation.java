@@ -15,10 +15,17 @@ public class Consommation {
         this.produit = p;
     }
 
+<<<<<<< HEAD
     public void setQuatité(int quatité) {
         this.quantite = quatité;
     }
     public int getQuatite() {
+=======
+    public void setQuantite(int quatité) {
+        this.quantite = quatité;
+    }
+    public int getQuantite() {
+>>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4
         return quantite;
     }
     public void setConsomme(boolean consomme) {
@@ -56,6 +63,7 @@ public class Consommation {
     	} else { 
     		System.out.println("la quantité à retirer est supérieur à la quantité consommée");
     	}
+    }
     }
 }
 }

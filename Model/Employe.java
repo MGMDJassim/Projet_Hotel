@@ -33,10 +33,13 @@ public class Employe {
         return this.prenomEmploye;
     }
 
-    // methode affichage info employe
-      @Override
-    public String toString() {
-        return "Employe{" + "nomEmploye='" + nomEmploye + '\'' + ", numEmploye=" + numEmploye + ", prenomEmploye='" + prenomEmploye + '\'' + '}';
-    }
-
+/*
+ * Pour mettre un blic de code en commentaireon il faut utiliser comme je l'ai fait ci-dessous '/*
+ * // ça c'est pour une ligne de commentaire
+ */
+/* * public void afficherInfo() {
+        System.out.println("Nom: " + nomEmploye);
+        System.out.println("Numéro: " + numEmploye);
+        System.out.println("Prénom: " + prenomEmploye);
+    }*/ 
 }

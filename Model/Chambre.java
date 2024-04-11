@@ -1,12 +1,12 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
 
 public class Chambre {
     public int etage;
     public int numeroPorte;
-    private List<Reservation> listReservation;
+    private Vector<Reservation> listReservation = new Vector<>();
     public Hotel hotel;
     public String type;
 
@@ -25,7 +25,7 @@ public class Chambre {
         this.numeroPorte = numeroPorte;
     }
 
-    public void setListReservation(List<Reservation> listReservation) {
+    public void setListReservation(Vector<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
 
@@ -50,7 +50,11 @@ public class Chambre {
     }
 
     // Recherche des chambres libres
+<<<<<<< HEAD
     public boolean isFree(Date debut, Date fin) {
+=======
+    public boolean isFree (Date debut, Date fin) {
+>>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4
         for (Reservation reservation : listReservation) {
             if (reservation.dateD.before(debut) && reservation.datef.after(debut)) {
                 return false;
@@ -79,5 +83,9 @@ public class Chambre {
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+    }
+>>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4
 
