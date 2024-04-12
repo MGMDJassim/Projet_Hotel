@@ -22,6 +22,7 @@ public class Main {
 
 Hotel hotel = new Hotel("HotelParis", "91 boulevard de l'essone", "0101010101", "mail@example.com");
         Chambre chambre = new Chambre(4, 24, "presidentielle", hotel);
+        Chambre chambre2 = new Chambre(2, 12,"simple", hotel);
         Employe employe = new Employe("MORIN", 27, "Thomas");
         Sejour s = new Sejour(new Reservation(), new Vector<>(), employe);
         Sejour s1 = new Sejour();
