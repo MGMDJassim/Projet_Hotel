@@ -67,16 +67,12 @@ public class Chambre {
 
     // Méthode pour afficher les chambres libres
     public static void afficherChambresLibres(List<Chambre> chambres, Date debut, Date fin) {
-        boolean libre = false;
         for (Chambre chambre : chambres) {
             if (chambre.isFree(debut, fin)) {
-                libre = true;
                 System.out.println("Chambre " + chambre.type + " à l'étage " + chambre.etage + ", à la porte " + chambre.numeroPorte);
             }
         }
-        if (libre = false) {
-            System.out.println("Aucune chambre n'est disponible sur la période du " + debut + " au " + fin + ".");
-        }
+        System.out.println("Aucune chambre n'est disponible sur la période du " + debut + " au " + fin + ".");
     }
 
 }
