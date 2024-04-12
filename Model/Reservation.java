@@ -1,5 +1,5 @@
 
-//import java.io.*;
+import java.io.*;
 import java.util.*;
 
 public class Reservation {
@@ -7,7 +7,7 @@ public class Reservation {
     public int numRes;
     public Date dateD;
     public Date datef;
-    public Vector<Sejour> sejour;
+    public Vector<Sejour> sejour = new Vector<>();
     public Chambre chambre;
     public Client client;
     public Reservation(Date dateD, Date datef, Vector<Sejour> sejour, Chambre chambre, Client client) {
@@ -102,15 +102,12 @@ public class Reservation {
         this.client = null;
     }
 
-    public boolean isFree(Date debutD, Date finD) {
-        if (dateD.before(debutD) && datef.after(finD)) {
-            return true;
-        }
-        return false;
+    public void setListSejour(Vector<Sejour> sejour) {
+        this.sejour = sejour;
     }
 
-
-
-    
+    public Vector<Sejour> getListSejour() {
+        return sejour;
+    }
 
 }

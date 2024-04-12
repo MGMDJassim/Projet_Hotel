@@ -89,7 +89,14 @@ public class Client {
         return hôtel;
     }
 
-<<<<<<< HEAD
+    public void addReservation(Reservation reservation) {
+        this.listReservation.add(reservation);
+    }
+
+    public void removeReservation(Reservation reservation) {
+        this.listReservation.remove(reservation);
+    }
+
     public void setListReservation(Vector<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
@@ -98,30 +105,15 @@ public class Client {
         return listReservation;
     }
 
-    //ajout de reservation
-    public void ajoutReservation(Reservation reservation) {
-        listReservation.add(reservation);
+    public void addClient(Client client) {
+        this.listReservation.add(client.getListReservation().get(0));
     }
 
-    //suppression de reservation
-    public void retirerReservation(Reservation reservation) {
-        listReservation.remove(reservation);
+    public void removeClient(Client client) {
+        this.listReservation.remove(client.getListReservation().get(0));
     }
 
-    //recherche de reservation
-
-    public Reservation rechercheReservation(int numRes) {
-        for (Reservation reservation : listReservation) {
-            if (reservation.getNumRes() == numRes) {
-                return reservation;
-            }
-        }
-        return null;
-=======
-    public void addReservation(Reservation reservation) {
-        this.listReservation.add(reservation);
->>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4
-    }
+    
 
 }
 

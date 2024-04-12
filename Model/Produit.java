@@ -48,12 +48,6 @@ public class Produit {
     public void setConsommation(Vector<Consommation> consommation) {
         this.consommation = consommation;
     }
-<<<<<<< HEAD
-    // methode
-    
-}
-
-=======
     // methode affichage
 /*
  * il fallait faire des return au lieux de S.O.P dans la méthodes afficherInfo() pour que les informations soient retournées
@@ -69,4 +63,3 @@ public class Produit {
         }
     }
 }
->>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4

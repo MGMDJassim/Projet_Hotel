@@ -50,11 +50,7 @@ public class Chambre {
     }
 
     // Recherche des chambres libres
-<<<<<<< HEAD
-    public boolean isFree(Date debut, Date fin) {
-=======
     public boolean isFree (Date debut, Date fin) {
->>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4
         for (Reservation reservation : listReservation) {
             if (reservation.dateD.before(debut) && reservation.datef.after(debut)) {
                 return false;
@@ -83,9 +79,5 @@ public class Chambre {
         }
     }
 
-<<<<<<< HEAD
 }
-=======
-    }
->>>>>>> cbe003bc8186b99ef2dcab923e6155cac5f7b9f4
 
