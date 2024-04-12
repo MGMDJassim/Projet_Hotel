@@ -49,10 +49,6 @@ public class Produit {
         this.consommation = consommation;
     }
     // methode affichage
-/*
- * il fallait faire des return au lieux de S.O.P dans la méthodes afficherInfo() pour que les informations soient retournées
- */
-
     public void afficherInfo(){
         System.out.println("Nom du produit :" + getNom());
         System.out.println("Prix :" + getPrix() + "euros");
