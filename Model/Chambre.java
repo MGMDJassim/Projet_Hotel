@@ -2,11 +2,12 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+import java.time.*;
 
 public class Chambre {
     public int etage;
     public int numeroPorte;
-    private Vector<Reservation> listReservation = new Vector<>();
+    private Vector<Reservation> listReservation = new Vector<Reservation>();
     public Hotel hotel;
     public String type;
 
@@ -25,6 +26,9 @@ public class Chambre {
         this.numeroPorte = numeroPorte;
     }
 
+    public void addReservation(Reservation reservation) {
+        listReservation.add(reservation);
+    }
     public void setListReservation(Vector<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
@@ -50,23 +54,22 @@ public class Chambre {
     }
 
     // Recherche des chambres libres
-    public boolean isFree (Date debut, Date fin) {
+    public boolean isFree(LocalDate debut, LocalDate fin) {
         for (Reservation reservation : listReservation) {
-            if (reservation.dateD.before(debut) && reservation.datef.after(debut)) {
+            if (reservation.dateD.isBefore(debut) && reservation.datef.isAfter(debut)) {
                 return false;
             }
-            if (reservation.dateD.before(fin) && reservation.datef.after(fin)) {
+            if (reservation.dateD.isBefore(fin) && reservation.datef.isAfter(fin)) {
                 return false;
             }
-            if (reservation.dateD.after(debut) && reservation.datef.before(fin)) {
+            if (reservation.dateD.isAfter(debut) && reservation.datef.isBefore(fin)) {
                 return false;
             }
         }
         return true;
     }
-
     // Méthode pour afficher les chambres libres
-    public static void afficherChambresLibres(List<Chambre> chambres, Date debut, Date fin) {
+  /*  public static void afficherChambresLibres(List<Chambre> chambres, Date debut, Date fin) {
         for (Chambre chambre : chambres) {
             if (chambre.isFree(debut, fin)) {
                 System.out.println("Chambre " + chambre.type + " à l'étage " + chambre.etage + ", à la porte " + chambre.numeroPorte);
@@ -74,5 +77,5 @@ public class Chambre {
         }
         System.out.println("Aucune chambre n'est disponible sur la période du " + debut + " au " + fin + ".");
     }
-
+*/
 }

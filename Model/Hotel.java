@@ -1,4 +1,5 @@
 import java.util.*;
+import java.time.LocalDate;
 
 public class Hotel {
 
@@ -96,7 +97,7 @@ public class Hotel {
 
 
     //Recherche des chambres libres 
-    public Vector<Chambre> getFreeRooms(Date dateDebut, Date dateFin){
+    public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin){
         Vector<Chambre> freeRooms = new Vector<Chambre>();
         for(int i=0;i<listechambre.size();i++){
             if(listechambre.get(i).isFree(dateDebut, dateFin)){
@@ -108,7 +109,7 @@ public class Hotel {
     }
 
     //Affichage des chambres libres
-    public void displayFreeRooms(Date dateDebut, Date dateFin){
+    public void displayFreeRooms(LocalDate dateDebut, LocalDate dateFin){
         Vector<Chambre> freeRooms = getFreeRooms(dateDebut, dateFin);
         for(int i=0;i<freeRooms.size();i++){
             System.out.println("Chambre: "+freeRooms.get(i).getNumeroPorte());

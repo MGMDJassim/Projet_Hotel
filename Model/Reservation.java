@@ -1,36 +1,35 @@
-import java.io.*;
+
+import java.time.*;
 import java.util.*;
 
 public class Reservation {
 
     public int numRes;
-    public Date dateD;
-    public Date datef;
-    public Vector<Sejour> sejour = new Vector<>();
+    public LocalDate dateD;
+    public LocalDate datef;
+    public Vector<Sejour> sejour = new Vector<Sejour>();
     public Chambre chambre;
     public Client client;
-    public Reservation(Date dateD, Date datef, Vector<Sejour> sejour, Chambre chambre, Client client) {
+    public Reservation(LocalDate dateD, LocalDate dateF, Chambre chambre, Client client) {
         this.dateD = dateD;
-        this.datef = datef;
-        this.sejour = sejour;
+        this.datef = dateF;
         this.chambre = chambre;
         this.client = client;
     }
 
-
-    public void setDateD(Date dateD) {
+	public void setDateD(LocalDate dateD) {
         this.dateD = dateD;
     }
 
-    public Date getDateDebut() {
+    public LocalDate getDateDebut() {
         return dateD;
     }
 
-    public void setDateFin(Date datef) {
+    public void setDateFin(LocalDate datef) {
         this.datef = datef;
     }
 
-    public Date getDateFin() {
+    public LocalDate getDateFin() {
         return datef;
     }
 
