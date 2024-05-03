@@ -40,19 +40,23 @@ public class Consommation {
     //Methode ajout de conso
     
     public void ajoutConsommation(int quantite) {
-    	this.quantite += quantite;
-    	this.consomme = true;
+        if (quantite > 0) {
+    	    this.quantite += quantite;
+    	    this.consomme = true;
+        } else {
+            System.out.priintln("La quantité ajoutée doit être positive.");
+        }
     }
     
     // Methode suppression conso
     
     public void retirerConsommation(int quantite) {
-    		if (this.quantite >= quantite){
+    		if (quantite > 0 && this.quantite >= quantite){
     			this.quantite -= quantite;
                    if(this.quantite == 0) {
-    		        this.consomme = true;
+    		        this.consomme = false;
     	} else { 
-    		System.out.println("la quantité à retirer est supérieur à la quantité consommée");
+    		System.out.println("la quantité à retirer doit être positive et ne doit pas dépasser la quantité consommée.");
     	}
     }
     }
