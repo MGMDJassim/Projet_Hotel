@@ -14,5 +14,9 @@ public class AgentEntretien extends Employe {
     
     }
 
-    
+    public void afficherInfo(){
+        super.afficherInfo();
+        System.out.println("Menage effectué :" + (menageEffectue ? "Oui" : "Non"));
+        System.out.println("Nombre de nettoyage effectés" + listNettoyage.size());
+    }
 }
