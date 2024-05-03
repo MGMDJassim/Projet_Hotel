@@ -1,6 +1,5 @@
-//import java.io.*;
-//import java.util.*;
 
+package Model;
 public class Presidentiel extends Chambre {
     public int litDouble;
     

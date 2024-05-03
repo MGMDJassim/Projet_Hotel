@@ -1,6 +1,4 @@
-
-//import java.io.*;
-//import java.util.*;
+package Model;
 
 public class Consommation {
     public int quantite;

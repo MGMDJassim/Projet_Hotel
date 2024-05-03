@@ -1,4 +1,5 @@
-import java.io.*;
+package Model;
+//import java.io.*;
 import java.util.*;
 
 public class Client {

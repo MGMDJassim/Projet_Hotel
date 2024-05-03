@@ -1,5 +1,4 @@
-import java.io.File;
-import java.util.Date;
+package Model;
 import java.util.List;
 import java.util.Vector;
 import java.time.*;
@@ -11,9 +10,9 @@ public class Chambre {
     public Hotel hotel;
     public String type;
 
-    public Chambre(int etage, int numeroPorte, String type, Hotel hotel) {
+    public Chambre(int etage, int numPorte, String type, Hotel hotel) {
         this.etage = etage;
-        this.numeroPorte = numeroPorte;
+        this.numeroPorte = numPorte;
         this.type = type;
         this.hotel = hotel;
     }

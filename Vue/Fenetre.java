@@ -1,8 +1,13 @@
 package Vue;
+import java.awt.event.ActionListener;
+import java.util.ResourceBundle.Control;
+import Model.*;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-import Controler.ControleClient;
 
 public class Fenetre extends JFrame{
     JMenuBar barre = new JMenuBar();  
@@ -20,11 +25,18 @@ public class Fenetre extends JFrame{
     JMenuItem ajouterreservation = new JMenuItem("Ajouter une reservation");
     JMenuItem supprimerreservation = new JMenuItem("Supprimer une reservation");
 
+    
+    JPanel currentPanel = new JPanel();
 
 
     public Fenetre(){
 
         this.setJMenuBar(barre);
+
+        
+
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         barre.add(gchambre);
         barre.add(gclient);
@@ -39,14 +51,33 @@ public class Fenetre extends JFrame{
         greservation.add(ajouterreservation);
         greservation.add(supprimerreservation);
 
-      
-        this.setTitle("Gestion d'hotel");
-        this.setSize(1000, 1000);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        ajouterchambre.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                affAjoutChambre();
+            }
+        });
+
+        this.pack();
+        this.show();
+        this.setSize(500, 500);
         this.setVisible(true);
 
     }
-    
 
+    public void affAjoutChambre(){
+        VueAjout vue = new VueAjout();
+        replaceContentPane(vue);
+    }
+
+    private void replaceContentPane(JPanel panel){
+        getContentPane().remove(currentPanel);
+        currentPanel = panel;
+        getContentPane().add(currentPanel);
+        revalidate();
+        repaint();
+    }
 }
+
+
+
+
