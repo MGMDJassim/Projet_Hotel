@@ -1,5 +1,4 @@
 //import java.io.*;
-import java.time.LocalDate;
 import java.util.*;
 
 public class Sejour {
@@ -14,10 +13,6 @@ public class Sejour {
         this.agent = agent;
     }
 
-    public Sejour(LocalDate of, LocalDate of2) {
-        //TODO Auto-generated constructor stub
-        
-    }
 
     public void setListeRes(Reservation listeRes) {
         this.listeRes = listeRes;

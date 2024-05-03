@@ -82,20 +82,6 @@ public class Hotel {
         return listechambre;
     }
 
-    public Client getClientbyname(String n)
-    {for(int i=0;i<listClient.size();i++)
-        {
-            if(listClient.get(i).getNomClient().equals(n))
-            {
-                return listClient.get(i);
-            }
-        }
-
-        return null;
-
-    }
-
-
     //Recherche des chambres libres 
     public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin){
         Vector<Chambre> freeRooms = new Vector<Chambre>();

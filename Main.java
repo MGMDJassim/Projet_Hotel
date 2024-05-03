@@ -1,8 +1,8 @@
-import java.io.File;  
-import java.io.IOException;
-import java.util.Vector;
-import java.time.LocalDate;
-import Vue.Fenetre;
+import java.time.*;
+//import java.util.*;
+import Vue.*;
+
+
 
 public class Main {
   public static void main(String[] args) {
@@ -19,8 +19,18 @@ public class Main {
     chambre.addReservation(r1);
     chambre.addReservation(r2);
     chambre.isFree(LocalDate.of(2020,10,21), LocalDate.of(2020,10,25));
-  
-    Fenetre f = new Fenetre();
+    chambre.isFree(LocalDate.of(2020,12,21), LocalDate.of(2020,12,25));
+
+    System.out.println(hotel.getNom());
+    System.out.println(hotel.getAdresse());
+    System.out.println(hotel.getTelephone());
+    System.out.println(hotel.getMail());
+    System.out.println(hotel.listechambre);
+    System.out.println(hotel.listClient);
+    System.out.println(hotel.listProduit);
+
+    Fenetre fenetre = new Fenetre();
+
 
   }
 
