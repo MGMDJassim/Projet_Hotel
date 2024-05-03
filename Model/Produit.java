@@ -5,12 +5,11 @@ public class Produit {
 
     public String nom;
     public int prix;
-    public Hotel hotel;
-    public int quantite;
+    public int quantiteStock;
     public Vector<Consommation> consommation;
     
     // Constructeur avec paramètres
-    public Produit(String nom, int prix, Hotel hotel, int quantite, Vector<Consommation> consommation) {
+    public Produit(String nom, int prix, int quantiteStock, Vector<Consommation> consommation) {
         this.nom = nom;
         this.prix = prix;
         this.hotel = hotel;
@@ -35,17 +34,10 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-    public int getQuantite(){
+    public int getQuantiteStock(){
         return quantite;
     }
-    public void setQuantite(int quantite){
+    public void setQuantiteStock(int quantite){
         this.quantite = quantite;
     }
     public Vector<Consommation> getConsommation() {
@@ -61,7 +53,7 @@ public class Produit {
         setPrix(nouveauPrix);
     }
     
-    // methode ajouter une consommation
+    // methode ajouter une nouvelle consommation
     
     public void ajouterConsommation(Consommation nouvelleConso){
         consommation.add(nouvelleConso);
@@ -78,20 +70,12 @@ public class Produit {
         
     public boolean verifierDisponibilite(){
        return quantite > 0;
-    //methode calcul prix
 
-    public void calculPrixTotalConso(){
-    int prixTotal = 0;
-    for(Consommation cons : consommation){
-           prixTotal += cons.getQuantite() * cons.getProduit().getPrix();
-    }
-    return prixTotal;
-    }
     // methode affichage
     public void afficherInfo(){
         System.out.println("Nom du produit :" + getNom());
         System.out.println("Prix :" + getPrix() + "euros");
-        System.out.println("Hôtel" + hotel.getNom());
+        System.out.println("Quantite en Stock" + getQuantiteStock());
         System.out.println("Consommation");
         for(Consommation cons : consommation){
             System.out.println("," + cons.produit.nom);
