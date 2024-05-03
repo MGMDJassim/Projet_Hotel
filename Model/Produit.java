@@ -5,11 +5,12 @@ public class Produit {
 
     public String nom;
     public int prix;
-    public int quantiteStock;
+    public int quantite;
+    public Hotel hotel;
     public Vector<Consommation> consommation;
     
     // Constructeur avec paramètres
-    public Produit(String nom, int prix, int quantiteStock, Vector<Consommation> consommation) {
+    public Produit(String nom, int prix, Hotel hotel, int quantite, Vector<Consommation> consommation) {
         this.nom = nom;
         this.prix = prix;
         this.hotel = hotel;
@@ -34,11 +35,18 @@ public class Produit {
         this.prix = prix;
     }
 
-    public int getQuantiteStock(){
+    public int getQuantite(){
         return quantite;
     }
-    public void setQuantiteStock(int quantite){
+    public void setQuantite(int quantite){
         this.quantite = quantite;
+    }
+    public Hotel getHotel() {
+        return hotel;
+    }
+    
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
     public Vector<Consommation> getConsommation() {
         return consommation;
@@ -64,7 +72,10 @@ public class Produit {
     public void retirerConsommation(Consommation suppConso){
         consommation.remove(suppConso);
     }
-
+    
+     public boolean verifierDisponibilite() {
+        return quantiteStock > 0;
+    }
     
     // methode verifier disponibilite produit
         
