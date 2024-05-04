@@ -32,7 +32,17 @@ public class Produit {
     }
 
     public void setPrix(int prix) {
+        
+        if (prix <= 0){
+        System.out.println("Le prix doit être supérieur à zéro.");
+            
+    } else if (nouveauPrix > 15) {
+        System.out.println("Le prix ne peut pas dépasser 15 euros.");
+            
+    } else {
         this.prix = prix;
+        System.out.println("Le prix a été modifié avec succès.");
+    }
     }
 
     public int getQuantite(){
@@ -53,12 +63,6 @@ public class Produit {
     }
     public void setConsommation(Vector<Consommation> consommation) {
         this.consommation = consommation;
-    }
-    
-    // methode modifier prix
-    
-    public void modifierPrix(int nouveauPrix){
-        setPrix(nouveauPrix);
     }
     
     // methode ajouter une nouvelle consommation
