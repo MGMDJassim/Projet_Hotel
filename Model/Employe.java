@@ -12,9 +12,17 @@ public class Employe {
         this.prenomEmploye = prenomEmploye;
     }
 
+    //mettre nom de famille en majuscule
     public void setNomEmploye(String nomEmploye) {
-        this.nomEmploye = nomEmploye;
+
+        String[]nom = nomEmploye;
+        StringBuilder nomDeFamilleMajuscule = new StringBuilder();
+        for(int i = 0; i<nom.length;i++){
+            nomFamilleMajuscule.append(partiesNom[i].toUpperCase());
+        }
+        this.nomEmploye = nomFamilleMajuscule.toString();
     }
+    
     public String getNomEmploye() {
         return this.nomEmploye;
     }
@@ -30,8 +38,22 @@ public class Employe {
         return this.numEmploye;
     }
     public void setPrenomEmploye(String prenomEmploye) {
-        this.prenomEmploye = prenomEmploye;
+
+        if (prenomEmploye != null && !prenomEmploye.isEmpty()) { 
+            
+        StringBuilder prenomMajuscule = new StringBuilder();
+        prenomMajuscule.append(Character.toUpperCase(prenomEmploye.charAt(0))); 
+            
+        if (prenomEmploye.length() > 1) { 
+            prenomMajuscule.append(prenomEmploye.substring(1)); 
+        }
+        this.prenomEmploye = prenomMajuscule.toString();
+            
+    } else {
+        System.out.println("Le prénom ne peut pas être null ou vide.");
     }
+    }
+        
     public String getPrenomEmploye() {
         return this.prenomEmploye;
     }
