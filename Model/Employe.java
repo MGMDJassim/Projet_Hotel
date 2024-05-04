@@ -19,7 +19,12 @@ public class Employe {
         return this.nomEmploye;
     }
     public void setNumEmploye(int numEmploye) {
+
+        if (numEmploye <=0) {
+            System.out.println("Le numéro employé doit commencer par 2021 et doit être positif.");
+        } else {
         this.numEmploye = numEmploye;
+        }
     }
     public int getNumEmploye() {
         return this.numEmploye;
