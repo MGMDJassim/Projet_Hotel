@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 
 
 public class ControlSupp implements ActionListener{
-    private Hotel hotel;
-    private VueAffChambre vueAffChambre;
+    Hotel hotel;
+     VueAffChambre vueAffChambre;
 
     public ControlSupp(Hotel hotel, VueAffChambre vueAffChambre) {
         //TODO Auto-generated constructor stub

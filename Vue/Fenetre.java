@@ -5,6 +5,8 @@ import Model.*;
 
 import Controler.ControleAffChambre;
 import java.awt.event.ActionEvent;
+
+import Controler.ControlAjout;
 import Controler.ControlReservation;
 
 import javax.swing.*;
@@ -50,16 +52,19 @@ public class Fenetre extends JFrame{
 
         greservation.add(affReservations);
 
-        afficherChambre.addActionListener(new ControleAffChambre(hotel, this));
-
-        ajouterchambre.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                affAjoutChambre();
+        ajouterchambre.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VueAjout vue = new VueAjout(hotel, Fenetre.this);
+                getContentPane().remove(currentPanel);
+                currentPanel = vue;
+                getContentPane().add(currentPanel);
+                revalidate();
+                repaint();
+        
             }
         });
-
+        afficherChambre.addActionListener(new ControleAffChambre(hotel, this));
         affReservations.addActionListener(new ControlReservation(hotel, this));
-
    
 
         this.pack();
@@ -68,14 +73,9 @@ public class Fenetre extends JFrame{
 
     }
 
-    public void affAjoutChambre(){
-        VueAjout vue = new VueAjout(hotel);
-        replaceContentPane(vue);
-    }
-
-    public void replaceContentPane(VueAjout vue){
+    public void setContentPane(JPanel panel){
         getContentPane().remove(currentPanel);
-        currentPanel = vue;
+        currentPanel = panel;
         getContentPane().add(currentPanel);
         revalidate();
         repaint();

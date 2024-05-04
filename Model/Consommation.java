@@ -44,7 +44,7 @@ public class Consommation {
     	    this.quantite += quantite;
     	    this.consomme = true;
         } else {
-            System.out.priintln("La quantité ajoutée doit être positive.");
+            System.out.println("La quantité ajoutée doit être positive.");
         }
     }
     

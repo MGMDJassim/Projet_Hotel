@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.time.*;
 //import java.util.*;
 import Vue.Fenetre;
@@ -24,6 +23,8 @@ Client client = new Client("nom", "prenom", 1990, "adresse", 123456, 12345, "vil
 
 Reservation r1 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c1, client);
 
+Normale n1 = new Normale(12, 1, hotel, "simple", 1);
+
 hotel.addChambre(c1);
 hotel.addChambre(c2);
 hotel.addChambre(c3);
@@ -39,6 +40,10 @@ hotel.addClient(client);
 
 hotel.addReservation(r1);
     Fenetre fenetre = new Fenetre(hotel);
+
+    System.out.println(client.getNomClient());
+    System.out.println(n1.getLitSimple());
+    System.out.println(r1.getDateDebut());
   }
 
 }

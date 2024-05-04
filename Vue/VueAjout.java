@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import Controler.ControlAjout;
 
 
+
 public class VueAjout extends JPanel{
     
   
@@ -31,9 +32,9 @@ public class VueAjout extends JPanel{
 
     JButton ajoutButton = new JButton("Ajouter");
     Hotel hotel;
-
-    public VueAjout(Hotel h){
-        hotel = h;
+    Fenetre fenetre;
+    public VueAjout(Hotel hotel, Fenetre fenetre){
+        this.hotel = hotel;
         setLayout(null);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -61,7 +62,7 @@ public class VueAjout extends JPanel{
 
         ajoutButton.setBounds(200, 100, 200, 20);
 
-        ControlAjout controlAjout = new ControlAjout(numP, type, numEtag, hotel);   
+        ControlAjout controlAjout = new ControlAjout(numP, type, numEtag, hotel, fenetre);   
         ajoutButton.addActionListener(controlAjout);
 
 
