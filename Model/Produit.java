@@ -30,10 +30,11 @@ public class Produit {
     public int getPrix() {
         return prix;
     }
-
+    
+    //prix modification
     public void setPrix(int prix) {
         
-        if (prix <= 0){
+     if (prix <= 0){
         System.out.println("Le prix doit être supérieur à zéro.");
             
     } else if (nouveauPrix > 15) {
@@ -49,7 +50,13 @@ public class Produit {
         return quantite;
     }
     public void setQuantite(int quantite){
+        if (quantite <=0){
+            System.out.println("la quantitée rentrée doit être supérieure à 0");
+            
+        } else {
         this.quantite = quantite;
+            
+        }
     }
     public Hotel getHotel() {
         return hotel;
