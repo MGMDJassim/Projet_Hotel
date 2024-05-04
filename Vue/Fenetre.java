@@ -1,10 +1,11 @@
 package Vue;
 import java.awt.event.ActionListener;
-import java.util.ResourceBundle.Control;
+
 import Model.*;
 
-import java.awt.GridLayout;
+import Controler.ControleAffChambre;
 import java.awt.event.ActionEvent;
+import Controler.ControlReservation;
 
 import javax.swing.*;
 
@@ -18,23 +19,21 @@ public class Fenetre extends JFrame{
 
     JMenuItem ajouterchambre = new JMenuItem("Ajouter une chambre");
     JMenuItem supprimerchambre = new JMenuItem("Supprimer une chambre");
+    JMenuItem afficherChambre = new JMenuItem("Afficher les chambres");
 
     JMenuItem ajouterclient = new JMenuItem("Ajouter un client");
     JMenuItem supprimerclient = new JMenuItem("Supprimer un client");
 
-    JMenuItem ajouterreservation = new JMenuItem("Ajouter une reservation");
-    JMenuItem supprimerreservation = new JMenuItem("Supprimer une reservation");
+    JMenuItem affReservations = new JMenuItem("Afficher les reservations");
 
     
     JPanel currentPanel = new JPanel();
+    Hotel hotel;
 
-
-    public Fenetre(){
+    public Fenetre(Hotel h){
+        hotel = h;
 
         this.setJMenuBar(barre);
-
-        
-
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -44,12 +43,14 @@ public class Fenetre extends JFrame{
 
         gchambre.add(ajouterchambre);
         gchambre.add(supprimerchambre);
+        gchambre.add(afficherChambre);
         
         gclient.add(ajouterclient);
         gclient.add(supprimerclient);
 
-        greservation.add(ajouterreservation);
-        greservation.add(supprimerreservation);
+        greservation.add(affReservations);
+
+        afficherChambre.addActionListener(new ControleAffChambre(hotel, this));
 
         ajouterchambre.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -57,25 +58,29 @@ public class Fenetre extends JFrame{
             }
         });
 
+        affReservations.addActionListener(new ControlReservation(hotel, this));
+
+   
+
         this.pack();
-        this.show();
         this.setSize(500, 500);
         this.setVisible(true);
 
     }
 
     public void affAjoutChambre(){
-        VueAjout vue = new VueAjout();
+        VueAjout vue = new VueAjout(hotel);
         replaceContentPane(vue);
     }
 
-    private void replaceContentPane(JPanel panel){
+    public void replaceContentPane(VueAjout vue){
         getContentPane().remove(currentPanel);
-        currentPanel = panel;
+        currentPanel = vue;
         getContentPane().add(currentPanel);
         revalidate();
         repaint();
     }
+
 }
 
 

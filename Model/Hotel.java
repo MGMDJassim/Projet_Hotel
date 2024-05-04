@@ -11,6 +11,7 @@ public class Hotel {
     public Vector<Chambre> listechambre = new Vector<Chambre>();
     public Vector<Client> listClient = new Vector<Client>();
     public Vector<Produit> listProduit = new Vector<Produit>();
+    public Vector<Reservation> listReservation = new Vector<Reservation>();
     
     public Hotel (String nom, String adresse, int telephone, String mail){
         this.nom = nom;
@@ -43,6 +44,13 @@ public class Hotel {
         this.listProduit.remove(produit);
     }
 
+    public void addReservation(Reservation reservation){
+        this.listReservation.add(reservation);
+    }
+    
+    public void removeReservation(Reservation reservation){
+        this.listReservation.remove(reservation);
+    }
     public void setNom(String nom) {
         this.nom = nom;
     }

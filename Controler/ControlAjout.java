@@ -1,7 +1,5 @@
 package Controler;
 
-import Vue.VueAjout;
-
 import Model.Chambre;
 import Model.Hotel;
 import javax.swing.JTextField;
@@ -21,11 +19,12 @@ public class ControlAjout implements ActionListener {
 
 
 
-    public ControlAjout(JTextField numChambre, JTextField numP, JTextField numEtag) {
+    public ControlAjout(JTextField numChambre, JTextField numP, JTextField numEtag,Hotel h) {
         //TODO Auto-generated constructor stub
         this.numChambre = numChambre;
         this.typeChambre = numP;
         this.numEtag = numEtag;
+        this.hotel = h;
 
     }
 
@@ -34,7 +33,7 @@ public class ControlAjout implements ActionListener {
         // TODO Auto-generated method stub
         chambre = new Chambre(Integer.parseInt(numEtag.getText()), Integer.parseInt(numChambre.getText()), typeChambre.getText(), hotel);
         hotel.addChambre(chambre);
-
+        
     }
     
 }

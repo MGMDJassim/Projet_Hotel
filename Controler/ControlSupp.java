@@ -1,18 +1,23 @@
 package Controler;
 
-import Vue.VueAjout;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
+
+import Model.Hotel;
+import Vue.VueAffChambre;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControlSupp {
 
-    public ControlSupp(JTextField numChambre) {
+public class ControlSupp implements ActionListener{
+    private Hotel hotel;
+    private VueAffChambre vueAffChambre;
+
+    public ControlSupp(Hotel hotel, VueAffChambre vueAffChambre) {
         //TODO Auto-generated constructor stub
+        this.vueAffChambre = vueAffChambre;
+        this.hotel = hotel;
+        
     }
 
     public void actionPerformed(ActionEvent e) {

@@ -52,6 +52,14 @@ public class Chambre {
         return hotel;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
     // Recherche des chambres libres
     public boolean isFree(LocalDate debut, LocalDate fin) {
         for (Reservation reservation : listReservation) {
@@ -77,4 +85,5 @@ public class Chambre {
         System.out.println("Aucune chambre n'est disponible sur la période du " + debut + " au " + fin + ".");
     }
 */
+
 }

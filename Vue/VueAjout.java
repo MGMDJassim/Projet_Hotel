@@ -1,11 +1,10 @@
 package Vue;
 
-import java.awt.FlowLayout;
+
 import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
+
 import java.awt.Insets;
-import java.awt.event.ActionListener;
-import java.util.concurrent.Flow;
+
 
 import Model.*;
 
@@ -31,9 +30,11 @@ public class VueAjout extends JPanel{
 
 
     JButton ajoutButton = new JButton("Ajouter");
+    Hotel hotel;
 
-    public VueAjout(){
-        setLayout(new GridLayout(4,1,10,10));
+    public VueAjout(Hotel h){
+        hotel = h;
+        setLayout(null);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -42,15 +43,26 @@ public class VueAjout extends JPanel{
 
         add(numPorte);
         add(numP);
-    
+        numPorte.setBounds(10, 10, 200, 20);
+        numP.setBounds(200, 10, 200, 20);
         add(typeChambre);
         add(type);
+
+        typeChambre.setBounds(10, 40, 200, 20);
+        type.setBounds(200, 40, 200, 20);
 
         add(label4);
         add(numEtag);
 
-        add(ajoutButton, gbc);
+        label4.setBounds(10, 70, 200, 20);
+        numEtag.setBounds(200, 70, 200, 20);
 
+        add(ajoutButton);
+
+        ajoutButton.setBounds(200, 100, 200, 20);
+
+        ControlAjout controlAjout = new ControlAjout(numP, type, numEtag, hotel);   
+        ajoutButton.addActionListener(controlAjout);
 
 
     }
