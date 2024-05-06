@@ -21,10 +21,9 @@ Chambre c8 = new Chambre(8,  8,"simple", hotel, "Sale");
 Chambre c9 = new Chambre(9,  9,"simple", hotel, "Sale");
 Chambre c10 = new Chambre(10,  10,"simple", hotel, "Sale");
 
-Client client = new Client("ElKasmi", "Nisrine", LocalDate.of(2003, 9, 3), "adresse", 123456, 12345, "C-E", hotel);
 Client client2 = new Client("Mougamadou", "Jassim", LocalDate.of(2000, 6, 19), "adresse2", 123456, 12345, "C-E", hotel);
 
-Reservation r1 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c1, client);
+
 Reservation r2 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c2, client2);
 
 Normale n1 = new Normale(12, 1, hotel, "simple", 1, "Propre");
@@ -40,10 +39,8 @@ hotel.addChambre(c8);
 hotel.addChambre(c9);
 hotel.addChambre(c10);
 
-hotel.addClient(client);
 hotel.addClient(client2);
 
-hotel.addReservation(r1);
 hotel.addReservation(r2);
 
 

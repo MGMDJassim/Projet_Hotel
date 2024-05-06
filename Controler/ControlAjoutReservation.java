@@ -36,7 +36,6 @@ public class ControlAjoutReservation implements ActionListener{
         reservation = new Reservation(nomClient.getText(), numClient.getText(), numChambre.getText(), type.getText(), dateDebut, dateFin, hotel);
         hotel.addReservation(reservation);
         Vue.VueAjoutReservation vue = new Vue.VueAjoutReservation(hotel, fenetre);
-        
     }
     
 }
