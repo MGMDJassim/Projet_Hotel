@@ -36,10 +36,7 @@ public class Produit {
         
      if (prix <= 0){
         System.out.println("Le prix doit être supérieur à zéro.");
-            
-    } else if (nouveauPrix > 15) {
-        System.out.println("Le prix ne peut pas dépasser 15 euros.");
-            
+              
     } else {
         this.prix = prix;
         System.out.println("Le prix a été modifié avec succès.");
