@@ -14,7 +14,6 @@ public class Employe {
 
     //mettre nom de famille en majuscule
     public void setNomEmploye(String nomEmploye) {
-
         String[]nom = nomEmploye;
         StringBuilder nomDeFamilleMajuscule = new StringBuilder();
         for(int i = 0; i<nom.length;i++){
