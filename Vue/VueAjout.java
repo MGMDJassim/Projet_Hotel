@@ -12,6 +12,7 @@ import javax.swing.JButton;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import Controler.ControlAjout;
 
@@ -24,7 +25,10 @@ public class VueAjout extends JPanel{
     JTextField numP = new JTextField(20);
 
     JLabel typeChambre = new JLabel("Type de la chambre");
-    JTextField type = new JTextField(20);
+    /*JTextField type = new JTextField(20);*/
+
+    JComboBox<String> tChambre = new JComboBox<String>();
+    String[] type = {"Simple", "Double", "Suite"};
 
     JLabel label4 = new JLabel("Numero de l'etage");
     JTextField numEtag = new JTextField(20);
@@ -46,11 +50,15 @@ public class VueAjout extends JPanel{
         add(numP);
         numPorte.setBounds(10, 10, 200, 20);
         numP.setBounds(200, 10, 200, 20);
-        add(typeChambre);
-        add(type);
 
+
+        add(typeChambre);
+        add(tChambre);
+        tChambre.addItem("Simple");
+        tChambre.addItem("Double");
+        tChambre.addItem("Suite");
         typeChambre.setBounds(10, 40, 200, 20);
-        type.setBounds(200, 40, 200, 20);
+        tChambre.setBounds(200, 40, 200, 20);
 
         add(label4);
         add(numEtag);

@@ -23,6 +23,7 @@ public class VueReservation extends JPanel {
 
         nomColonne = new Vector<String>();
         nomColonne.add("Nom du client");
+        nomColonne.add("Prénom du client");
         nomColonne.add("Numéro de la chambre");
         nomColonne.add("Type de chambre");
         nomColonne.add("Numéro de l'étage");
@@ -34,6 +35,7 @@ public class VueReservation extends JPanel {
         for (int i = 0; i < hotel.listReservation.size(); i++) {
             Vector<Object> row = new Vector<Object>();
             row.add(hotel.listReservation.get(i).getClient().getNomClient());
+            row.add(hotel.listReservation.get(i).getClient().getPrenomClient());
             row.add(hotel.listReservation.get(i).getChambre().getNumeroPorte());
             row.add(hotel.listReservation.get(i).getChambre().getType());
             row.add(hotel.listReservation.get(i).getChambre().getEtage());

@@ -1,4 +1,5 @@
 package Model;
+import java.time.LocalDate;
 //import java.io.*;
 import java.util.*;
 
@@ -6,7 +7,7 @@ public class Client {
 
     public String nomClient;
     public String prenomClient;
-    public int dateDeNaissance;
+    public LocalDate dateDeNaissance;
     public String adresseClient;
     public int telClient;
     public int codePostale;
@@ -14,7 +15,7 @@ public class Client {
     public Vector<Reservation> listReservation;
     public Hotel hôtel;
 
-    public Client(String nomClient, String prenomClient, int dateDeNaissance, String adresseClient, int telClient, int codePostale, String villeClient, Hotel hôtel) {
+    public Client(String nomClient, String prenomClient, LocalDate dateDeNaissance, String adresseClient, int telClient, int codePostale, String villeClient, Hotel hôtel) {
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
         this.dateDeNaissance = dateDeNaissance;
@@ -41,11 +42,11 @@ public class Client {
         return prenomClient;
     }
 
-    public void setDateDeNaissance(int dateDeNaissance) {
+    public void setDateDeNaissance(LocalDate dateDeNaissance) {
         this.dateDeNaissance = dateDeNaissance;
     }
 
-    public int getDateDeNaissance() {
+    public LocalDate getDateDeNaissance() {
         return dateDeNaissance;
     }
 

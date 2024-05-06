@@ -99,16 +99,17 @@ public class Hotel {
                 freeRooms.add(listechambre.get(i));
             }   
         }
-    
         return freeRooms;
     }
 
-    //Affichage des chambres libres
-    public void displayFreeRooms(LocalDate dateDebut, LocalDate dateFin){
+    // Affichage des chambres libres
+    public void displayFreeRooms(LocalDate dateDebut, LocalDate dateFin) {
         Vector<Chambre> freeRooms = getFreeRooms(dateDebut, dateFin);
-        for(int i=0;i<freeRooms.size();i++){
-            System.out.println("Chambre: "+freeRooms.get(i).getNumeroPorte());
+        System.out.println("Chambres libres :");
+        for (Chambre chambre : freeRooms) {
+            System.out.println(chambre);
         }
     }
 
+    
 }

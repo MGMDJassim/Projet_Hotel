@@ -12,14 +12,13 @@ public class ControlReservation implements ActionListener{
     Fenetre fenetre;
 
     public ControlReservation(Hotel hotel, Fenetre fenetre) {
-        //TODO Auto-generated constructor stub
+        
         this.hotel = hotel;
         this.fenetre = fenetre;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         System.out.println("Afficher les reservations");
         VueReservation vue = new VueReservation(hotel, fenetre);
         

@@ -14,14 +14,14 @@ public class ControlSupp implements ActionListener{
      VueAffChambre vueAffChambre;
 
     public ControlSupp(Hotel hotel, VueAffChambre vueAffChambre) {
-        //TODO Auto-generated constructor stub
+    
         this.vueAffChambre = vueAffChambre;
         this.hotel = hotel;
         
     }
 
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        
         
     }
 }

@@ -6,18 +6,20 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+
 
 import Model.*;
 
 public class VueAffChambre extends JPanel {
     Hotel hotel;
+    Fenetre fenetre;
     Vector<String> nomColonne;
     Vector<Vector<Object>> data;
 
-    public VueAffChambre(Hotel hotel) {
+    public VueAffChambre(Hotel hotel, Fenetre fenetre) {
         super(new BorderLayout());
         this.hotel = hotel;
+        this.fenetre = fenetre;
 
         nomColonne = new Vector<String>();
         nomColonne.add("Numéro de la chambre");
@@ -35,11 +37,10 @@ public class VueAffChambre extends JPanel {
             
         }
 
-        DefaultTableModel model = new DefaultTableModel(data, nomColonne);
-        JTable table = new JTable(model);
+        
+        JTable table = new JTable(data, nomColonne);
         JScrollPane scrollPane = new JScrollPane(table);
-
-        this.add(scrollPane, BorderLayout.CENTER);
+        this.add(scrollPane, BorderLayout.NORTH);
 
     }
 

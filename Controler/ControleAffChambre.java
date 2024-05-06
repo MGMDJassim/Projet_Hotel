@@ -18,7 +18,7 @@ public class ControleAffChambre implements ActionListener {
 
 
     public ControleAffChambre(Hotel hotel, Fenetre fenetre) {  
-        //TODO Auto-generated constructor stub
+        
         this.hotel = hotel;
         this.fenetre = fenetre;
         this.listechambre = hotel.getListechambre();
@@ -26,7 +26,7 @@ public class ControleAffChambre implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        VueAffChambre vue = new VueAffChambre(hotel);
+        VueAffChambre vue = new VueAffChambre(hotel, fenetre);
         fenetre.setContentPane(vue); // Utilisation directe du JPanel dans la fenêtre
         fenetre.revalidate();
         fenetre.repaint();

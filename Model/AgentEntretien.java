@@ -19,4 +19,24 @@ public class AgentEntretien extends Employe {
         System.out.println("Menage effectué :" + (menageEffectue ? "Oui" : "Non"));
         System.out.println("Nombre de nettoyage effectés" + listNettoyage.size());
     }
+
+    public void setMenageEffectue(boolean menageEffectue) {
+        this.menageEffectue = menageEffectue;
+    }
+
+    public boolean isMenageEffectue() {
+        return menageEffectue;
+    }
+
+    public void setListNettoyage(Vector<Sejour> listNettoyage) {
+        this.listNettoyage = listNettoyage;
+    }
+
+    public Vector<Sejour> getListNettoyage() {
+        return listNettoyage;
+    }
+
+    
+
+
 }

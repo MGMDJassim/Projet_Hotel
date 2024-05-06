@@ -9,12 +9,22 @@ public class Chambre {
     private Vector<Reservation> listReservation = new Vector<Reservation>();
     public Hotel hotel;
     public String type;
+    public String etatChambre;
 
-    public Chambre(int etage, int numPorte, String type, Hotel hotel) {
+    public Chambre(int etage, int numPorte, String type, Hotel hotel, String etatChambre) {
         this.etage = etage;
         this.numeroPorte = numPorte;
         this.type = type;
         this.hotel = hotel;
+        this.etatChambre = etatChambre;
+    }
+
+    public void setEtatChambre(String etatChambre) {
+        this.etatChambre = etatChambre;
+    }
+
+    public String getEtatChambre() {
+        return etatChambre;
     }
 
     public void setEtage(int etage) {
@@ -75,8 +85,9 @@ public class Chambre {
         }
         return true;
     }
+
     // Méthode pour afficher les chambres libres
-  /*  public static void afficherChambresLibres(List<Chambre> chambres, Date debut, Date fin) {
+    public static void afficherChambresLibres(List<Chambre> chambres, LocalDate debut, LocalDate fin) {
         for (Chambre chambre : chambres) {
             if (chambre.isFree(debut, fin)) {
                 System.out.println("Chambre " + chambre.type + " à l'étage " + chambre.etage + ", à la porte " + chambre.numeroPorte);
@@ -84,6 +95,5 @@ public class Chambre {
         }
         System.out.println("Aucune chambre n'est disponible sur la période du " + debut + " au " + fin + ".");
     }
-*/
 
 }

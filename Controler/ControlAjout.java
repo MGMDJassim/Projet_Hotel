@@ -2,6 +2,7 @@ package Controler;
 
 import Model.Chambre;
 import Model.Hotel;
+
 import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;
@@ -15,34 +16,30 @@ public class ControlAjout implements ActionListener {
     Fenetre fenetre;
 
     JTextField numChambre;
-    JTextField typeChambre;
+    String[] typeChambre;
 
     JTextField numEtag;
 
 
 
-    public ControlAjout(JTextField numChambre, JTextField numP, JTextField numEtag,Hotel h, Fenetre fenetre) {
-        //TODO Auto-generated constructor stub
+    public ControlAjout(JTextField numChambre, String[] type, JTextField numEtag2,Hotel h, Fenetre fenetre) {
+        
         this.numChambre = numChambre;
-        this.typeChambre = numP;
-        this.numEtag = numEtag;
+        this.typeChambre = type;
+        this.numEtag = numEtag2;
         this.hotel = h;
         this.fenetre = fenetre;
 
     }
 
-    @Override
+
+	@Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        chambre = new Chambre(Integer.parseInt(numEtag.getText()), Integer.parseInt(numChambre.getText()), typeChambre.getText(), hotel);
+    
+        chambre = new Chambre(Integer.parseInt(numEtag.getText()), Integer.parseInt(numChambre.getText()), typeChambre[0], hotel, "Libre");
         hotel.addChambre(chambre);
         Vue.VueAjout vue = new Vue.VueAjout(hotel, fenetre);
-        fenetre.setContentPane(vue); // Utilisation directe du JPanel dans la fenêtre
-        fenetre.revalidate();
-        fenetre.repaint();
-
         System.out.println("Ajouter une chambre");
-
         
     }
     

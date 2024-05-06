@@ -22,7 +22,5 @@ public class Receptionniste extends Employe {
     public int getNumEmploye() {
         return this.numEmploye;
     }
-    
-
 
 }
