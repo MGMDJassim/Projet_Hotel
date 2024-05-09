@@ -1,83 +1,66 @@
 package Vue;
 
-import javax.swing.*;
 
-import Controler.ControlAjoutReservation;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.time.LocalDate;
+import java.util.Vector;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+import Controler.ControlRecherche;
+import Model.Chambre;
 import Model.Hotel;
 
-
 public class VueAjoutReservation extends JPanel {
-
     Hotel hotel;
     Fenetre fenetre;
+    Chambre chambre;
+    JLabel dateDebut = new JLabel("Date de debut");
+    JTextField Ddebut = new JTextField();
 
-    
-    JLabel nom = new JLabel("Nom du client");
-    JTextField nomClient = new JTextField(20);
+    JLabel dateFin = new JLabel("Date de fin");
+    JTextField Dfin = new JTextField();
 
-    JLabel numPorte = new JLabel("Numero de la porte");
-    JTextField numP = new JTextField(20);
+    JButton rechercher = new JButton("Rechercher");
 
-    JLabel typeChambre = new JLabel("Type de la chambre");
-    JComboBox<String> type = new JComboBox<String>();
+    JTable table = new JTable();
 
-    JLabel label4 = new JLabel("Numero de l'etage");
-    JTextField numEtag = new JTextField(20);
+    LocalDate debut;
+    LocalDate fin;
 
-    JLabel label5 = new JLabel("Date de debut");
-    
+    Vector<String> nomColonne;
+    Vector<Vector<Object>> data;
+    Vector<Chambre> freeRooms ;
 
-    JButton   ajoutButton = new JButton("Ajouter");
-
-
-
-
-    public VueAjoutReservation(Hotel hotel, Fenetre fenetre){
+    public VueAjoutReservation (Hotel hotel, Fenetre fenetre, Chambre chambre){
         this.hotel = hotel;
         this.fenetre = fenetre;
-        
+        this.chambre = chambre;
         setLayout(null);
 
+        add(dateDebut);
+        add(Ddebut);
 
-        add(nom);
-        add(nomClient);
+        dateDebut.setBounds(10, 10, 200, 20);
+        Ddebut.setBounds(200, 10, 200, 20);
 
-        nom.setBounds(10, 10, 200, 20);
-        nomClient.setBounds(200, 10, 200, 20);
+        add(dateFin);
+        add(Dfin);
 
-        add(numPorte);
-        add(numP);
+        dateFin.setBounds(10, 40, 200, 20);
+        Dfin.setBounds(200, 40, 200, 20);
 
-        numPorte.setBounds(10, 40, 200, 20);
-        numP.setBounds(200, 40, 200, 20);
+        add(rechercher);
+        rechercher.setBounds(10, 70, 200, 20);
 
-
-        add(typeChambre);
-        add(type);
-        type.addItem("Simple");
-        type.addItem("Double");
-        type.addItem("Suite");
-
-        typeChambre.setBounds(10, 70, 200, 20);
-        type.setBounds(200, 70, 200, 20);
-
-
-        add(label4);
-        add(numEtag);
-
-        label4.setBounds(10, 100, 200, 20);
-        numEtag.setBounds(200, 100, 200, 20);
-
-
-
-        add(ajoutButton);
-
-        ajoutButton.setBounds(200, 130, 200, 20);
-        
-
-        ControlAjoutReservation controlAjout = new ControlAjoutReservation(nomClient, numP, type, hotel, fenetre);
-        ajoutButton.addActionListener(controlAjout);
+        //rechercher.addActionListener(new Controler.ControlRecherche(Ddebut, Dfin, hotel, fenetre));
+        rechercher.addActionListener(new ControlRecherche(hotel, Ddebut, Dfin, table, this));
 
     }
 
-}
+        }
+    
+

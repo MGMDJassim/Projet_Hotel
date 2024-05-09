@@ -91,6 +91,30 @@ public class Hotel {
         return listechambre;
     }
 
+    public void setListClient(Vector<Client> listClient) {
+        this.listClient = listClient;
+    }
+
+    public Vector<Client> getListClient() {
+        return listClient;
+    }
+
+    public void setListProduit(Vector<Produit> listProduit) {
+        this.listProduit = listProduit;
+    }
+
+    public Vector<Produit> getListProduit() {
+        return listProduit;
+    }
+
+    public void setListReservation(Vector<Reservation> listReservation) {
+        this.listReservation = listReservation;
+    }
+
+    public Vector<Reservation> getListReservation() {
+        return listReservation;
+    }
+
     //Recherche des chambres libres 
     public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin){
         Vector<Chambre> freeRooms = new Vector<Chambre>();

@@ -8,21 +8,15 @@ public class Client {
     public String nomClient;
     public String prenomClient;
     public LocalDate dateDeNaissance;
-    public String adresseClient;
     public int telClient;
-    public int codePostale;
-    public String villeClient;
     public Vector<Reservation> listReservation;
     public Hotel hôtel;
 
-    public Client(String nomClient, String prenomClient, LocalDate dateDeNaissance, String adresseClient, int telClient, int codePostale, String villeClient, Hotel hôtel) {
+    public Client(String nomClient, String prenomClient, LocalDate dateDeNaissance, int telClient, Hotel hôtel) {
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
         this.dateDeNaissance = dateDeNaissance;
-        this.adresseClient = adresseClient;
         this.telClient = telClient;
-        this.codePostale = codePostale;
-        this.villeClient = villeClient;
         this.hôtel = hôtel;
     }
 
@@ -50,36 +44,12 @@ public class Client {
         return dateDeNaissance;
     }
 
-    public void setAdresseClient(String adresseClient) {
-        this.adresseClient = adresseClient;
-    }
-
-    public String getAdresseClient() {
-        return adresseClient;
-    }
-
     public void setTelClient(int telClient) {
         this.telClient = telClient;
     }
 
     public int getTelClient() {
         return telClient;
-    }
-
-    public void setCodePostale(int codePostale) {
-        this.codePostale = codePostale;
-    }
-
-    public int getCodePostale() {
-        return codePostale;
-    }
-
-    public void setVilleClient(String villeClient) {
-        this.villeClient = villeClient;
-    }
-
-    public String getVilleClient() {
-        return villeClient;
     }
 
     public void setHôtel(Hotel hôtel) {

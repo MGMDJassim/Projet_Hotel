@@ -24,7 +24,7 @@ public class AgentEntretien extends Employe {
         this.menageEffectue = menageEffectue;
     }
 
-    public boolean isMenageEffectue() {
+    public boolean getMenageEffectue() {
         return menageEffectue;
     }
 
@@ -36,7 +36,22 @@ public class AgentEntretien extends Employe {
         return listNettoyage;
     }
 
-    
+    public void nettoyerChambre(Sejour sejour) {
+        listNettoyage.add(sejour);
+    }
+
+    public void afficherListNettoyage() {
+        for (Sejour sejour : listNettoyage) {
+            System.out.println(sejour);
+        }
+    }
+
+    public boolean verifieMenage(Sejour sejour) {
+        if(!(listNettoyage.contains(sejour))) {
+            return false;
+        }
+        return true;
+    }
 
 
 }

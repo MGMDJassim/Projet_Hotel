@@ -70,30 +70,27 @@ public class Chambre {
         return type;
     }
 
+    public String getEtat() {
+        return etatChambre;
+    }
+
+
+
     // Recherche des chambres libres
     public boolean isFree(LocalDate debut, LocalDate fin) {
         for (Reservation reservation : listReservation) {
-            if (reservation.dateD.isBefore(debut) && reservation.datef.isAfter(debut)) {
-                return false;
-            }
-            if (reservation.dateD.isBefore(fin) && reservation.datef.isAfter(fin)) {
-                return false;
-            }
-            if (reservation.dateD.isAfter(debut) && reservation.datef.isBefore(fin)) {
+            if ((reservation.getDateDebut().isBefore(fin) && reservation.getDateFin().isAfter(debut)) ||
+                reservation.getDateDebut().isEqual(debut) || 
+                reservation.getDateFin().isEqual(fin) ||
+                (debut.isBefore(reservation.getDateDebut()) && fin.isAfter(reservation.getDateFin()))) {
                 return false;
             }
         }
         return true;
     }
 
-    // Méthode pour afficher les chambres libres
-    public static void afficherChambresLibres(List<Chambre> chambres, LocalDate debut, LocalDate fin) {
-        for (Chambre chambre : chambres) {
-            if (chambre.isFree(debut, fin)) {
-                System.out.println("Chambre " + chambre.type + " à l'étage " + chambre.etage + ", à la porte " + chambre.numeroPorte);
-            }
-        }
-        System.out.println("Aucune chambre n'est disponible sur la période du " + debut + " au " + fin + ".");
-    }
 
+    public String toString() {
+        return "Chambre " + type + " à l'étage " + etage + ", à la porte " + numeroPorte;
+    }
 }

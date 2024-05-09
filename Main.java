@@ -21,12 +21,11 @@ Chambre c8 = new Chambre(8,  8,"simple", hotel, "Sale");
 Chambre c9 = new Chambre(9,  9,"simple", hotel, "Sale");
 Chambre c10 = new Chambre(10,  10,"simple", hotel, "Sale");
 
-Client client2 = new Client("Mougamadou", "Jassim", LocalDate.of(2000, 6, 19), "adresse2", 123456, 12345, "C-E", hotel);
+Client client2 = new Client("nom", "prenom", LocalDate.of(1999, 1, 1), 123456, hotel);
 
 
 Reservation r2 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c2, client2);
 
-Normale n1 = new Normale(12, 1, hotel, "simple", 1, "Propre");
 
 hotel.addChambre(c1);
 hotel.addChambre(c2);
@@ -39,12 +38,13 @@ hotel.addChambre(c8);
 hotel.addChambre(c9);
 hotel.addChambre(c10);
 
+c2.addReservation(r2);
+
 hotel.addClient(client2);
 
 hotel.addReservation(r2);
-
-
-
+System.out.println(hotel.getListReservation().get(0).getDateFin());
+System.out.println(hotel.getFreeRooms(LocalDate.of(2021, 01, 01), LocalDate.of(2021, 01, 10)).get(0).getNumeroPorte());
 
     Fenetre fenetre = new Fenetre(hotel);
   }

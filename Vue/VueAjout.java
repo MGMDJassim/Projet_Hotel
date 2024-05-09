@@ -1,6 +1,7 @@
 package Vue;
 
 
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 
 import java.awt.Insets;
@@ -20,6 +21,7 @@ import Controler.ControlAjout;
 
 public class VueAjout extends JPanel{
     
+    
   
     JLabel numPorte = new JLabel("Numero de la porte");
     JTextField numP = new JTextField(20);
@@ -38,13 +40,14 @@ public class VueAjout extends JPanel{
     Hotel hotel;
     Fenetre fenetre;
     public VueAjout(Hotel hotel, Fenetre fenetre){
+        super(new BorderLayout());
         this.hotel = hotel;
         setLayout(null);
-        GridBagConstraints gbc = new GridBagConstraints();
+        /*GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(10, 10, 10, 10);*/
 
         add(numPorte);
         add(numP);

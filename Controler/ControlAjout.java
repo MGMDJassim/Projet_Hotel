@@ -29,6 +29,7 @@ public class ControlAjout implements ActionListener {
         this.numEtag = numEtag2;
         this.hotel = h;
         this.fenetre = fenetre;
+        System.out.println("ControlAjout");
 
     }
 
