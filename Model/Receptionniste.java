@@ -17,4 +17,11 @@ public class Receptionniste extends Employe {
         this.listResa = listResa;
     }
 
+    //ajouter reservation au receptionnsite
+    public void associerResa(Reservation reservation){
+        if(!listResa.contains(reservation){
+            listResa.add(reservation)
+                reservation.setReceptionniste(this);
+        }
+
 }
