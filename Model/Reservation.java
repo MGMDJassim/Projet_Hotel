@@ -10,6 +10,7 @@ public class Reservation {
     public Vector<Sejour> sejour = new Vector<Sejour>();
     public Chambre chambre;
     public Client client;
+    private Receptionniste receptionniste; 
 
 
     public Reservation(LocalDate dateD, LocalDate dateF, Chambre chambre, Client client) {
@@ -17,6 +18,7 @@ public class Reservation {
         this.datef = dateF;
         this.chambre = chambre;
         this.client = client;
+        this.sejour = new Vector<>();
     }
 
 
@@ -109,6 +111,14 @@ public class Reservation {
 
     public Vector<Sejour> getListSejour() {
         return sejour;
+    }
+
+    public void setReceptionniste(Receptionniste receptionniste) {
+        this.receptionniste = receptionniste;
+    }
+
+    public Receptionniste getReceptionniste() {
+        return receptionniste;
     }
 
 }
