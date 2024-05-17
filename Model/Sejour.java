@@ -50,6 +50,7 @@ public class Sejour {
         return false;
     }
     // Methode facturation
+    
     public double facturationSejour()
     {
         double total = 0.0;
@@ -61,4 +62,11 @@ public class Sejour {
         return total;
     }
 
+    // affectation d'un agent d'entretien à un sejour
+    
+    public void affectationSejour(AgentEntretien agent){
+        this.agent = agent;
+        agent.nettoyerChambre(this);
+    }
+    
 }
