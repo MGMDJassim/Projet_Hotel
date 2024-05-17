@@ -10,7 +10,7 @@ public class Reservation {
     public Vector<Sejour> sejour = new Vector<Sejour>();
     public Chambre chambre;
     public Client client;
-    private Receptionniste receptionniste; 
+    public Receptionniste receptionniste; 
 
 
     public Reservation(LocalDate dateD, LocalDate dateF, Chambre chambre, Client client) {
