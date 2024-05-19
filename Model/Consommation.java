@@ -6,15 +6,15 @@ public class Consommation {
     public Sejour sejour;
     public Produit produit;
 
- public Consommation(Sejour s, Produit p) {
+ public Consommation(Sejour s, Produit p, int quantite, boolean consomme) {
         this.quantite = 0;
         this.consomme = false;
         this.sejour = s;
         this.produit = p;
     }
 
-    public void setQuantite(int quatité) {
-        this.quantite = quatité;
+    public void setQuantite(int quatite) {
+        this.quantite = quatite;
     }
     public int getQuantite() {
         return quantite;
@@ -38,26 +38,38 @@ public class Consommation {
         return produit;
     }
     //Methode ajout de conso
-    
-    public void ajoutConsommation(int quantite) {
-        if (quantite > 0) {
-    	    this.quantite += quantite;
-    	    this.consomme = true;
+    public void addConsommation(int quantite) {
+        this.quantite += quantite;
+    }
+    //Methode suppression de conso
+
+    public void removeConsommation(int quantite) {
+        this.quantite -= quantite;
+    }
+
+    //vérfier si la quantité est suffisante
+    public boolean checkQuantite(int quantite) {
+        if (this.quantite >= quantite) {
+            return true;
         } else {
-            System.out.println("La quantité ajoutée doit être positive.");
+            return false;
         }
     }
-    
-    // Methode suppression conso
-    
-    public void retirerConsommation(int quantite) {
-    		if (quantite > 0 && this.quantite >= quantite){
-    			this.quantite -= quantite;
-                   if(this.quantite == 0) {
-    		        this.consomme = false;
-    	} else { 
-    		System.out.println("la quantité à retirer doit être positive et ne doit pas dépasser la quantité consommée.");
-    	}
+
+    //Methode pour ajouter une consomation à un sejour
+    public void addConsommationToSejour(Sejour sejour, int quantite) {
+        if (checkQuantite(quantite)) {
+            addConsommation(quantite);
+            sejour.addConsommation(this, quantite);
+        }
     }
+
+    //Methode pour supprimer une consomation à un sejour
+    public void removeConsommationToSejour(Sejour sejour, int quantite) {
+        if (checkQuantite(quantite)) {
+            removeConsommation(quantite);
+            sejour.removeConsommation(this, quantite);
+        }
     }
+
 }

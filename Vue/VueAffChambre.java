@@ -3,10 +3,14 @@ package Vue;
 import java.awt.*;
 import java.util.Vector;
 
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
+import Controler.BouttonEditeur;
+import Vue.BottonRendu;
 
 import Model.*;
 
@@ -17,30 +21,32 @@ public class VueAffChambre extends JPanel {
     Vector<Vector<Object>> data;
 
     public VueAffChambre(Hotel hotel, Fenetre fenetre) {
-        super(new BorderLayout());
         this.hotel = hotel;
         this.fenetre = fenetre;
+        this.nomColonne = new Vector<String>();
+        this.data = new Vector<Vector<Object>>();
+        this.nomColonne.add("Numéro");
+        this.nomColonne.add("Type");
+        this.nomColonne.add("Etage");
+        this.nomColonne.add("Supprimer");
 
-        nomColonne = new Vector<String>();
-        nomColonne.add("Numéro de la chambre");
-        nomColonne.add("Type de chambre");
-        nomColonne.add("Numéro de l'étage");
-
-        data = new Vector<Vector<Object>>();
-
-        for (int i = 0; i < hotel.listechambre.size(); i++) {
+        for (Chambre chambre : hotel.listechambre) {
             Vector<Object> row = new Vector<Object>();
-            row.add(hotel.listechambre.get(i).getNumeroPorte());
-            row.add(hotel.listechambre.get(i).getType());
-            row.add(hotel.listechambre.get(i).getEtage());
-            data.add(row);
-            
+            row.add(chambre.getNumeroPorte());
+            row.add(chambre.getType());
+            row.add(chambre.getEtage());
+            row.add("Supprimer");
+
+            this.data.add(row);
         }
 
-        
-        JTable table = new JTable(data, nomColonne);
+        DefaultTableModel model = new DefaultTableModel(data, nomColonne);
+        JTable table = new JTable(model);
+        table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
+        table.getColumn("Supprimer").setCellEditor(new BouttonEditeur(new JCheckBox(), hotel, fenetre));
         JScrollPane scrollPane = new JScrollPane(table);
-        this.add(scrollPane, BorderLayout.NORTH);
+        this.add(scrollPane);
+
 
     }
 

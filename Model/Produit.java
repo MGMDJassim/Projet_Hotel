@@ -10,12 +10,11 @@ public class Produit {
     public Vector<Consommation> consommations;
     
     // Constructeur avec paramètres
-    public Produit(String nom, int prix, Hotel hotel, int quantite, Vector<Consommation> consommations) {
+    public Produit(String nom,  Hotel hotel,int prix, int quantite) {
         this.nom = nom;
         this.prix = prix;
         this.hotel = hotel;
         this.quantite = quantite;
-        this.consommations = consommations;
     }
     
     // Getters et Setters
@@ -61,23 +60,6 @@ public class Produit {
     
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
-    }
-    public Vector<Consommation> getConsommation() {
-        return consommations;
-    }
-    public void setConsommation(Vector<Consommation> consommation) {
-        this.consommations = consommation;
-    }
-    
-    // methode ajouter une nouvelle consommation
-    
-    public void addConsommation(Consommation consommation) {
-        this.consommations.add(consommation);
-    }
-
-    // methode supprimer une consommation
-    public void removeConsommation(Consommation consommation) {
-        this.consommations.remove(consommation);
     }
 
     // methode afficher les consommations

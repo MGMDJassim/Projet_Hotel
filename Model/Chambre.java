@@ -74,6 +74,14 @@ public class Chambre {
         return etatChambre;
     }
 
+    //methodes pour enlever la chambre
+
+    public void removeReservation(Reservation reservation) {
+        listReservation.remove(reservation);
+    }
+
+    
+
 
 
     // Recherche des chambres libres

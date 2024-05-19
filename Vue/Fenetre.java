@@ -1,6 +1,6 @@
 package Vue;
 import java.awt.event.ActionListener;
-import java.util.Vector;
+
 
 import Model.*;
 
@@ -11,9 +11,7 @@ import java.awt.event.ActionEvent;
 import Controler.ControlReservation;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableModel; // Import the TableModel class
+// Import the TableModel class
 
 
 public class Fenetre extends JFrame{
@@ -26,7 +24,6 @@ public class Fenetre extends JFrame{
     JMenu gmenage = new JMenu("Gestion du menage");
 
     JMenuItem ajouterchambre = new JMenuItem("Ajouter une chambre");
-    JMenuItem supprimerchambre = new JMenuItem("Supprimer une chambre");
     JMenuItem afficherChambre = new JMenuItem("Afficher les chambres");
 
     JMenuItem affReservations = new JMenuItem("Afficher les reservations");
@@ -59,7 +56,6 @@ public class Fenetre extends JFrame{
 
 
         gchambre.add(ajouterchambre);
-        gchambre.add(supprimerchambre);
         gchambre.add(afficherChambre);
 
         greservation.add(affReservations);

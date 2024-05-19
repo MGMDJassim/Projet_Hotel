@@ -3,7 +3,7 @@ import java.time.*;
 import java.util.*;
 
 public class Reservation {
-
+    private static int counter = 0;
     public int numRes;
     public LocalDate dateD;
     public LocalDate datef;
@@ -13,12 +13,12 @@ public class Reservation {
 
 
     public Reservation(LocalDate dateD, LocalDate dateF, Chambre chambre, Client client) {
+        this.numRes = ++counter;
         this.dateD = dateD;
         this.datef = dateF;
         this.chambre = chambre;
         this.client = client;
     }
-
 
     public void setDateD(LocalDate dateD) {
         this.dateD = dateD;
@@ -49,7 +49,7 @@ public class Reservation {
     }
 
     public Chambre getChambre() {
-        return chambre;
+        return this.chambre;
     }
 
     public void setClient(Client client) {
@@ -109,6 +109,18 @@ public class Reservation {
 
     public Vector<Sejour> getListSejour() {
         return sejour;
+    }
+
+    public float getFacturation() {
+        float facturation = 0;
+        for (Sejour sejour : this.sejour) {
+            facturation += sejour.facturationSejour();
+        }
+        return facturation;
+    }
+
+    public String toString() {
+        return "Reservation [numRes=" + numRes + ", dateD=" + dateD + ", datef=" + datef + ", sejour=" + sejour + ", chambre=" + chambre + ", client=" + client + "]";
     }
 
 }

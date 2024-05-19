@@ -12,6 +12,8 @@ public class Hotel {
     public Vector<Client> listClient = new Vector<Client>();
     public Vector<Produit> listProduit = new Vector<Produit>();
     public Vector<Reservation> listReservation = new Vector<Reservation>();
+    public Vector<Sejour> listSejour = new Vector<Sejour>();
+    public Vector<Consommation> listConsommation = new Vector<Consommation>();
     
     public Hotel (String nom, String adresse, int telephone, String mail){
         this.nom = nom;
@@ -44,6 +46,14 @@ public class Hotel {
         this.listProduit.remove(produit);
     }
 
+    public void addSejour(Sejour sejour){
+        this.listSejour.add(sejour);
+    }
+
+    public void removeSejour(Sejour sejour){
+        this.listSejour.remove(sejour);
+    }
+
     public void addReservation(Reservation reservation){
         this.listReservation.add(reservation);
     }
@@ -51,6 +61,16 @@ public class Hotel {
     public void removeReservation(Reservation reservation){
         this.listReservation.remove(reservation);
     }
+
+    public void addConsommation(Consommation consommation){
+        this.listConsommation.add(consommation);
+    }
+
+    public void removeConsommation(Consommation consommation){
+        this.listConsommation.remove(consommation);
+    }
+
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -115,6 +135,23 @@ public class Hotel {
         return listReservation;
     }
 
+    public void setListSejour(Vector<Sejour> listSejour) {
+        this.listSejour = listSejour;
+    }
+
+    public Vector<Sejour> getListSejour() {
+        return listSejour;
+    }
+
+    public void setListConsommation(Vector<Consommation> listConsommation) {
+        this.listConsommation = listConsommation;
+    }
+
+    public Vector<Consommation> getListConsommation() {
+        return listConsommation;
+    }
+    
+
     //Recherche des chambres libres 
     public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin){
         Vector<Chambre> freeRooms = new Vector<Chambre>();
@@ -133,6 +170,10 @@ public class Hotel {
         for (Chambre chambre : freeRooms) {
             System.out.println(chambre);
         }
+    }
+
+    public String toString(){
+        return listechambre.toString();
     }
 
     

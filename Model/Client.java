@@ -10,14 +10,14 @@ public class Client {
     public LocalDate dateDeNaissance;
     public int telClient;
     public Vector<Reservation> listReservation;
-    public Hotel hôtel;
+    public Hotel hotel;
 
-    public Client(String nomClient, String prenomClient, LocalDate dateDeNaissance, int telClient, Hotel hôtel) {
+    public Client(String nomClient, String prenomClient, LocalDate dateDeNaissance, int telClient, Hotel hotel) {
         this.nomClient = nomClient;
         this.prenomClient = prenomClient;
         this.dateDeNaissance = dateDeNaissance;
         this.telClient = telClient;
-        this.hôtel = hôtel;
+        this.hotel = hotel;
     }
 
     public void setNomClient(String nomClient) {
@@ -52,12 +52,12 @@ public class Client {
         return telClient;
     }
 
-    public void setHôtel(Hotel hôtel) {
-        this.hôtel = hôtel;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
-    public Hotel getHôtel() {
-        return hôtel;
+    public Hotel getHotel() {
+        return hotel;
     }
 
     public void addReservation(Reservation reservation) {

@@ -1,11 +1,6 @@
 package Vue;
 
-
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-
-import java.awt.Insets;
-
 
 import Model.*;
 

@@ -8,9 +8,8 @@ public class Sejour {
     public Vector<Consommation> listConsommation;
     public AgentEntretien agent;
     
-    public Sejour(Reservation listeRes, Vector<Consommation> listConsommation, AgentEntretien agent) {
+    public Sejour(Reservation listeRes, AgentEntretien agent) {
         this.listeRes = listeRes;
-        this.listConsommation = listConsommation;
         this.agent = agent;
     }
 
@@ -59,6 +58,17 @@ public class Sejour {
             total += produit.getPrix() * consommation.getQuantite();
         }
         return total;
+    }
+
+    // Methode pour ajouter une consomation
+    public void addConsommation(Consommation consommation, int quantite) {
+        listConsommation.add(consommation);
+    }
+
+    // Methode pour supprimer une consomation
+
+    public void removeConsommation(Consommation consommation, int quantite) {
+        listConsommation.remove(consommation);
     }
 
 }
