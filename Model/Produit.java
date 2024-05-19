@@ -21,43 +21,25 @@ public class Produit {
     public String getNom() {
         return nom;
     }
-
     public void setNom(String nom) {
         this.nom = nom;
     }
-
     public int getPrix() {
         return prix;
     }
-    
-    //prix modification
     public void setPrix(int prix) {
-        
-     if (prix <= 0){
-        System.out.println("Le prix doit être supérieur à zéro.");
-              
-    } else {
         this.prix = prix;
-        System.out.println("Le prix a été modifié avec succès.");
     }
-    }
-
     public int getQuantite(){
         return quantite;
     }
     public void setQuantite(int quantite){
-        
-        if (quantite <=0){
-            System.out.println("la quantité rentrée doit être supérieure à 0.");
-    
-        } else {
         this.quantite = quantite;
-        }
     }
     public Hotel getHotel() {
         return hotel;
     }
-    
+
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
@@ -69,8 +51,5 @@ public class Produit {
         }
     }
 
-    public void quantiteProduit(){
-        
-    }
 
 }

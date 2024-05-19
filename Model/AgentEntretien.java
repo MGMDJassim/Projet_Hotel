@@ -47,10 +47,7 @@ public class AgentEntretien extends Employe {
     }
 
     public boolean verifieMenage(Sejour sejour) {
-        if(!(listNettoyage.contains(sejour))) {
-            return false;
-        }
-        return true;
+        return listNettoyage.contains(sejour);
     }
 
 

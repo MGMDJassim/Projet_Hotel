@@ -49,6 +49,7 @@ public class Sejour {
         return false;
     }
     // Methode facturation
+    
     public double facturationSejour()
     {
         double total = 0.0;
