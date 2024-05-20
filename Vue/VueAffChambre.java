@@ -1,6 +1,5 @@
 package Vue;
 
-import java.awt.*;
 import java.util.Vector;
 
 import javax.swing.JCheckBox;
@@ -10,7 +9,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Controler.BouttonEditeur;
-import Vue.BottonRendu;
 
 import Model.*;
 
@@ -23,8 +21,10 @@ public class VueAffChambre extends JPanel {
     public VueAffChambre(Hotel hotel, Fenetre fenetre) {
         this.hotel = hotel;
         this.fenetre = fenetre;
+
         this.nomColonne = new Vector<String>();
         this.data = new Vector<Vector<Object>>();
+        
         this.nomColonne.add("Numéro");
         this.nomColonne.add("Type");
         this.nomColonne.add("Etage");

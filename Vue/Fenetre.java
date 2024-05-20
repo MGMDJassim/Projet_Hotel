@@ -7,9 +7,10 @@ import Model.*;
 import Controler.ControleAffChambre;
 import java.awt.event.ActionEvent;
 
-
+import Controler.ControlClient;
 import Controler.ControlReservation;
 
+import javax.sound.sampled.Control;
 import javax.swing.*;
 // Import the TableModel class
 
@@ -18,13 +19,16 @@ public class Fenetre extends JFrame{
     JMenuBar barre = new JMenuBar();  
 
     JMenu gchambre = new JMenu("Gestion des chambres");
-
+    JMenu gclient = new JMenu("Gestion des clients");
     JMenu greservation = new JMenu("Gestion des reservations");
     JMenu gemploye = new JMenu("Gestion des employes");
     JMenu gmenage = new JMenu("Gestion du menage");
 
     JMenuItem ajouterchambre = new JMenuItem("Ajouter une chambre");
     JMenuItem afficherChambre = new JMenuItem("Afficher les chambres");
+
+    JMenuItem ajouterClient = new JMenuItem("Ajouter un client");
+    JMenuItem afficherClient = new JMenuItem("Afficher les clients");
 
     JMenuItem affReservations = new JMenuItem("Afficher les reservations");
     JMenuItem ajouterReservation = new JMenuItem("Ajouter une reservation");
@@ -50,6 +54,7 @@ public class Fenetre extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         barre.add(gchambre);
+        barre.add(gclient);
         barre.add(greservation);
         barre.add(gemploye);
         barre.add(gmenage);
@@ -57,6 +62,9 @@ public class Fenetre extends JFrame{
 
         gchambre.add(ajouterchambre);
         gchambre.add(afficherChambre);
+
+        gclient.add(ajouterClient);
+        gclient.add(afficherClient);
 
         greservation.add(affReservations);
         greservation.add(ajouterReservation);
@@ -78,6 +86,15 @@ public class Fenetre extends JFrame{
             }
         });
         afficherChambre.addActionListener(new ControleAffChambre(hotel, this));
+
+        ajouterClient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VueAjoutClient vue = new VueAjoutClient(hotel, Fenetre.this);
+                setContentPane(vue);
+            }
+        });
+
+        afficherClient.addActionListener(new ControlClient(hotel, this));
 
         ajouterReservation.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

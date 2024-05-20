@@ -2,11 +2,11 @@
 package Model;
 public class Presidentiel extends Chambre {
     public int litDouble;
-    public static int prix;
+    public float prix;
     
-    public Presidentiel(int numPorte, int etage, Hotel hotel, String type, int litDouble, String etatChambre) {
-        super(numPorte, etage, type, hotel, etatChambre);
-        this.litDouble = litDouble;
+    public Presidentiel(int etage, Hotel hotel, String type, String etatChambre)  {
+        super(etage, type, hotel, etatChambre);
+
         prix = 100;
     }
     
@@ -18,12 +18,16 @@ public class Presidentiel extends Chambre {
         return litDouble;
     }
 
-    public static int getPrix() {
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+    
+    public float getPrix() {
         return prix;
     }
 
-    public static void setPrix(int prix) {
-        Presidentiel.prix = prix;
+    public void setPrix(int prix) {
+        this.prix = prix;
     }
     
     

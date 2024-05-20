@@ -44,12 +44,31 @@ public class Produit {
         this.hotel = hotel;
     }
 
-    // methode afficher les consommations
-    public void afficherConsommation() {
-        for (Consommation consommation : consommations) {
-            System.out.println(consommation);
-        }
+    public Vector<Consommation> getConsommations() {
+        return consommations;
     }
 
+    public void setConsommations(Vector<Consommation> consommations) {
+        this.consommations = consommations;
+    }
+
+    // Méthode pour ajouter une consommation
+    public void addConsommation(Consommation consommation) {
+        this.consommations.add(consommation);
+    }
+
+    // Méthode pour supprimer une consommation
+    public void removeConsommation(Consommation consommation) {
+        this.consommations.remove(consommation);
+    }
+
+    // Méthode pour vérifier si la quantité est suffisante
+    public boolean checkQuantite(int quantite) {
+        if (this.quantite >= quantite) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

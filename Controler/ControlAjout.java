@@ -36,11 +36,15 @@ public class ControlAjout implements ActionListener {
 	@Override
     public void actionPerformed(ActionEvent e) {
     
-        chambre = new Chambre(Integer.parseInt(numEtag.getText()), Integer.parseInt(numChambre.getText()), typeChambre[0], hotel, "Libre");
+        if (typeChambre[0].equals("Normale")) {
+            chambre = new Model.Normale(Integer.parseInt(numEtag.getText()), hotel, typeChambre[0], "Libre");
+        } else {
+            chambre = new Model.Presidentiel(Integer.parseInt(numEtag.getText()), hotel, typeChambre[0], "Libre");
         hotel.addChambre(chambre);
         Vue.VueAjout vue = new Vue.VueAjout(hotel, fenetre);
         System.out.println("Ajouter une chambre");
         
     }
     
+}
 }

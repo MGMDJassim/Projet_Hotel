@@ -10,17 +10,19 @@ import Model.Chambre;
 import Model.Client;
 import Model.Hotel;
 import Model.Reservation;
+import Model.Sejour;
 
 public class ControlAjoutReservation implements ActionListener {
 
     private Hotel hotel;
+    private Sejour sejour;
     private JTextField ddebut;
     private JTextField dfin;
     private JTextField nom;
     private JTextField prenom;
     private JTextField date;
     private JTextField tel;
-    private JTable table;
+    public JTable table;
     private Chambre chambre;
 
     public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, JTable table, Chambre chambre) {
@@ -33,6 +35,7 @@ public class ControlAjoutReservation implements ActionListener {
         this.tel = tel;
         this.table = table;
         this.chambre = chambre;
+        this.sejour = sejour;
     }
 
     @Override
@@ -51,7 +54,14 @@ public class ControlAjoutReservation implements ActionListener {
             reservation.addChambre(chambre);
             hotel.addReservation(reservation);
             //System.out.println("Reservation ajoutée");
-            //System.out.println(reservation.toString());
+            System.out.println(reservation.toString());
+            System.out.println("*******************");
+            System.out.println(chambre.getListReservation()+ "\n");
+            System.out.println("*******************");
+            System.out.println(hotel.getListReservation() + "\n");
+            System.out.println("*******************");
+            System.out.println(chambre.toString() + "\n");
+            
         }
     }
 }

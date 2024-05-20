@@ -10,21 +10,23 @@ public class Main {
   public static void main(String[] args) {
     Hotel hotel = new Hotel("Hotel", "adresse", 123456, "mail");
 
-    Presidentiel c11 = new Presidentiel(11, 11, hotel, "Presidentielle", 1, "Propre");
-    Presidentiel c12 = new Presidentiel(12, 12, hotel, "Presidentielle", 1, "Propre");
-    Presidentiel c13 = new Presidentiel(13, 13, hotel, "Presidentielle", 1, "Propre");
-    Presidentiel c14 = new Presidentiel(14, 14, hotel, "Presidentielle", 1, "Propre");
+    Presidentiel c11 = new Presidentiel( 1, hotel, "Presidentielle", "Propre");
+    Presidentiel c12 = new Presidentiel( 1, hotel, "Presidentielle", "Propre");
+    Presidentiel c13 = new Presidentiel( 1, hotel, "Presidentielle", "Propre");
+    Presidentiel c14 = new Presidentiel( 1, hotel, "Presidentielle", "Propre");
 
-    Normale c21 = new Normale(21, 21, hotel, "Normale", 1, "Propre");
-    Normale c22 = new Normale(22, 22, hotel, "Normale", 1, "Propre");
-    Normale c23 = new Normale(23, 23, hotel, "Normale", 1, "Propre");
-    Normale c24 = new Normale(24, 24, hotel, "Normale", 1, "Propre");
+    Normale c21 = new Normale( 2, hotel, "Normale", "Propre");
+    Normale c22 = new Normale( 2, hotel, "Normale", "Propre");
+    Normale c23 = new Normale( 2, hotel, "Normale", "Propre");
+    Normale c24 = new Normale( 2, hotel, "Normale", "Propre");
 
 
 
     Client client2 = new Client("nom", "prenom", LocalDate.of(1999, 1, 1), 123456, hotel);
+    Client client3 = new Client("nom2", "prenom2", LocalDate.of(1999, 1, 1), 123456, hotel);
 
     Reservation r2 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c11, client2);
+    Reservation r3 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c12, client3);
 
     Produit p1 = new Produit("Produit1", hotel, 10, 1);
     Produit p2 = new Produit("Produit2", hotel, 20, 2);
@@ -32,9 +34,9 @@ public class Main {
     Produit p4 = new Produit("Produit4", hotel, 40, 4);
     Produit p5 = new Produit("Produit5", hotel, 50, 5);
 
-    Sejour sejour1 = new Sejour(r2, null);
+    Sejour sejour1 = new Sejour(r2);
 
-    Consommation consommation1 = new Consommation(sejour1, p1, 10, false);
+    Consommation consommation1 = new Consommation(sejour1, p1, 2);
 
     hotel.addProduit(p1);
     hotel.addProduit(p2);
@@ -52,11 +54,29 @@ public class Main {
     hotel.addChambre(c23);
     hotel.addChambre(c24);
     c11.addReservation(r2);
-    c11.addReservation(r2);
     hotel.addClient(client2);
     hotel.addReservation(r2);
 
-   Fenetre fenetre = new Fenetre(hotel);
+    c12.addReservation(r3);
+    hotel.addClient(client3);
+    hotel.addReservation(r3);
+
+    
+
+    //System.out.println("Avant la supression : " + hotel.getListReservation());
+    //hotel.removeReservation(r2);
+    //c11.removeReservation(r2);
+
+    //r2.getChambre().removeReservation(r2);
+    //System.out.println("Après la supression : " + hotel.getListReservation());
+
+   // System.out.println("apres la supression : " + c11.getListReservation());
+
+  //System.out.println(hotel.getFreeRooms(LocalDate.of(2021, 01, 10),LocalDate.of(2021, 01,01) ));
+
+  //hotel.getListechambre().forEach(chambre -> System.out.println(chambre.toString()));
+
+  Fenetre fenetre = new Fenetre(hotel);
   }
 
 }

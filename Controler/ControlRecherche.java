@@ -42,7 +42,7 @@ public class ControlRecherche implements ActionListener {
 
             Vector<Chambre> filteredRooms = new Vector<Chambre>();
             for (Chambre chambre : freeRooms) {
-                if (chambre.getType().equals(typeChambre)) {
+                if (chambre.getType().equals(typeChambre)){
                     filteredRooms.add(chambre);
                 }
             }

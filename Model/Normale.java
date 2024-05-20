@@ -3,11 +3,10 @@ package Model;
 public class Normale extends Chambre {
 
     public int litSimple;
-    public int prix;
+    public float prix;
 
-    public Normale(int numPorte, int etage, Hotel hotel, String type, int litSimple, String etatChambre) {
-        super(numPorte, etage, type, hotel, etatChambre);
-        this.litSimple = litSimple;
+    public Normale(int etage, Hotel hotel, String type, String etatChambre) {
+        super(etage, type, hotel, etatChambre);
         this.prix = 50;
     }
 
@@ -19,8 +18,9 @@ public class Normale extends Chambre {
         return litSimple;
     }
 
-    public int getPrix() {
-        return prix;
+    @Override
+    public float getPrix() {
+        return this.prix;
     }
 
 

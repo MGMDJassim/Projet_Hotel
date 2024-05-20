@@ -3,17 +3,21 @@ import java.util.List;
 import java.util.Vector;
 import java.time.*;
 
-public class Chambre {
+public abstract class Chambre {
+    private static int idCounter = 0;
+
     public int etage;
     public int numeroPorte;
     private Vector<Reservation> listReservation = new Vector<Reservation>();
     public Hotel hotel;
     public String type;
     public String etatChambre;
+    public abstract float getPrix();
 
-    public Chambre(int etage, int numPorte, String type, Hotel hotel, String etatChambre) {
+    public Chambre(int etage, String type, Hotel hotel, String etatChambre) {
+
         this.etage = etage;
-        this.numeroPorte = numPorte;
+        this.numeroPorte = ++idCounter;
         this.type = type;
         this.hotel = hotel;
         this.etatChambre = etatChambre;
@@ -38,6 +42,10 @@ public class Chambre {
     public void addReservation(Reservation reservation) {
         listReservation.add(reservation);
     }
+
+    public Vector<Reservation> getListReservation() {
+        return listReservation;
+    }
     public void setListReservation(Vector<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
@@ -54,9 +62,6 @@ public class Chambre {
         return numeroPorte;
     }
 
-    public List<Reservation> getListReservation() {
-        return listReservation;
-    }
 
     public Hotel getHotel() {
         return hotel;
@@ -80,25 +85,24 @@ public class Chambre {
         listReservation.remove(reservation);
     }
 
-    
-
-
+    public void removeAllReservations() {
+        listReservation.clear();
+    }
 
     // Recherche des chambres libres
-    public boolean isFree(LocalDate debut, LocalDate fin) {
+    public boolean isFree(LocalDate dateDebut, LocalDate dateFin) {
         for (Reservation reservation : listReservation) {
-            if ((reservation.getDateDebut().isBefore(fin) && reservation.getDateFin().isAfter(debut)) ||
-                reservation.getDateDebut().isEqual(debut) || 
-                reservation.getDateFin().isEqual(fin) ||
-                (debut.isBefore(reservation.getDateDebut()) && fin.isAfter(reservation.getDateFin()))) {
+            if ((dateDebut.isEqual(reservation.getDateDebut()) || dateDebut.isAfter(reservation.getDateDebut())) && dateDebut.isBefore(reservation.getDateFin())) {
+                return false;
+            }
+            if (dateFin.isAfter(reservation.getDateDebut()) && (dateFin.isBefore(reservation.getDateFin()) || dateFin.isEqual(reservation.getDateFin()))) {
                 return false;
             }
         }
         return true;
     }
 
-
     public String toString() {
-        return "Chambre " + type + " à l'étage " + etage + ", à la porte " + numeroPorte;
+        return "Chambre " + type + " à l'étage " + etage + ", à la porte " + numeroPorte + "\n";
     }
 }

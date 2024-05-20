@@ -1,5 +1,6 @@
 package Model;
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class Reservation {
@@ -10,8 +11,6 @@ public class Reservation {
     public Vector<Sejour> sejour = new Vector<Sejour>();
     public Chambre chambre;
     public Client client;
-    public Receptionniste receptionniste; 
-
 
     public Reservation(LocalDate dateD, LocalDate dateF, Chambre chambre, Client client) {
         this.numRes = ++counter;
@@ -113,12 +112,20 @@ public class Reservation {
         return sejour;
     }
 
-    public float getFacturation() {
-        float facturation = 0;
-        for (Sejour sejour : this.sejour) {
-            facturation += sejour.facturationSejour();
+        public float calculerPrix() {
+        long jours = ChronoUnit.DAYS.between(getDateDebut(), getDateFin());
+        return jours * chambre.getPrix();
+    }
+
+    //facturation de la réservation
+    public float facturation() {
+        float facture = 0;
+        for (int i = 0; i < sejour.size(); i++) {
+            Sejour currentSejour = sejour.get(i);
+            facture += currentSejour.facturation();
         }
-        return facturation;
+        facture += calculerPrix(); // Add the price of the room to the total bill
+        return facture;
     }
 
     public String toString() {

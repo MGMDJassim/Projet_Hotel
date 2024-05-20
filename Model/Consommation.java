@@ -2,13 +2,11 @@ package Model;
 
 public class Consommation {
     public int quantite;
-    public boolean consomme;
     public Sejour sejour;
     public Produit produit;
 
- public Consommation(Sejour s, Produit p, int quantite, boolean consomme) {
-        this.quantite = 0;
-        this.consomme = false;
+ public Consommation(Sejour s, Produit p, int quantite) {
+        this.quantite = quantite;
         this.sejour = s;
         this.produit = p;
     }
@@ -18,12 +16,6 @@ public class Consommation {
     }
     public int getQuantite() {
         return quantite;
-    }
-    public void setConsomme(boolean consomme) {
-        this.consomme = consomme;
-    }
-    public boolean getConsomme() {
-        return consomme;
     }
     public void setSejour(Sejour Sejour) {
         this.sejour = Sejour;
@@ -60,7 +52,7 @@ public class Consommation {
     public void addConsommationToSejour(Sejour sejour, int quantite) {
         if (checkQuantite(quantite)) {
             addConsommation(quantite);
-            sejour.addConsommation(this, quantite);
+            sejour.addConsommation(this);
         }
     }
 
@@ -68,7 +60,7 @@ public class Consommation {
     public void removeConsommationToSejour(Sejour sejour, int quantite) {
         if (checkQuantite(quantite)) {
             removeConsommation(quantite);
-            sejour.removeConsommation(this, quantite);
+            sejour.removeConsommation(this);
         }
     }
 

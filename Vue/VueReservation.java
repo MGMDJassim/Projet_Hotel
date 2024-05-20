@@ -36,6 +36,9 @@ public class VueReservation extends JPanel {
 
         data = new Vector<Vector<Object>>();
 
+        DefaultTableModel model = new DefaultTableModel(data, nomColonne);
+        JTable table = new JTable(model);
+
         for (int i = 0; i < hotel.listReservation.size(); i++) {
             Vector<Object> row = new Vector<Object>();
             row.add(hotel.listReservation.get(i).getNumRes());
@@ -57,15 +60,15 @@ public class VueReservation extends JPanel {
             
             row.add(hotel.listReservation.get(i).getDateDebut());
             row.add(hotel.listReservation.get(i).getDateFin());
-            row.add(hotel.listReservation.get(i).getFacturation());
+            row.add(hotel.listReservation.get(i).facturation());
             row.add("Supprimer");
             data.add(row);
+
+            table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
+            table.getColumn("Supprimer").setCellEditor(new Controler.BouttonEditeurRes(new javax.swing.JCheckBox(), hotel, fenetre, hotel.listReservation.get(0)));
         }
 
-        DefaultTableModel model = new DefaultTableModel(data, nomColonne);
-        JTable table = new JTable(model);
-        table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
-        table.getColumn("Supprimer").setCellEditor(new Controler.BouttonEditeurRes(new javax.swing.JCheckBox(), hotel, fenetre));
+
         JScrollPane scrollPane = new JScrollPane(table);
 
         this.add(scrollPane, BorderLayout.CENTER);

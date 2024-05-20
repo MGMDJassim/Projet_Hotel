@@ -14,10 +14,7 @@ import Controler.ControlAjout;
 
 
 
-public class VueAjout extends JPanel{
-    
-    
-  
+public class VueAjout extends JPanel{  
     JLabel numPorte = new JLabel("Numero de la porte");
     JTextField numP = new JTextField(20);
 
@@ -25,7 +22,7 @@ public class VueAjout extends JPanel{
     /*JTextField type = new JTextField(20);*/
 
     JComboBox<String> tChambre = new JComboBox<String>();
-    String[] type = {"Simple", "Double", "Suite"};
+    String[] type = {"Normal", "Presidentiel"};
 
     JLabel label4 = new JLabel("Numero de l'etage");
     JTextField numEtag = new JTextField(20);
@@ -37,6 +34,7 @@ public class VueAjout extends JPanel{
     public VueAjout(Hotel hotel, Fenetre fenetre){
         super(new BorderLayout());
         this.hotel = hotel;
+        this.fenetre = fenetre;
         setLayout(null);
         /*GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -52,9 +50,8 @@ public class VueAjout extends JPanel{
 
         add(typeChambre);
         add(tChambre);
-        tChambre.addItem("Simple");
-        tChambre.addItem("Double");
-        tChambre.addItem("Suite");
+        tChambre.addItem("Normal");
+        tChambre.addItem("Presidentiel");
         typeChambre.setBounds(10, 40, 200, 20);
         tChambre.setBounds(200, 40, 200, 20);
 

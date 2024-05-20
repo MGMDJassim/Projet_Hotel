@@ -1,50 +1,59 @@
 package Vue;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Controler.ControlAjoutReservation;
 import Controler.ControlRecherche;
-import Vue.BottonRendu;
 import Model.Chambre;
 import Model.Hotel;
-import Model.Normale;
-import Model.Presidentiel;
 
 public class VueAjoutReservation extends JPanel {
     Hotel hotel;
     Fenetre fenetre;
     Chambre chambre;
 
-    JLabel dateDebut = new JLabel("Date de debut (Année-Mois-Jour) :");
+    // Elements pour chercher une chambre libre
+    JLabel dateDebut = new JLabel("Date de début (Année-Mois-Jour) :");
     JTextField Ddebut = new JTextField();
 
     JLabel dateFin = new JLabel("Date de fin (Année-Mois-Jour) :");
     JTextField Dfin = new JTextField();
 
     JLabel typeChambre = new JLabel("Type de chambre");
-    JComboBox<String> type = new JComboBox<String>();
-    String[] types = {"Normale", "Presidentielle"};
+    JComboBox<String> type = new JComboBox<>(new String[]{"Normale", "Presidentielle"});
 
     JButton rechercher = new JButton("Rechercher");
 
-    JLabel nomCLient = new JLabel("Nom du client");
+    // Elements pour ajouter le client
+    JLabel nomClient = new JLabel("Nom du client");
     JTextField nom = new JTextField();
 
     JLabel prenomClient = new JLabel("Prenom du client");
     JTextField prenom = new JTextField();
 
-    JLabel dataNaissance = new JLabel("Date de naissance (Année-Mois-Jour) :");
+    JLabel dateNaissance = new JLabel("Date de naissance (Année-Mois-Jour) :");
     JTextField date = new JTextField();
 
     JLabel telClient = new JLabel("Telephone du client");
     JTextField tel = new JTextField();
+
+    // Element pour ajouter un séjour
+    JCheckBox sejour = new JCheckBox("Séjour");
+    JLabel produit = new JLabel("Produit");
+    JComboBox<String> prod = new JComboBox<>(new String[]{"Produit1", "Produit2", "Produit3", "Produit4", "Produit5"});
+    JLabel quantite = new JLabel("Quantité");
+    JTextField qte = new JTextField();
 
     JButton ajouter = new JButton("Ajouter");
 
@@ -61,28 +70,36 @@ public class VueAjoutReservation extends JPanel {
         this.hotel = hotel;
         this.fenetre = fenetre;
         this.chambre = chambre;
-        setLayout(null);
+        setLayout(new BorderLayout());
 
-        add(dateDebut);
-        add(Ddebut);
-        dateDebut.setBounds(10, 10, 200, 20);
-        Ddebut.setBounds(250, 10, 200, 20);
+        // Panel gauche pour le formulaire
+        JPanel leftPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        add(dateFin);
-        add(Dfin);
-        dateFin.setBounds(10, 40, 200, 20);
-        Dfin.setBounds(250, 40, 200, 20);
+        // Ajout des éléments du formulaire
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        leftPanel.add(dateDebut, gbc);
+        gbc.gridx = 1;
+        leftPanel.add(Ddebut, gbc);
 
-        add(typeChambre);
-        add(type);
-        type.addItem("");
-        type.addItem("Normale");
-        type.addItem("Presidentielle");
-        typeChambre.setBounds(10, 70, 200, 20);
-        type.setBounds(250, 70, 200, 20);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        leftPanel.add(dateFin, gbc);
+        gbc.gridx = 1;
+        leftPanel.add(Dfin, gbc);
 
-        add(rechercher);
-        rechercher.setBounds(10, 100, 200, 20);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        leftPanel.add(typeChambre, gbc);
+        gbc.gridx = 1;
+        leftPanel.add(type, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        leftPanel.add(rechercher, gbc);
         rechercher.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 ControlRecherche r = new ControlRecherche(hotel, Ddebut, Dfin, table, VueAjoutReservation.this, type, VueAjoutReservation.this);
@@ -90,55 +107,98 @@ public class VueAjoutReservation extends JPanel {
             }
         });
 
-        add(nomCLient);
-        add(nom);
-        nomCLient.setBounds(10, 130, 200, 20);
-        nom.setBounds(250, 130, 200, 20);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        leftPanel.add(nomClient, gbc);
+        gbc.gridx = 1;
+        leftPanel.add(nom, gbc);
 
-        add(prenomClient);
-        add(prenom);
-        prenomClient.setBounds(10, 160, 200, 20);
-        prenom.setBounds(250, 160, 200, 20);
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        leftPanel.add(prenomClient, gbc);
+        gbc.gridx = 1;
+        leftPanel.add(prenom, gbc);
 
-        add(dataNaissance);
-        add(date);
-        dataNaissance.setBounds(10, 190, 230, 20);
-        date.setBounds(250, 190, 200, 20);
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        leftPanel.add(dateNaissance, gbc);
+        gbc.gridx = 1;
+        leftPanel.add(date, gbc);
 
-        add(telClient);
-        add(tel);
-        telClient.setBounds(10, 220, 200, 20);
-        tel.setBounds(250, 220, 200, 20);
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        leftPanel.add(telClient, gbc);
+        gbc.gridx = 1;
+        leftPanel.add(tel, gbc);
 
-        add(ajouter);
-        ajouter.setBounds(10, 250, 200, 20);
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        leftPanel.add(sejour, gbc);
+        sejour.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                if (sejour.isSelected()) {
+                    gbc.gridx = 0;
+                    gbc.gridy = 9;
+                    leftPanel.add(produit, gbc);
+                    gbc.gridx = 1;
+                    leftPanel.add(prod, gbc);
 
+                    gbc.gridx = 0;
+                    gbc.gridy = 10;
+                    leftPanel.add(quantite, gbc);
+                    gbc.gridx = 1;
+                    leftPanel.add(qte, gbc);
+                } else {
+                    leftPanel.remove(produit);
+                    leftPanel.remove(prod);
+                    leftPanel.remove(quantite);
+                    leftPanel.remove(qte);
+                }
+
+                revalidate();
+                repaint();
+            }
+        });
+
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        leftPanel.add(ajouter, gbc);
+        ajouter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Ajoutez ici votre code pour ajouter une réservation
+            }
+        });
+
+        // Panel droit pour le tableau
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(500, 10, 400, 400);
-        add(scrollPane, BorderLayout.CENTER);
+
+        // Split pane pour diviser la fenêtre en deux moitiés égales
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, scrollPane);
+        splitPane.setDividerLocation(0.5); // Diviser la fenêtre en deux moitiés égales
+
+        add(splitPane, BorderLayout.CENTER);
     }
 
     public void afficherTableau(Vector<Chambre> freeRooms) {
-        Vector<String> nomColonne = new Vector<String>();
+        Vector<String> nomColonne = new Vector<>();
         nomColonne.add("Numero de porte");
         nomColonne.add("Type");
         nomColonne.add("Etage");
         nomColonne.add("Prix");
         nomColonne.add("Selectionner");
 
-        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+        LocalDate debut = LocalDate.parse(Ddebut.getText());
+        LocalDate fin = LocalDate.parse(Dfin.getText());
+
+        long diff = ChronoUnit.DAYS.between(debut, fin);
+
+        Vector<Vector<Object>> data = new Vector<>();
         for (Chambre room : freeRooms) {
-            Vector<Object> row = new Vector<Object>();
+            Vector<Object> row = new Vector<>();
             row.add(room.getNumeroPorte());
             row.add(room.getType());
             row.add(room.getEtage());
-            if (room instanceof Presidentiel) {
-                row.add(Presidentiel.getPrix() + "€");
-            } else if (room instanceof Normale) {
-                row.add(((Normale) room).getPrix() + "€");
-            } else {
-                row.add("N/A");
-            }
+            row.add(room.getPrix() * diff + "€");
             row.add(Boolean.FALSE); // Ajouter une valeur Boolean pour la case à cocher
             data.add(row);
         }
@@ -154,10 +214,6 @@ public class VueAjoutReservation extends JPanel {
         };
 
         table.setModel(model);
-
-        //table.getColumn("Selectionner").setCellRenderer(new BottonRendu());
-        
-        
         table.repaint();
         table.revalidate();
 
@@ -166,25 +222,20 @@ public class VueAjoutReservation extends JPanel {
             public void valueChanged(ListSelectionEvent event) {
                 int selectedRow = table.getSelectedRow();
                 if (selectedRow != -1) {
-                    String typeChambre = (String) table.getModel().getValueAt(selectedRow, 1);
-                    for (Chambre room : freeRooms) {
-                        if (room.getType().equals(typeChambre)) {
-                            chambre = room;
-                            break;
-                        }
+                    int modelRow = table.convertRowIndexToModel(selectedRow); // Get the correct model index
+                    chambre = freeRooms.get(modelRow);
+
+                    for (ActionListener al : ajouter.getActionListeners()) {
+                        ajouter.removeActionListener(al);
                     }
-                }
 
-                for (ActionListener al : ajouter.getActionListeners()) {
-                    ajouter.removeActionListener(al);
-                }
+                    ControlAjoutReservation control = new ControlAjoutReservation(hotel, Ddebut, Dfin, nom, prenom, date, tel, table, chambre);
+                    ajouter.addActionListener(control);
 
-                ControlAjoutReservation control = new ControlAjoutReservation(hotel, Ddebut, Dfin, nom, prenom, date, tel, table, chambre);
-                ajouter.addActionListener(control);
-
-                if (chambre == null) {
-                    JOptionPane.showMessageDialog(null, "Veuillez sélectionner une chambre");
-                    return;
+                    if (chambre == null) {
+                        JOptionPane.showMessageDialog(null, "Veuillez sélectionner une chambre");
+                        return;
+                    }
                 }
             }
         });

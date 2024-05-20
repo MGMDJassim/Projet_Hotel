@@ -4,30 +4,28 @@ import java.util.*;
 
 public class Sejour {
 
-    public Reservation listeRes;
-    public Vector<Consommation> listConsommation;
+    public Reservation reservation;
+    public Vector<Consommation> consommations = new Vector<Consommation>();
     public AgentEntretien agent;
     
-    public Sejour(Reservation listeRes, AgentEntretien agent) {
-        this.listeRes = listeRes;
-        this.agent = agent;
+    public Sejour(Reservation reservation, Produit produit) {
+        this.reservation = reservation;
     }
 
-
-    public void setListeRes(Reservation listeRes) {
-        this.listeRes = listeRes;
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 
-    public Reservation getListeRes() {
-        return listeRes;
+    public Reservation getReservation() {
+        return reservation;
     }
-
+    
     public void setListConsommation(Vector<Consommation> listConsommation) {
-        this.listConsommation = listConsommation;
+        this.consommations = listConsommation;
     }
 
     public Vector<Consommation> getListConsommation() {
-        return listConsommation;
+        return consommations;
     }
 
     public void setAgent(AgentEntretien agent) {
@@ -40,8 +38,8 @@ public class Sejour {
     // consommation bar
 
     public boolean consommationBar(){
-         for (int i = 0; i < listConsommation.size(); i++) {
-            Consommation consommation = listConsommation.get(i);
+         for (int i = 0; i < consommations.size(); i++) {
+            Consommation consommation = consommations.get(i);
             if (consommation.getQuantite() > 0) {
                 return true; 
             }
@@ -50,26 +48,24 @@ public class Sejour {
     }
     // Methode facturation
     
-    public double facturationSejour()
-    {
-        double total = 0.0;
-        for (int i = 0; i < listConsommation.size(); i++){
-            Consommation consommation = listConsommation.get(i);
-            Produit produit = consommation.getProduit();
-            total += produit.getPrix() * consommation.getQuantite();
+    public float facturation() {
+        float facture = 0;
+        for (int i = 0; i < consommations.size(); i++) {
+            Consommation consommation = consommations.get(i);
+            facture += consommation.getQuantite() * consommation.getProduit().getPrix();
         }
-        return total;
+        return facture;
     }
 
     // Methode pour ajouter une consomation
-    public void addConsommation(Consommation consommation, int quantite) {
-        listConsommation.add(consommation);
+    public void addConsommation(Consommation consommation) {
+        consommations.add(consommation);
     }
 
     // Methode pour supprimer une consomation
 
-    public void removeConsommation(Consommation consommation, int quantite) {
-        listConsommation.remove(consommation);
+    public void removeConsommation(Consommation consommation) {
+        consommations.remove(consommation);
     }
 
 }

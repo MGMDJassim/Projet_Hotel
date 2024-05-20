@@ -58,7 +58,7 @@ public class Hotel {
         this.listReservation.add(reservation);
     }
     
-    public void removeReservation(Reservation reservation){
+    public void removeReservation(Reservation reservation) {
         this.listReservation.remove(reservation);
     }
 
@@ -150,15 +150,20 @@ public class Hotel {
     public Vector<Consommation> getListConsommation() {
         return listConsommation;
     }
-    
+
 
     //Recherche des chambres libres 
-    public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin){
+    public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin) {
+        if (dateFin.isBefore(dateDebut)) {
+            LocalDate temp = dateDebut;
+            dateDebut = dateFin;
+            dateFin = temp;
+        }
         Vector<Chambre> freeRooms = new Vector<Chambre>();
-        for(int i=0;i<listechambre.size();i++){
-            if(listechambre.get(i).isFree(dateDebut, dateFin)){
-                freeRooms.add(listechambre.get(i));
-            }   
+        for (Chambre chambre : listechambre) {
+            if (chambre.isFree(dateDebut, dateFin)) {
+                freeRooms.add(chambre);
+            }
         }
         return freeRooms;
     }
