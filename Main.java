@@ -35,8 +35,9 @@ public class Main {
     Produit p5 = new Produit("Produit5", hotel, 50, 5);
 
     Sejour sejour1 = new Sejour(r2);
-
     Consommation consommation1 = new Consommation(sejour1, p1, 2);
+
+
 
     hotel.addProduit(p1);
     hotel.addProduit(p2);
@@ -53,30 +54,27 @@ public class Main {
     hotel.addChambre(c22);
     hotel.addChambre(c23);
     hotel.addChambre(c24);
+
     c11.addReservation(r2);
     hotel.addClient(client2);
     hotel.addReservation(r2);
+    r2.addSejour(sejour1);
+    sejour1.addConsommation(consommation1);
 
     c12.addReservation(r3);
     hotel.addClient(client3);
     hotel.addReservation(r3);
 
-    
+    sejour1.setReservation(r2);
 
-    //System.out.println("Avant la supression : " + hotel.getListReservation());
-    //hotel.removeReservation(r2);
-    //c11.removeReservation(r2);
+    hotel.addSejour(sejour1);
+    hotel.addConsommation(consommation1);
 
-    //r2.getChambre().removeReservation(r2);
-    //System.out.println("Après la supression : " + hotel.getListReservation());
+    hotel.afficherReservations();
 
-   // System.out.println("apres la supression : " + c11.getListReservation());
+    sejour1.afficherReservation();
 
-  //System.out.println(hotel.getFreeRooms(LocalDate.of(2021, 01, 10),LocalDate.of(2021, 01,01) ));
-
-  //hotel.getListechambre().forEach(chambre -> System.out.println(chambre.toString()));
-
-  Fenetre fenetre = new Fenetre(hotel);
+  //Fenetre fenetre = new Fenetre(hotel);
   }
 
 }

@@ -30,8 +30,6 @@ public class VueReservation extends JPanel {
         nomColonne.add("Numéro de l'étage");
         nomColonne.add("Date de début");
         nomColonne.add("Date de fin");
-        nomColonne.add("Facturation");
-
         nomColonne.add("Supprimer");
 
         data = new Vector<Vector<Object>>();
@@ -60,7 +58,6 @@ public class VueReservation extends JPanel {
             
             row.add(hotel.listReservation.get(i).getDateDebut());
             row.add(hotel.listReservation.get(i).getDateFin());
-            row.add(hotel.listReservation.get(i).facturation());
             row.add("Supprimer");
             data.add(row);
 

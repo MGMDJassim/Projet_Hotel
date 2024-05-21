@@ -18,7 +18,6 @@ public class Reservation {
         this.datef = dateF;
         this.chambre = chambre;
         this.client = client;
-        this.sejour = new Vector<>();
     }
 
     public void setDateD(LocalDate dateD) {
@@ -118,15 +117,7 @@ public class Reservation {
     }
 
     //facturation de la réservation
-    public float facturation() {
-        float facture = 0;
-        for (int i = 0; i < sejour.size(); i++) {
-            Sejour currentSejour = sejour.get(i);
-            facture += currentSejour.facturation();
-        }
-        facture += calculerPrix(); // Add the price of the room to the total bill
-        return facture;
-    }
+
 
     public String toString() {
         return "Reservation [numRes=" + numRes + ", dateD=" + dateD + ", datef=" + datef + ", sejour=" + sejour + ", chambre=" + chambre + ", client=" + client + "]";

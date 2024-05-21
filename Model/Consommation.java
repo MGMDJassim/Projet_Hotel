@@ -64,4 +64,13 @@ public class Consommation {
         }
     }
 
+    public String toString() {
+        return "Consommation{" + "quantite=" + getQuantite() + ", sejour=" + getSejour() + ", produit=" + getProduit() + '}';
+    }
+
+    //afficher les consommations
+
+    public void afficherConsommations() {
+        System.out.println("Consommation{" + "quantite=" + getQuantite() + ", sejour=" + getSejour() + ", produit=" + getProduit() + '}');
+    }
 }

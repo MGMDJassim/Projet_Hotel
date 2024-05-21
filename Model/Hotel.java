@@ -181,5 +181,30 @@ public class Hotel {
         return listechambre.toString();
     }
 
+    public void afficherChambres(){
+        for (Chambre chambre : listechambre) {
+            System.out.println(chambre);
+        }
+    }
+
+    public void afficherClients(){
+        for (Client client : listClient) {
+            System.out.println(client);
+        }
+    }
+
+    public void afficherProduits(){
+        for (Produit produit : listProduit) {
+            System.out.println(produit);
+        }
+    }
+
+    public void afficherReservations(){
+        for (Reservation reservation : listReservation) {
+            System.out.println(reservation + "\n");
+        }
+    }
+
+
     
 }
