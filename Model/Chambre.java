@@ -90,7 +90,7 @@ public abstract class Chambre {
     }
 
     // Recherche des chambres libres
-    public boolean estlibre(LocalDate dateDebut, LocalDate dateFin) {
+    public boolean isFree(LocalDate dateDebut, LocalDate dateFin) {
         for (Reservation reservation : listReservation) {
             if ((dateDebut.isEqual(reservation.getDateDebut()) || dateDebut.isAfter(reservation.getDateDebut())) && dateDebut.isBefore(reservation.getDateFin())) {
                 return false;
