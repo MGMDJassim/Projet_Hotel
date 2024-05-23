@@ -76,11 +76,11 @@ public class Client {
         return listReservation;
     }
 
-    public void ajouterClient(Client client) {
+    public void addClient(Client client) {
         this.listReservation.add(client.getListReservation().get(0));
     }
 
-    public void retirerClient(Client client) {
+    public void removeClient(Client client) {
         this.listReservation.remove(client.getListReservation().get(0));
     }
 
