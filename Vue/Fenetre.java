@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 import Model.*;
 
 import Controler.ControleAffChambre;
+
+import java.awt.Color;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
 import Controler.ControlClient;
@@ -17,6 +21,12 @@ import javax.swing.*;
 
 public class Fenetre extends JFrame{
     JMenuBar barre = new JMenuBar();  
+
+    JLabel label = new JLabel("Porjet Hôtel", HEIGHT);
+
+    JButton reservation = new JButton("Réservations");
+    JButton agentEntretient = new JButton("Agent d'entretient");
+    JButton employe = new JButton("Employes");
 
     JMenu gchambre = new JMenu("Gestion des chambres");
     JMenu gclient = new JMenu("Gestion des clients");
@@ -49,8 +59,8 @@ public class Fenetre extends JFrame{
 
     public Fenetre(Hotel h){
         hotel = h;
-        this.setJMenuBar(barre);
 
+        this.setJMenuBar(barre);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         barre.add(gchambre);
@@ -104,7 +114,7 @@ public class Fenetre extends JFrame{
         });
 
         affReservations.addActionListener(new ControlReservation(hotel, this));
-    
+
         this.pack();
         this.setSize(1000, 500);
         this.setVisible(true);

@@ -24,7 +24,7 @@ public class VueAjoutSejour extends JPanel {
     JLabel produit = new JLabel("Produit");
     JComboBox<String> listeProduits = new JComboBox<String>();
 
-    JLabel quantite = new JLabel("QuantitÃ©");
+    JLabel quantite = new JLabel("Quantité");
     JComboBox<Integer> listeQuantite = new JComboBox<Integer>();
 
     JButton ajouter = new JButton("Ajouter");
@@ -65,7 +65,7 @@ public class VueAjoutSejour extends JPanel {
             hotel.listConsommation.add(consommation);
             hotel.listSejour.add(sejour);
             System.out.println("Consommation ajoutÃ©e : " + consommation.getProduit().getNom() + " " + consommation.getQuantite());
-            System.out.println("Sejour ajoutÃ© : " + sejour.getConsommation());
+            System.out.println("Sejour ajouté : " + sejour.getConsommation());
             System.out.println("Reservation : " + sejour.getReservation().getClient().getNomClient());
 
         });
