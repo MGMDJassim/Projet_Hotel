@@ -1,20 +1,21 @@
 package Model;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Produit {
 
     public String nom;
     public int prix;
-    public int quantite;
+    public int stock;
     public Hotel hotel;
     public Vector<Consommation> consommations;
     
     // Constructeur avec paramètres
-    public Produit(String nom,  Hotel hotel,int prix, int quantite) {
+    public Produit(String nom,  Hotel hotel,int prix, int stock) {
         this.nom = nom;
         this.prix = prix;
         this.hotel = hotel;
-        this.quantite = quantite;
+        this.stock = stock;
     }
     
     // Getters et Setters
@@ -30,11 +31,11 @@ public class Produit {
     public void setPrix(int prix) {
         this.prix = prix;
     }
-    public int getQuantite(){
-        return quantite;
+    public int getStock() {
+        return stock;
     }
-    public void setQuantite(int quantite){
-        this.quantite = quantite;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
     public Hotel getHotel() {
         return hotel;
@@ -62,13 +63,19 @@ public class Produit {
         this.consommations.remove(consommation);
     }
 
-    // Méthode pour vérifier si la quantité est suffisante
-    public boolean checkQuantite(int quantite) {
-        if (this.quantite >= quantite) {
-            return true;
-        } else {
-            return false;
+    //Méthodes qui enleve la quantité de stock en fonction de la date
+
+    public void removeStock(int quantite){
+        if(hotel.listReservation.size() > 0) {
+            for (Reservation reservation : hotel.listReservation) {
+                if (reservation.getDateDebut().isBefore(LocalDate.now()) && reservation.getDateFin().isAfter(LocalDate.now())) {
+                    this.stock -= quantite;
+                    break;
+                }
+            }
         }
     }
+
+
 
 }

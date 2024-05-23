@@ -11,6 +11,9 @@ import Model.Client;
 import Model.Hotel;
 import Model.Reservation;
 import Model.Sejour;
+import Vue.VueAjout;
+import Vue.VueAjoutSejour;
+import Vue.Fenetre;
 
 public class ControlAjoutReservation implements ActionListener {
 
@@ -24,8 +27,9 @@ public class ControlAjoutReservation implements ActionListener {
     private JTextField tel;
     public JTable table;
     private Chambre chambre;
+    private Fenetre fenetre;
 
-    public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, JTable table, Chambre chambre) {
+    public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, JTable table, Chambre chambre, Fenetre fenetre) {
         this.hotel = hotel;
         this.ddebut = ddebut;
         this.dfin = dfin;
@@ -35,14 +39,14 @@ public class ControlAjoutReservation implements ActionListener {
         this.tel = tel;
         this.table = table;
         this.chambre = chambre;
-        this.sejour = sejour;
+        this.fenetre = fenetre;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!ddebut.getText().isEmpty() && !dfin.getText().isEmpty() && !nom.getText().isEmpty() && !prenom.getText().isEmpty() && !date.getText().isEmpty() && !tel.getText().isEmpty()) {
             if (chambre == null) {
-                JOptionPane.showMessageDialog(null, "Veuillez sélectionner une chambre avant d'ajouter une réservation.");
+                JOptionPane.showMessageDialog(null, "Veuillez sÃ©lectionner une chambre avant d'ajouter une rÃ©servation.");
                 return;
             }
             LocalDate dn = LocalDate.parse(date.getText());
@@ -53,7 +57,13 @@ public class ControlAjoutReservation implements ActionListener {
             chambre.addReservation(reservation);
             reservation.addChambre(chambre);
             hotel.addReservation(reservation);
-            //System.out.println("Reservation ajoutée");
+
+            VueAjoutSejour vue = new VueAjoutSejour(reservation, hotel, fenetre);
+            fenetre.setContentPane(vue); // Utilisation directe du JPanel dans la fenÃªtre
+            fenetre.revalidate();
+            fenetre.repaint();
+
+            //System.out.println("Reservation ajoutÃ©e");
             System.out.println(reservation.toString());
             System.out.println("*******************");
             System.out.println(chambre.getListReservation()+ "\n");

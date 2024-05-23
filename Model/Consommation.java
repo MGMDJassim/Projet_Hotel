@@ -1,14 +1,15 @@
 package Model;
 
+
 public class Consommation {
-    public int quantite;
     public Sejour sejour;
+    public int quantite;
     public Produit produit;
 
- public Consommation(Sejour s, Produit p, int quantite) {
+ public Consommation(Produit produit,  int quantite, Sejour sejour) {
         this.quantite = quantite;
-        this.sejour = s;
-        this.produit = p;
+        this.produit = produit;
+        this.sejour = sejour;
     }
 
     public void setQuantite(int quatite) {
@@ -17,29 +18,27 @@ public class Consommation {
     public int getQuantite() {
         return quantite;
     }
-    public void setSejour(Sejour Sejour) {
-        this.sejour = Sejour;
-    }
-    public Sejour getSejour() {
-        return sejour;
-    }
-    public void setProduit(Produit produit) {
-        this.produit = produit;
-    }
+
     public Produit getProduit() {
         return produit;
     }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
+    }
+
+
     //Methode ajout de conso
-    public void ajouterConsommation(int quantite) {
+    public void addConsommation(int quantite) {
         this.quantite += quantite;
     }
     //Methode suppression de conso
 
-    public void retirerConsommation(int quantite) {
+    public void removeConsommation(int quantite) {
         this.quantite -= quantite;
     }
 
-    //vérfier si la quantité est suffisante
+    //vÃ©rfier si la quantitÃ© est suffisante
     public boolean checkQuantite(int quantite) {
         if (this.quantite >= quantite) {
             return true;
@@ -48,24 +47,9 @@ public class Consommation {
         }
     }
 
-    //Methode pour ajouter une consomation à un sejour
-    public void addConsommationToSejour(Sejour sejour, int quantite) {
-        if (checkQuantite(quantite)) {
-            ajouterConsommation(quantite);
-            sejour.addConsommation(this);
-        }
-    }
-
-    //Methode pour supprimer une consomation à un sejour
-    public void removeConsommationToSejour(Sejour sejour, int quantite) {
-        if (checkQuantite(quantite)) {
-            retirerConsommation(quantite);
-            sejour.removeConsommation(this);
-        }
-    }
-
-    public String toString() {
-        return ("Consommation{" + "quantite=" + getQuantite() + ", sejour=" + getSejour() + ", produit=" + getProduit() + '}');
+    //calculer le prix de la consommation
+    public int calculerPrix() {
+        return quantite * produit.prix;
     }
 
 }

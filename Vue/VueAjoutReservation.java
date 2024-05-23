@@ -229,7 +229,7 @@ public class VueAjoutReservation extends JPanel {
                         ajouter.removeActionListener(al);
                     }
 
-                    ControlAjoutReservation control = new ControlAjoutReservation(hotel, Ddebut, Dfin, nom, prenom, date, tel, table, chambre);
+                    ControlAjoutReservation control = new ControlAjoutReservation(hotel, Ddebut, Dfin, nom, prenom, date, tel, table, chambre, fenetre);
                     ajouter.addActionListener(control);
 
                     if (chambre == null) {

@@ -1,12 +1,12 @@
 package Model;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Vector;
+
 
 public class Sejour {
     private Reservation reservation;
-    private Vector<Consommation> consommations;
+    private Vector<Consommation> consommation = new Vector<Consommation>();
     private LocalDate dateDebut;
     private LocalDate dateFin;
 
@@ -14,7 +14,6 @@ public class Sejour {
         this.reservation = reservation;
         this.dateDebut = reservation.getDateDebut();
         this.dateFin = reservation.getDateFin();
-        this.consommations = new Vector<>();
     }
 
     public Reservation getReservation() {
@@ -25,12 +24,20 @@ public class Sejour {
         this.reservation = reservation;
     }
 
-    public Vector<Consommation> getConsommations() {
-        return consommations;
+    public Vector<Consommation> getConsommation() {
+        return consommation;
     }
 
-    public void setConsommations(Vector<Consommation> consommations) {
-        this.consommations = consommations;
+    public void setConsommation(Vector<Consommation> consommation) {
+        this.consommation = consommation;
+    }
+
+    public void addConsommation(Consommation consommation) {
+        this.consommation.add(consommation);
+    }
+
+    public void removeConsommation(Consommation consommation) {
+        this.consommation.remove(consommation);
     }
 
     public LocalDate getDateDebut() {
@@ -49,36 +56,20 @@ public class Sejour {
         this.dateFin = dateFin;
     }
 
-    public void addConsommation(Consommation consommation) {
-        consommations.add(consommation);
-    }
+    //calculer le prix du sejour
 
-    public void removeConsommation(Consommation consommation) {
-        consommations.remove(consommation);
-    }
-
-    public void afficherConsommations() {
-        for (Consommation consommation : consommations) {
-            System.out.println(consommation.getProduit().getNom() + " " + consommation.getQuantite());
+    public float calculerPrix() {
+        float prix = 0;
+        for (Consommation consommation : consommation) {
+            prix = prix + consommation.calculerPrix();
         }
-    }
-
-    public double calculerPrixTotal() {
-        double prixTotal = 0;
-        for (Consommation consommation : consommations) {
-            prixTotal += consommation.getProduit().getPrix() * consommation.getQuantite();
-        }
-        return prixTotal + reservation.calculerPrix();
-    }
-
-    public long getDuree() {
-        return ChronoUnit.DAYS.between(dateDebut, dateFin);
+        return prix + reservation.calculerPrix();
     }
 
     //afficher reservation
 
     public void afficherReservation() {
-        System.out.println("Sejour{" + "reservation=" + getReservation() + ", consommations=" + getConsommations() + ", dateDebut=" + getDateDebut() + ", dateFin=" + getDateFin() + '}');
+        System.out.println("Sejour{" + "reservation=" + getReservation() + ", consommations=" + getConsommation() + ", dateDebut=" + getDateDebut() + ", dateFin=" + getDateFin() + '}');
     }
 }
 
