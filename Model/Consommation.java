@@ -49,28 +49,23 @@ public class Consommation {
     }
 
     //Methode pour ajouter une consomation à un sejour
-    public void ajouterConsommationToSejour(Sejour sejour, int quantite) {
+    public void addConsommationToSejour(Sejour sejour, int quantite) {
         if (checkQuantite(quantite)) {
             ajouterConsommation(quantite);
-            sejour.ajouterConsommation(this);
+            sejour.addConsommation(this);
         }
     }
 
     //Methode pour supprimer une consomation à un sejour
-    public void retirerConsommationToSejour(Sejour sejour, int quantite) {
+    public void removeConsommationToSejour(Sejour sejour, int quantite) {
         if (checkQuantite(quantite)) {
             retirerConsommation(quantite);
-            sejour.retirerConsommation(this);
+            sejour.removeConsommation(this);
         }
     }
 
     public String toString() {
-        return "Consommation{" + "quantite=" + getQuantite() + ", sejour=" + getSejour() + ", produit=" + getProduit() + '}';
+        return ("Consommation{" + "quantite=" + getQuantite() + ", sejour=" + getSejour() + ", produit=" + getProduit() + '}');
     }
 
-    //afficher les consommations
-
-    public void afficherConsommations() {
-        System.out.println("Consommation{" + "quantite=" + getQuantite() + ", sejour=" + getSejour() + ", produit=" + getProduit() + '}');
-    }
 }
