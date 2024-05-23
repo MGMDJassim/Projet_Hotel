@@ -30,12 +30,12 @@ public class Consommation {
         return produit;
     }
     //Methode ajout de conso
-    public void addConsommation(int quantite) {
+    public void ajouterConsommation(int quantite) {
         this.quantite += quantite;
     }
     //Methode suppression de conso
 
-    public void removeConsommation(int quantite) {
+    public void retirerConsommation(int quantite) {
         this.quantite -= quantite;
     }
 
@@ -49,17 +49,17 @@ public class Consommation {
     }
 
     //Methode pour ajouter une consomation à un sejour
-    public void addConsommationToSejour(Sejour sejour, int quantite) {
+    public void ajouterConsommationToSejour(Sejour sejour, int quantite) {
         if (checkQuantite(quantite)) {
-            addConsommation(quantite);
+            ajouterConsommation(quantite);
             sejour.addConsommation(this);
         }
     }
 
     //Methode pour supprimer une consomation à un sejour
-    public void removeConsommationToSejour(Sejour sejour, int quantite) {
+    public void retirerConsommationToSejour(Sejour sejour, int quantite) {
         if (checkQuantite(quantite)) {
-            removeConsommation(quantite);
+            retirerConsommation(quantite);
             sejour.removeConsommation(this);
         }
     }
