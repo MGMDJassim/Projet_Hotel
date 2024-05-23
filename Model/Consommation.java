@@ -52,7 +52,7 @@ public class Consommation {
     public void ajouterConsommationToSejour(Sejour sejour, int quantite) {
         if (checkQuantite(quantite)) {
             ajouterConsommation(quantite);
-            sejour.addConsommation(this);
+            sejour.ajouterConsommation(this);
         }
     }
 
@@ -60,7 +60,7 @@ public class Consommation {
     public void retirerConsommationToSejour(Sejour sejour, int quantite) {
         if (checkQuantite(quantite)) {
             retirerConsommation(quantite);
-            sejour.removeConsommation(this);
+            sejour.retirerConsommation(this);
         }
     }
 
