@@ -125,6 +125,14 @@ public class Fenetre extends JFrame{
                 setContentPane(vue);
             }
         });
+
+
+        afficherMenage.addActionListener(new ActionListener() {
+            public void actionPerformed (ActionEvent e){
+                VueGestionMenage vue = new VueGestionMenage(hotel);
+                setContentPane(vue);
+            }
+        });
         this.pack();
         this.setSize(1000, 500);
         this.setLocationRelativeTo(null); // Centre la fenêtre

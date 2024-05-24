@@ -10,24 +10,24 @@ public abstract class Chambre {
     private Vector<Reservation> listReservation = new Vector<Reservation>();
     public Hotel hotel;
     public String type;
-    public String etatChambre;
+    public boolean etat;
     public abstract float getPrix();
 
-    public Chambre(int etage, String type, Hotel hotel, String etatChambre) {
+    public Chambre(int etage, String type, Hotel hotel, boolean etat) {
 
         this.etage = etage;
         this.numeroPorte = ++idCounter;
         this.type = type;
         this.hotel = hotel;
-        this.etatChambre = etatChambre;
+        this.etat = etat;
     }
 
-    public void setEtatChambre(String etatChambre) {
-        this.etatChambre = etatChambre;
+    public void setEtatChambre(boolean etat) {
+        this.etat = etat;
     }
 
-    public String getEtatChambre() {
-        return etatChambre;
+    public boolean getEtatChambre() {
+        return etat;
     }
 
     public void setEtage(int etage) {
@@ -74,10 +74,6 @@ public abstract class Chambre {
         return type;
     }
 
-    public String getEtat() {
-        return etatChambre;
-    }
-
     //methodes pour enlever la chambre
 
     public void removeReservation(Reservation reservation) {
@@ -103,5 +99,28 @@ public abstract class Chambre {
 
     public String toString() {
         return "Chambre " + type + " à l'étage " + etage + ", à la porte " + numeroPorte + "\n";
+    }
+
+    //Recherche des chambres salles
+
+    public void cSalle(LocalDate ajd){
+        for(Reservation r : listReservation){
+            if(ajd.isAfter(r.getDateFin())){
+                setEtatChambre(false);
+            }
+        }
+    }
+
+    //Chambre salle
+
+    public boolean ChambreSalle(LocalDate dateFin){
+        for(Reservation r : listReservation){
+            if(!r.getChambre().getEtatChambre()){
+                return true;
+            }
+        }
+        
+        return false;
+
     }
 }

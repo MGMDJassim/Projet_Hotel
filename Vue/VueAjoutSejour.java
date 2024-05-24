@@ -1,7 +1,5 @@
 package Vue;
 
-import java.util.Vector;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -18,7 +16,6 @@ public class VueAjoutSejour extends JPanel {
     Reservation reservation;
     Sejour sejour;
     Fenetre fenetre;
-    Vector<Produit> produits = new Vector<Produit>();
     Consommation consommation;
     JLabel produit = new JLabel("Produit");
     JComboBox<String> listeProduits = new JComboBox<String>();

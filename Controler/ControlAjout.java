@@ -32,9 +32,9 @@ public class ControlAjout implements ActionListener {
     public void actionPerformed(ActionEvent e) {
     
         if (typeChambre[0].equals("Normale")) {
-            chambre = new Normale(Integer.parseInt(numEtag.getText()), hotel, typeChambre[0], "Libre");
+            chambre = new Normale(Integer.parseInt(numEtag.getText()), hotel, typeChambre[0], true);
         } else {
-            chambre = new Presidentiel(Integer.parseInt(numEtag.getText()), hotel, typeChambre[0], "Libre");
+            chambre = new Presidentiel(Integer.parseInt(numEtag.getText()), hotel, typeChambre[0], true);
         hotel.addChambre(chambre);
         new Vue.VueAjout(hotel, fenetre);
         System.out.println("Ajouter une chambre");

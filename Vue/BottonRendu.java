@@ -12,7 +12,11 @@ public class BottonRendu extends JButton implements TableCellRenderer{
     }
 
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
-        setText ((value == null) ? "Supprimer" : value.toString());
+        if (value == null) {
+            setText("Supprimer");
+        } else {
+            setText(value.toString());
+        }
         return this;
     }
 }

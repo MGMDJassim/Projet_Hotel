@@ -1,14 +1,14 @@
 
 package Model;
 public class Employe {
-
+    private int count = 0;
     public String nomEmploye;
     public int numEmploye;
     public String prenomEmploye;
     
-    public Employe(String nomEmploye, int numEmploye, String prenomEmploye) {
+    public Employe(String nomEmploye, String prenomEmploye) {
         this.nomEmploye = nomEmploye;
-        this.numEmploye = numEmploye;
+        this.numEmploye = ++count;
         this.prenomEmploye = prenomEmploye;
     }
 

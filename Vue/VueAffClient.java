@@ -29,11 +29,11 @@ public class VueAffClient extends JPanel {
         this.nomColonne = new Vector<String>();
         this.data = new Vector<Vector<Object>>();
 
-        this.nomColonne.add("Nom");
-        this.nomColonne.add("Prenom");
-        this.nomColonne.add("Date de naissance");
-        this.nomColonne.add("Telephone");
-        this.nomColonne.add("Supprimer");
+        nomColonne.add("Nom");
+        nomColonne.add("Prenom");
+        nomColonne.add("Date de naissance");
+        nomColonne.add("Telephone");
+        nomColonne.add("Supprimer");
 
         for (Client client : hotel.listClient) {
             Vector<Object> row = new Vector<Object>();

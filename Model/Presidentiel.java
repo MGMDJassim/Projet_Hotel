@@ -4,7 +4,7 @@ public class Presidentiel extends Chambre {
     public int litDouble;
     public float prix;
     
-    public Presidentiel(int etage, Hotel hotel, String type, String etatChambre)  {
+    public Presidentiel(int etage, Hotel hotel, String type, boolean etatChambre)  {
         super(etage, type, hotel, etatChambre);
 
         prix = 100;

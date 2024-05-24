@@ -159,6 +159,10 @@ public class Hotel {
         return listConsommation;
     }
 
+    public Vector<Employe> getListEmployes(){
+        return listEmploye;
+    }
+
 
     //Recherche des chambres libres 
     public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin) {
@@ -167,7 +171,7 @@ public class Hotel {
         }
         Vector<Chambre> freeRooms = new Vector<Chambre>();
         for (Chambre chambre : listechambre) {
-            if (chambre.isFree(dateDebut, dateFin)) {
+            if (!chambre.isFree(dateDebut, dateFin)) {
                 freeRooms.add(chambre);
             }
         }
@@ -190,6 +194,19 @@ public class Hotel {
         }
         return foundClients;
     }
+
+
+    public Vector<Chambre> chambreSalle(LocalDate ajd){
+       Vector <Chambre> cs = new Vector<Chambre>();
+       for(Chambre c : listechambre){
+        if(c.ChambreSalle(ajd)){
+        cs.add(c);
+        }
+       }
+       return cs;
+    }
+
+
 
     // Affichage des chambres libres
     public void displayFreeRooms(LocalDate dateDebut, LocalDate dateFin) {
@@ -221,5 +238,5 @@ public class Hotel {
         for (Reservation reservation : listReservation) {
             System.out.println(reservation + "\n");
         }
-    }    
+    } 
 }
