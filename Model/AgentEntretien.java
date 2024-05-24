@@ -35,10 +35,15 @@ public class AgentEntretien extends Employe {
     }
 
     public void nettoyerChambre(Sejour sejour) {
-        listNettoyage.add(sejour);
+        if (!listNettoyage.contains(sejour)) {
+            listNettoyage.add(sejour);
+        } else {
+            return -1;
+        }
     }
 
     public void afficherListNettoyage() {
+        System.out.println("Liste des nettoyages effectués :");
         for (Sejour sejour : listNettoyage) {
             System.out.println(sejour);
         }
@@ -47,6 +52,13 @@ public class AgentEntretien extends Employe {
     public boolean verifieMenage(Sejour sejour) {
         return listNettoyage.contains(sejour);
     }
-
+    
+    public void afficherDetailsNettoyage(Sejour sejour) {
+        if (listNettoyage.contains(sejour)) {
+            System.out.println("Détails du nettoyage pour le séjour : " + sejour);
+        } else {
+            System.out.println("Aucun nettoyage effectué pour ce séjour.");
+        }
+    }
 
 }
