@@ -8,7 +8,7 @@ public class AgentEntretien extends Employe {
     public AgentEntretien(String nomEmploye, int numEmploye, String prenomEmploye, boolean menageEffectue, Vector<Sejour> listNettoyage) {
         super(nomEmploye, numEmploye, prenomEmploye);
         this.menageEffectue = menageEffectue;
-        this.listNettoyage = listNettoyage;
+        this.listNettoyage = new Vector<>();
     
     }
 
