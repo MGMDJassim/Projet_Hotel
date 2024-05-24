@@ -7,7 +7,6 @@ import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import Model.Client;
 import Model.Hotel;
 import Vue.Fenetre;
 import Vue.VueAffClient;

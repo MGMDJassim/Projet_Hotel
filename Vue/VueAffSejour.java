@@ -1,15 +1,12 @@
 package Vue;
 
 import java.awt.BorderLayout;
-import java.awt.Checkbox;
 import java.util.Vector;
-
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 import Controler.ButtonConsulSejour;
 import Model.Hotel;
 import Vue.Fenetre;
@@ -48,7 +45,11 @@ public class VueAffSejour extends JPanel{
         DefaultTableModel model = new DefaultTableModel(data,nomColonne);
         table = new JTable(model);
         table.getColumn("Consulter").setCellRenderer(new BottonRendu());
-        table.getColumn("Consulter").setCellEditor(new ButtonConsulSejour(new JCheckBox(), hotel));
+        table.getColumn("Consulter").setCellRenderer(new BottonRendu());
+        for(int i = 0; i < table.getRowCount(); i++) {
+            Sejour sejour = hotel.listSejour.get(i);
+            table.getColumn("Consulter").setCellEditor(new ButtonConsulSejour(new JCheckBox(),hotel, sejour));
+        }
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
     }

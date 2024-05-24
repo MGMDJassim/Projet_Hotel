@@ -34,10 +34,7 @@ public class Main {
 
     Sejour sejour1 = new Sejour(r2);
     Consommation consommation1 = new Consommation(p1,2, sejour1);
-    Consommation consommation2 = new Consommation(p2,2, sejour1);
-    Consommation consommation3 = new Consommation(p3,2, sejour1);
-    Consommation consommation4 = new Consommation(p4,2, sejour1);
-    Consommation consommation5 = new Consommation(p5,2, sejour1);
+
 
 
     //Ajout des produits
@@ -64,15 +61,11 @@ public class Main {
     c12.addReservation(r3);
     hotel.addClient(client3);
 
-    //Ajout des consommations au sÃ©jour
+    //Ajout des consommations au séjour
     hotel.addReservation(r2);
 
     r2.addSejour(sejour1);
     sejour1.addConsommation(consommation1);
-    sejour1.addConsommation(consommation2);
-    sejour1.addConsommation(consommation3);
-    sejour1.addConsommation(consommation4);
-    sejour1.addConsommation(consommation5);
  
     hotel.addReservation(r3);
 

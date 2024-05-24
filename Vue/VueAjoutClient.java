@@ -63,6 +63,6 @@ public class VueAjoutClient extends JPanel{
 
         new ControleAjoutClient(nomClient, prenomClient, dateDeNaissanceClient, telClient, hotel, fenetre);
     }
-    }
+}
     
 

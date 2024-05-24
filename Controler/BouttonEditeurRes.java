@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import Model.Chambre;
 import Model.Hotel;
 import Model.Reservation;
+import Model.Sejour;
 import Vue.Fenetre;
 
 public class BouttonEditeurRes extends DefaultCellEditor {
@@ -31,8 +32,10 @@ public class BouttonEditeurRes extends DefaultCellEditor {
                     fireEditingStopped();
                     Reservation reservation = hotel.listReservation.get(row);
                     Chambre chambre = reservation.getChambre();
+                    Sejour sejour = hotel.listSejour.get(row);
                     chambre.removeReservation(reservation);
                     hotel.removeReservation(reservation);
+                    hotel.removeSejour(sejour);
                     System.out.println("Reservation : " + hotel.getListReservation()+ "\n");
                     System.out.println("Chambre : " + chambre.getListReservation()+ "\n");
                     DefaultTableModel model = (DefaultTableModel) table.getModel();
