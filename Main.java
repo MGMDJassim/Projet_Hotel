@@ -66,20 +66,15 @@ public class Main {
 
     //Ajout des consommations au sÃ©jour
     hotel.addReservation(r2);
-    
+
+    r2.addSejour(sejour1);
     sejour1.addConsommation(consommation1);
     sejour1.addConsommation(consommation2);
     sejour1.addConsommation(consommation3);
     sejour1.addConsommation(consommation4);
     sejour1.addConsommation(consommation5);
-
-    
-
-    sejour1.setReservation(r2);
+ 
     hotel.addReservation(r3);
-
-
-
 
     hotel.addSejour(sejour1);
     hotel.addConsommation(consommation1);
@@ -90,7 +85,8 @@ public class Main {
 
     System.out.println(sejour1.calculerPrix());
 
-  Fenetre fenetre = new Fenetre(hotel);
+   new Fenetre(hotel);
+   //new FenetreConsulSejour(hotel);
   }
 
 }

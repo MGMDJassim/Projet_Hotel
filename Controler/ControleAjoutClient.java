@@ -3,7 +3,6 @@ package Controler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.util.Locale;
 
 import javax.swing.JTextField;
 
@@ -18,7 +17,7 @@ public class ControleAjoutClient implements ActionListener {
     private JTextField dateDeNaissanceClient;
     private JTextField telClient;
     private Hotel hotel;
-    private Fenetre fenetre;
+    public Fenetre fenetre;
 
 
     public ControleAjoutClient(JTextField nomClient, JTextField prenomClient, JTextField dateDeNaissanceClient,

@@ -6,8 +6,6 @@ import java.time.LocalDate;
 import java.util.Vector;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import Model.Chambre;
 import Model.Hotel;
@@ -18,18 +16,14 @@ public class ControlRecherche implements ActionListener {
     private JTextField Ddebut;
     private JTextField Dfin;
     private JComboBox<String> type;
-    private JTable table;
-    private JPanel panel;
     private VueAjoutReservation vueAjoutReservation;
 
-    public ControlRecherche(Hotel hotel, JTextField Ddebut, JTextField Dfin, JTable table, JPanel panel, JComboBox<String> type, VueAjoutReservation vueAjoutReservation) {
+    public ControlRecherche(Hotel hotel, JTextField Ddebut, JTextField Dfin, JComboBox<String> type, VueAjoutReservation panel) {
         this.hotel = hotel;
         this.Ddebut = Ddebut;
         this.Dfin = Dfin;
-        this.table = table;
-        this.panel = panel;
         this.type = type;
-        this.vueAjoutReservation = vueAjoutReservation;
+        this.vueAjoutReservation = panel;
     }
 
     @Override

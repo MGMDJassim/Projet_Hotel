@@ -11,7 +11,6 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Controler.ControlAjoutReservation;
 import Controler.ControlRecherche;
@@ -19,9 +18,9 @@ import Model.Chambre;
 import Model.Hotel;
 
 public class VueAjoutReservation extends JPanel {
-    Hotel hotel;
-    Fenetre fenetre;
-    Chambre chambre;
+    private Hotel hotel;
+    private Fenetre fenetre;
+    private Chambre chambre;
 
     // Elements pour chercher une chambre libre
     JLabel dateDebut = new JLabel("Date de début (Année-Mois-Jour) :");
@@ -100,12 +99,9 @@ public class VueAjoutReservation extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 3;
         leftPanel.add(rechercher, gbc);
-        rechercher.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                ControlRecherche r = new ControlRecherche(hotel, Ddebut, Dfin, table, VueAjoutReservation.this, type, VueAjoutReservation.this);
-                r.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
-            }
-        });
+
+        ControlRecherche r = new ControlRecherche(hotel, Ddebut, Dfin, type, VueAjoutReservation.this);
+        rechercher.addActionListener(r);
 
         gbc.gridx = 0;
         gbc.gridy = 4;
@@ -130,48 +126,12 @@ public class VueAjoutReservation extends JPanel {
         leftPanel.add(telClient, gbc);
         gbc.gridx = 1;
         leftPanel.add(tel, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 8;
-        leftPanel.add(sejour, gbc);
-        sejour.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                if (sejour.isSelected()) {
-                    gbc.gridx = 0;
-                    gbc.gridy = 9;
-                    leftPanel.add(produit, gbc);
-                    gbc.gridx = 1;
-                    leftPanel.add(prod, gbc);
-
-                    gbc.gridx = 0;
-                    gbc.gridy = 10;
-                    leftPanel.add(quantite, gbc);
-                    gbc.gridx = 1;
-                    leftPanel.add(qte, gbc);
-                } else {
-                    leftPanel.remove(produit);
-                    leftPanel.remove(prod);
-                    leftPanel.remove(quantite);
-                    leftPanel.remove(qte);
-                }
-
-                revalidate();
-                repaint();
-            }
-        });
-
+        
         gbc.gridx = 0;
         gbc.gridy = 11;
         leftPanel.add(ajouter, gbc);
-        ajouter.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Ajoutez ici votre code pour ajouter une réservation
-            }
-        });
-
         // Panel droit pour le tableau
         JScrollPane scrollPane = new JScrollPane(table);
-
         // Split pane pour diviser la fenêtre en deux moitiés égales
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, scrollPane);
         splitPane.setDividerLocation(0.5); // Diviser la fenêtre en deux moitiés égales
@@ -202,7 +162,6 @@ public class VueAjoutReservation extends JPanel {
             row.add(Boolean.FALSE); // Ajouter une valeur Boolean pour la case à cocher
             data.add(row);
         }
-
         DefaultTableModel model = new DefaultTableModel(data, nomColonne) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
@@ -228,10 +187,8 @@ public class VueAjoutReservation extends JPanel {
                     for (ActionListener al : ajouter.getActionListeners()) {
                         ajouter.removeActionListener(al);
                     }
-
-                    ControlAjoutReservation control = new ControlAjoutReservation(hotel, Ddebut, Dfin, nom, prenom, date, tel, table, chambre, fenetre);
+                    ControlAjoutReservation control = new ControlAjoutReservation(hotel, Ddebut, Dfin, nom, prenom, date, tel, chambre, fenetre);
                     ajouter.addActionListener(control);
-
                     if (chambre == null) {
                         JOptionPane.showMessageDialog(null, "Veuillez sélectionner une chambre");
                         return;

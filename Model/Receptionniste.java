@@ -23,7 +23,6 @@ public class Receptionniste extends Employe {
             listResa.add(reservation);
                 reservation.setReceptionniste(this);
         }
-
-}
+    }
     
 }

@@ -61,7 +61,7 @@ public class VueAjoutClient extends JPanel{
         add(ajoutClient);
         ajoutClient.setBounds(220, 130, 200, 20);
 
-        ControleAjoutClient controleAjoutClient = new ControleAjoutClient(nomClient, prenomClient, dateDeNaissanceClient, telClient, hotel, fenetre);
+        new ControleAjoutClient(nomClient, prenomClient, dateDeNaissanceClient, telClient, hotel, fenetre);
     }
     }
     

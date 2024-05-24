@@ -6,11 +6,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JCheckBox;
 
 import Model.Chambre;
 import Model.Hotel;
-import Model.Presidentiel;
-import Model.Normale;
+
 
 public class VueReservation extends JPanel {
     Hotel hotel;
@@ -46,7 +46,7 @@ public class VueReservation extends JPanel {
              Chambre chambre = hotel.listReservation.get(i).getChambre();
             
             // Vérifiez si la chambre n'est pas null
-            if (hotel.listReservation.get(i).getChambre() != null) {
+            if (chambre != null) {
                 row.add(hotel.listReservation.get(i).getChambre().getNumeroPorte());
                 row.add(hotel.listReservation.get(i).getChambre().getType());
                 row.add(hotel.listReservation.get(i).getChambre().getEtage());
@@ -62,7 +62,7 @@ public class VueReservation extends JPanel {
             data.add(row);
 
             table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
-            table.getColumn("Supprimer").setCellEditor(new Controler.BouttonEditeurRes(new javax.swing.JCheckBox(), hotel, fenetre, hotel.listReservation.get(0)));
+            table.getColumn("Supprimer").setCellEditor(new Controler.BouttonEditeurRes(new JCheckBox(), hotel, fenetre));
         }
 
 

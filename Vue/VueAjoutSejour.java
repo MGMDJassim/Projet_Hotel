@@ -20,16 +20,12 @@ public class VueAjoutSejour extends JPanel {
     Fenetre fenetre;
     Vector<Produit> produits = new Vector<Produit>();
     Consommation consommation;
-
     JLabel produit = new JLabel("Produit");
     JComboBox<String> listeProduits = new JComboBox<String>();
-
     JLabel quantite = new JLabel("Quantité");
     JComboBox<Integer> listeQuantite = new JComboBox<Integer>();
-
     JButton ajouter = new JButton("Ajouter");
-
-
+    
     public VueAjoutSejour(Reservation reservation, Hotel hotel, Fenetre fenetre) {
         this.reservation = reservation;
         this.hotel = hotel;
@@ -42,7 +38,6 @@ public class VueAjoutSejour extends JPanel {
         for (Produit produit : hotel.listProduit) {
             listeProduits.addItem(produit.getNom());
         }
-
         add(quantite);
         add(listeQuantite);
 
@@ -54,9 +49,7 @@ public class VueAjoutSejour extends JPanel {
 
         ajouter.addActionListener(e -> {
             if (sejour == null) {
-                // Initialize sejour or handle the null scenario
                 sejour = new Sejour(reservation);
-                // or throw an exception, log an error, etc.
             }
             Produit produit = hotel.listProduit.get(listeProduits.getSelectedIndex());
             int quantite = listeQuantite.getSelectedIndex() + 1;
@@ -67,7 +60,6 @@ public class VueAjoutSejour extends JPanel {
             System.out.println("Consommation ajoutÃ©e : " + consommation.getProduit().getNom() + " " + consommation.getQuantite());
             System.out.println("Sejour ajouté : " + sejour.getConsommation());
             System.out.println("Reservation : " + sejour.getReservation().getClient().getNomClient());
-
         });
 
         setVisible(true);

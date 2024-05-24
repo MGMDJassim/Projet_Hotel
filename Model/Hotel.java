@@ -14,6 +14,7 @@ public class Hotel {
     public Vector<Reservation> listReservation = new Vector<Reservation>();
     public Vector<Sejour> listSejour = new Vector<Sejour>();
     public Vector<Consommation> listConsommation = new Vector<Consommation>();
+    public Vector<Employe> listEmploye = new Vector<Employe>();
     
     public Hotel (String nom, String adresse, int telephone, String mail){
         this.nom = nom;
@@ -70,6 +71,13 @@ public class Hotel {
         this.listConsommation.remove(consommation);
     }
 
+    public void addEmploye(Employe employe){
+        this.listEmploye.add(employe);
+    }
+
+    public void removeEmploye(Employe employe){
+        this.listEmploye.remove(employe);
+    }
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -154,10 +162,8 @@ public class Hotel {
 
     //Recherche des chambres libres 
     public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin) {
-        if (dateFin.isBefore(dateDebut)) {
-            LocalDate temp = dateDebut;
-            dateDebut = dateFin;
-            dateFin = temp;
+        if (dateFin.isBefore(dateDebut) || dateDebut.isBefore(LocalDate.now()) || dateFin.isBefore(LocalDate.now()) || dateDebut.isEqual(dateFin)) {
+            return null;
         }
         Vector<Chambre> freeRooms = new Vector<Chambre>();
         for (Chambre chambre : listechambre) {
@@ -168,6 +174,23 @@ public class Hotel {
         return freeRooms;
     }
 
+    public Vector<Vector<Object>> rechercheClient(String nom) {
+        Vector<Client> listClient = getListClient();
+        Vector<Vector<Object>> foundClients = new Vector<Vector<Object>>();
+        for (Client client : listClient) {
+            if (client.getNomClient().equals(nom)) {
+                Vector<Object> clientData = new Vector<Object>();
+                clientData.add(client.getNomClient());
+                clientData.add(client.getPrenomClient());
+                clientData.add(client.getDateDeNaissance());
+                clientData.add(client.getTelClient());
+                // Ajoutez d'autres attributs du client à clientData si nécessaire
+                foundClients.add(clientData);
+            }
+        }
+        return foundClients;
+    }
+
     // Affichage des chambres libres
     public void displayFreeRooms(LocalDate dateDebut, LocalDate dateFin) {
         Vector<Chambre> freeRooms = getFreeRooms(dateDebut, dateFin);
@@ -175,10 +198,6 @@ public class Hotel {
         for (Chambre chambre : freeRooms) {
             System.out.println(chambre);
         }
-    }
-
-    public String toString(){
-        return listechambre.toString();
     }
 
     public void afficherChambres(){
@@ -198,13 +217,9 @@ public class Hotel {
             System.out.println(produit);
         }
     }
-
     public void afficherReservations(){
         for (Reservation reservation : listReservation) {
             System.out.println(reservation + "\n");
         }
-    }
-
-
-    
+    }    
 }

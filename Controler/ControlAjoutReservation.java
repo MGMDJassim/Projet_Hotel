@@ -4,32 +4,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import Model.Chambre;
 import Model.Client;
 import Model.Hotel;
 import Model.Reservation;
-import Model.Sejour;
-import Vue.VueAjout;
 import Vue.VueAjoutSejour;
 import Vue.Fenetre;
 
 public class ControlAjoutReservation implements ActionListener {
 
     private Hotel hotel;
-    private Sejour sejour;
     private JTextField ddebut;
     private JTextField dfin;
     private JTextField nom;
     private JTextField prenom;
     private JTextField date;
     private JTextField tel;
-    public JTable table;
     private Chambre chambre;
     private Fenetre fenetre;
 
-    public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, JTable table, Chambre chambre, Fenetre fenetre) {
+    public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, Chambre chambre, Fenetre fenetre) {
         this.hotel = hotel;
         this.ddebut = ddebut;
         this.dfin = dfin;
@@ -37,7 +32,6 @@ public class ControlAjoutReservation implements ActionListener {
         this.prenom = prenom;
         this.date = date;
         this.tel = tel;
-        this.table = table;
         this.chambre = chambre;
         this.fenetre = fenetre;
     }
@@ -63,7 +57,7 @@ public class ControlAjoutReservation implements ActionListener {
             fenetre.revalidate();
             fenetre.repaint();
 
-            //System.out.println("Reservation ajoutÃ©e");
+            //System.out.println("Reservation ajouté");
             System.out.println(reservation.toString());
             System.out.println("*******************");
             System.out.println(chambre.getListReservation()+ "\n");

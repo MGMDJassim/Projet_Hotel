@@ -1,6 +1,4 @@
 package Model;
-
-//import java.io.*;
 import java.util.*;
 
 public class AgentEntretien extends Employe {

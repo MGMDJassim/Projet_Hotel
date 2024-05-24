@@ -5,15 +5,22 @@ import java.util.Vector;
 
 
 public class Sejour {
+    private int count = 0;
+    private int n;
     private Reservation reservation;
     private Vector<Consommation> consommation = new Vector<Consommation>();
     private LocalDate dateDebut;
     private LocalDate dateFin;
 
     public Sejour(Reservation reservation) {
+        this.n = ++count;
         this.reservation = reservation;
         this.dateDebut = reservation.getDateDebut();
         this.dateFin = reservation.getDateFin();
+    }
+
+    public int numSejour(){
+        return n;
     }
 
     public Reservation getReservation() {
