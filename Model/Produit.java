@@ -28,14 +28,18 @@ public class Produit {
     public int getPrix() {
         return prix;
     }
-    public void setPrix(int prix) {
-        this.prix = prix;
+     public void setPrix(int prix) {
+        if (prix >= 0) {
+            this.prix = prix;
+        }
     }
     public int getStock() {
         return stock;
     }
-    public void setStock(int stock) {
-        this.stock = stock;
+  public void setStock(int stock) {
+        if (stock >= 0) {
+            this.stock = stock;
+        }
     }
     public Hotel getHotel() {
         return hotel;
@@ -76,6 +80,18 @@ public class Produit {
         }
     }
 
+    //verifier la disponibilité d'un produit
 
+    public boolean isAvailable(int quantite){
+        return quantite <= stock && quantite > 0;
+    }
+    //ajouter stock
+
+    public void addStock(int quantite){
+        if( quantite > 0){
+            this.stock += quantite;
+        }
+    }
+    
 
 }
