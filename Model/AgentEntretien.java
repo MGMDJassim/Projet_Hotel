@@ -5,8 +5,16 @@ public class AgentEntretien extends Employe {
     public boolean menageEffectue;
     public Vector<Sejour> listNettoyage;
     
+<<<<<<< HEAD
     public AgentEntretien(String nomEmploye, String prenomEmploye) {
         super(nomEmploye, prenomEmploye);
+=======
+    public AgentEntretien(String nomEmploye, int numEmploye, String prenomEmploye, boolean menageEffectue, Vector<Sejour> listNettoyage) {
+        super(nomEmploye, numEmploye, prenomEmploye);
+        this.menageEffectue = menageEffectue;
+        this.listNettoyage = new Vector<>();
+    
+>>>>>>> 9a028753805b4024c16ba705fe2bdb6048509c98
     }
 
     public void afficherInfo(){
@@ -32,10 +40,15 @@ public class AgentEntretien extends Employe {
     }
 
     public void nettoyerChambre(Sejour sejour) {
-        listNettoyage.add(sejour);
+        if (!listNettoyage.contains(sejour)) {
+            listNettoyage.add(sejour);
+        } else {
+            return -1;
+        }
     }
 
     public void afficherListNettoyage() {
+        System.out.println("Liste des nettoyages effectués :");
         for (Sejour sejour : listNettoyage) {
             System.out.println(sejour);
         }
@@ -44,6 +57,13 @@ public class AgentEntretien extends Employe {
     public boolean verifieMenage(Sejour sejour) {
         return listNettoyage.contains(sejour);
     }
-
+    
+    public void afficherDetailsNettoyage(Sejour sejour) {
+        if (listNettoyage.contains(sejour)) {
+            System.out.println("Détails du nettoyage pour le séjour : " + sejour);
+        } else {
+            System.out.println("Aucun nettoyage effectué pour ce séjour.");
+        }
+    }
 
 }
