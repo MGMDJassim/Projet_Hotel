@@ -5,16 +5,8 @@ public class AgentEntretien extends Employe {
     public boolean menageEffectue;
     public Vector<Sejour> listNettoyage;
     
-<<<<<<< HEAD
     public AgentEntretien(String nomEmploye, String prenomEmploye) {
         super(nomEmploye, prenomEmploye);
-=======
-    public AgentEntretien(String nomEmploye, int numEmploye, String prenomEmploye, boolean menageEffectue, Vector<Sejour> listNettoyage) {
-        super(nomEmploye, numEmploye, prenomEmploye);
-        this.menageEffectue = menageEffectue;
-        this.listNettoyage = new Vector<>();
-    
->>>>>>> 9a028753805b4024c16ba705fe2bdb6048509c98
     }
 
     public void afficherInfo(){

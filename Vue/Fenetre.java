@@ -23,6 +23,7 @@ public class Fenetre extends JFrame{
     JMenu gsejour = new JMenu("Gestion des sejours");
     JMenu gemploye = new JMenu("Gestion des employes");
     JMenu gmenage = new JMenu("Gestion du menage");
+    JMenu gproduit = new JMenu("Gestion des produits");
 
     JMenuItem ajouterchambre = new JMenuItem("Ajouter une chambre");
     JMenuItem afficherChambre = new JMenuItem("Afficher les chambres");
@@ -34,6 +35,8 @@ public class Fenetre extends JFrame{
     JMenuItem ajouterReservation = new JMenuItem("Ajouter une reservation");
 
     JMenuItem affSejour = new JMenuItem("Afficher les séjours");
+
+    JMenuItem affProduit = new JMenuItem("Afficher les produits");
     
     JMenuItem ajouterEmploye = new JMenuItem("Ajouter un employe");
     JMenuItem supprimerEmploye = new JMenuItem("Supprimer un employe");
@@ -58,6 +61,7 @@ public class Fenetre extends JFrame{
         barre.add(greservation);
         barre.add(gsejour);
         barre.add(gemploye);
+        barre.add(gproduit);
         barre.add(gmenage);
 
         gchambre.add(ajouterchambre);
@@ -70,6 +74,8 @@ public class Fenetre extends JFrame{
         greservation.add(ajouterReservation);
 
         gsejour.add(affSejour);
+
+        gproduit.add(affProduit);
 
         gemploye.add(ajouterEmploye);
         gemploye.add(supprimerEmploye);
@@ -126,6 +132,13 @@ public class Fenetre extends JFrame{
             }
         });
 
+
+        affProduit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                VueAffProduit vue = new VueAffProduit(hotel, Fenetre.this);
+                setContentPane(vue);
+            }
+        });
 
         afficherMenage.addActionListener(new ActionListener() {
             public void actionPerformed (ActionEvent e){

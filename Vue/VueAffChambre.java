@@ -1,5 +1,6 @@
 package Vue;
 
+import java.awt.BorderLayout;
 import java.util.Vector;
 
 import javax.swing.JCheckBox;
@@ -19,6 +20,7 @@ public class VueAffChambre extends JPanel {
     Vector<Vector<Object>> data;
 
     public VueAffChambre(Hotel hotel, Fenetre fenetre) {
+        super(new BorderLayout());
         this.hotel = hotel;
         this.fenetre = fenetre;
 

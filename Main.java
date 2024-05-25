@@ -25,8 +25,8 @@ public class Main {
     Client client4 = new Client("Mougamadou", "Jassim", LocalDate.of(2000, 06, 19), 78281, hotel);
 
     Reservation r2 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c11, client2);
-    Reservation r3 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c12, client3);
-    Reservation r4 = new Reservation(LocalDate.of(2024, 05, 21), LocalDate.of(2024,05, 23), c24, client4);
+    Reservation r3 = new Reservation(LocalDate.of(2024, 05, 21), LocalDate.of(2024,05, 23), c12, client3);
+    Reservation r4 = new Reservation(LocalDate.of(2024, 05,27), LocalDate.of(2024, 05, 29), c24, client4);
 
     Produit p1 = new Produit("Produit1", hotel, 10, 100);
     Produit p2 = new Produit("Produit2", hotel, 20, 100);
@@ -67,7 +67,8 @@ public class Main {
 
     c11.addReservation(r2);
     c12.addReservation(r3); 
-    c24.addReservation(r4);   
+    c24.addReservation(r4);
+       
     //Ajout des consommations au séjour
     hotel.addReservation(r2);
     hotel.addReservation(r4);
@@ -78,23 +79,7 @@ public class Main {
     hotel.addSejour(sejour1);
     hotel.addConsommation(consommation1);
 
-    hotel.afficherReservations();
-    sejour1.afficherReservation();
-
-    for(Chambre c : hotel.listechambre){
-      c.cSalle(r4.getDateFin());
-    }
-    
-    r4.getChambre().cSalle(LocalDate.now());
-
-
-    System.out.println("Les chambre salle " + hotel.chambreSalle(LocalDate.now()));
-
-    //test pour les chambres salles
-    System.out.println(sejour1.calculerPrix());
-
     new Fenetre(hotel);
-   //new FenetreConsulSejour(hotel);
   }
 
 }

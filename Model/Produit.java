@@ -16,7 +16,6 @@ public class Produit {
         this.prix = prix;
         this.hotel = hotel;
         this.stock = stock;
-        this.consommation = new Vector<>();
     }
     
     // Getters et Setters

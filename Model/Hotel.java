@@ -171,13 +171,12 @@ public class Hotel {
         }
         Vector<Chambre> freeRooms = new Vector<Chambre>();
         for (Chambre chambre : listechambre) {
-            if (!chambre.isFree(dateDebut, dateFin)) {
+            if (chambre.isFree(dateDebut, dateFin)) { // Supprimez le "!" pour vérifier si la chambre est libre
                 freeRooms.add(chambre);
             }
         }
         return freeRooms;
     }
-
     public Vector<Vector<Object>> rechercheClient(String nom) {
         Vector<Client> listClient = getListClient();
         Vector<Vector<Object>> foundClients = new Vector<Vector<Object>>();
@@ -194,8 +193,6 @@ public class Hotel {
         }
         return foundClients;
     }
-
-
     public Vector<Chambre> chambreSalle(LocalDate ajd){
        Vector <Chambre> cs = new Vector<Chambre>();
        for(Chambre c : listechambre){
@@ -205,38 +202,4 @@ public class Hotel {
        }
        return cs;
     }
-
-
-
-    // Affichage des chambres libres
-    public void displayFreeRooms(LocalDate dateDebut, LocalDate dateFin) {
-        Vector<Chambre> freeRooms = getFreeRooms(dateDebut, dateFin);
-        System.out.println("Chambres libres :");
-        for (Chambre chambre : freeRooms) {
-            System.out.println(chambre);
-        }
-    }
-
-    public void afficherChambres(){
-        for (Chambre chambre : listechambre) {
-            System.out.println(chambre);
-        }
-    }
-
-    public void afficherClients(){
-        for (Client client : listClient) {
-            System.out.println(client);
-        }
-    }
-
-    public void afficherProduits(){
-        for (Produit produit : listProduit) {
-            System.out.println(produit);
-        }
-    }
-    public void afficherReservations(){
-        for (Reservation reservation : listReservation) {
-            System.out.println(reservation + "\n");
-        }
-    } 
 }

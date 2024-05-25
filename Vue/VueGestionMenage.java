@@ -79,6 +79,8 @@ public class VueGestionMenage extends JPanel{
             }
         };
 
+        
+
         table = new JTable(model);
         table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(new JCheckBox()));
         JScrollPane scrollPane = new JScrollPane(table);
