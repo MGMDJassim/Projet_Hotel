@@ -3,7 +3,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.time.LocalDate;
 import java.util.Vector;
-import java.util.ResourceBundle.Control;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
@@ -72,7 +71,6 @@ public class VueGestionMenage extends JPanel {
                 return super.getColumnClass(columnIndex);
             }
         };
-
         table = new JTable(model);
         table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(new JCheckBox()));
         ControlAffecMenage controlAffecMenage = new ControlAffecMenage(hotel, table, cmbEmploye);

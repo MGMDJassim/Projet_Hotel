@@ -11,11 +11,10 @@ public class ControlAjout implements ActionListener {
     private Chambre chambre;
     private Hotel hotel;
     private Fenetre fenetre;
-    private JTextField numeroChambre;
+
     private String[] typeChambre;
     private JTextField numeroEtage;
-    public ControlAjout(JTextField numeroChambre, String[] type, JTextField numeroEtage, Hotel hotel, Fenetre fenetre) {
-        this.numeroChambre = numeroChambre;
+    public ControlAjout( String[] type, JTextField numeroEtage, Hotel hotel, Fenetre fenetre) {
         this.typeChambre = type;
         this.numeroEtage = numeroEtage;
         this.hotel = hotel;

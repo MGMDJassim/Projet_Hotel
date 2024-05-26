@@ -2,9 +2,14 @@ package Controler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
+
+import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 import Model.Hotel;
+import Vue.BottonRendu;
 import Vue.Fenetre;
 import Vue.VueAffClient;
 public class ControlRechercheClient implements ActionListener {
@@ -27,8 +32,15 @@ public class ControlRechercheClient implements ActionListener {
         Vector<Vector<Object>> donnees;
         if (!requete.isEmpty()) {
             donnees = hotel.rechercherClient(requete);
-            vueAffClient.aJour(donnees);
+            Vector<String> nomColonne = new Vector<String>(vueAffClient.nomColonne);
+            nomColonne.add("Supprimer");
+            for (Vector<Object> ligne : donnees) {
+                ligne.add("Supprimer");
+            }
+            DefaultTableModel model = new DefaultTableModel(donnees, vueAffClient.nomColonne);
+            table.setModel(model);
+            table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
+            table.getColumn("Supprimer").setCellEditor(new ButtonEditeurSuppClient(new JCheckBox(), hotel, fenetre));
         }
-        return;
     }
 }

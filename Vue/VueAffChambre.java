@@ -14,15 +14,15 @@ import Controler.BouttonEditeur;
 import Model.*;
 
 public class VueAffChambre extends JPanel {
-    Hotel hotel;
-    Fenetre fenetre;
+    private Hotel hotel;
+    private Fenetre fenetre;
     Vector<String> nomColonne;
     Vector<Vector<Object>> donnees;
 
     public VueAffChambre(Hotel hotel, Fenetre fenetre) {
         super(new BorderLayout());
-        hotel = hotel;
-        fenetre = fenetre;
+        this.hotel = hotel;
+        this.fenetre = fenetre;
         nomColonne = new Vector<String>();
         donnees = new Vector<Vector<Object>>();
         nomColonne.add("Numéro");
@@ -36,8 +36,7 @@ public class VueAffChambre extends JPanel {
             ligne.add(chambre.getType());
             ligne.add(chambre.getEtage());
             ligne.add("Supprimer");
-
-            this.donnees.add(ligne);
+            donnees.add(ligne);
         }
         DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
         JTable table = new JTable(model);
@@ -45,8 +44,6 @@ public class VueAffChambre extends JPanel {
         table.getColumn("Supprimer").setCellEditor(new BouttonEditeur(new JCheckBox(), hotel, fenetre));
         JScrollPane scrollPane = new JScrollPane(table);
         this.add(scrollPane);
-
-
     }
 
 }

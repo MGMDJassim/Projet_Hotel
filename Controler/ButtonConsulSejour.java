@@ -16,7 +16,7 @@ public class ButtonConsulSejour extends DefaultCellEditor {
     private JButton boutton;
     private JTable table;
     private Sejour sejour;
-    private int row;
+    private int ligne;
 
     public ButtonConsulSejour(JCheckBox checkBox, Hotel hotel, Sejour sejour) {
         super(checkBox);
@@ -26,14 +26,12 @@ public class ButtonConsulSejour extends DefaultCellEditor {
         this.boutton.setOpaque(true);
         this.boutton.addActionListener(new ButtonActionListener());
     }
-
     public Component getTableCellEditorComponent(JTable table, Object valeur, boolean estSelectionne, int ligne, int column) {
         this.table = table;
-        this.row = ligne;
+        this.ligne = ligne;
         boutton.setText(valeur.toString());
         return boutton;
     }
-
     private class ButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             new VueAffConsulSejour(hotel, sejour);

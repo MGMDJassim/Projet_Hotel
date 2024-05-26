@@ -1,8 +1,5 @@
 import java.time.*;
-
-
-//import java.util.*;
-import Vue.Fenetre;
+import Vue.FenetreReceptionniste;
 import Model.*;
 
 
@@ -38,9 +35,20 @@ public class Main {
     Consommation consommation1 = new Consommation(p1,2, sejour1);
 
     AgentEntretien ag = new AgentEntretien("nom", "prenom" );
+    AgentEntretien ag2 = new AgentEntretien("nom2", "prenom2" );
+
+    Receptionniste receptionniste = new Receptionniste("nom", "prenom");
+    Receptionniste receptionniste2 = new Receptionniste("nom2", "prenom2");
+    Receptionniste receptionniste3 = new Receptionniste("nom3", "prenom3");
+
 
     //Ajout des agents d'entretien
     hotel.ajouterEmploye(ag);
+    hotel.ajouterEmploye(ag2);
+    hotel.ajouterEmploye(receptionniste);
+    hotel.ajouterEmploye(receptionniste2);
+    hotel.ajouterEmploye(receptionniste3);
+    
     //Ajout des produits
     hotel.ajouterProduit(p1);
     hotel.ajouterProduit(p2);
@@ -79,6 +87,13 @@ public class Main {
     hotel.ajouterSejour(sejour1);
     hotel.ajouterConsommation(consommation1);
 
+    for(Employe e : hotel.getListeEmployes()){
+      System.out.println(e.getNomEmploye());
+      System.out.println(e.getPrenomEmploye());
+      System.out.println(e.getNumEmploye());
+
+    }
+
       hotel.chambreSale(LocalDate.now());
       for (Chambre c : hotel.chambreSale(LocalDate.now())) {
         System.out.println("Chambre : " + c.getNumeroPorte()+" " + c.getEtage() +" Type + " + c.getType());
@@ -86,7 +101,7 @@ public class Main {
         
       }
 
-    new Fenetre(hotel);
+    new FenetreReceptionniste(hotel);
   }
 
 }

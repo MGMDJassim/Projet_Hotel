@@ -34,9 +34,10 @@ public class Fenetre extends JFrame{
     JMenuItem afficherClient = new JMenuItem("Afficher les clients");
 
     JMenuItem affReservations = new JMenuItem("Afficher les réservations");
-    JMenuItem ajouterReservation = new JMenuItem("Ajouter une réservation");
+
 
     JMenuItem affSejour = new JMenuItem("Afficher les séjours");
+    JMenuItem ajouterSejour = new JMenuItem("Ajouter un sejour");
 
     JMenuItem affProduit = new JMenuItem("Afficher les produits");
     
@@ -45,15 +46,15 @@ public class Fenetre extends JFrame{
     JMenuItem afficherEmploye = new JMenuItem("Afficher les employés");
     
     JMenuItem ajouterMenage = new JMenuItem("Ajouter une tâche de ménage");
-    JMenuItem supprimerMenage = new JMenuItem("Supprimer une tâche de ménage");
-    JMenuItem afficherMenage = new JMenuItem("Afficher les tâches de ménage");
     
     JPanel currentPanel = new JPanel();
     Hotel hotel;
+    Receptionniste receptionniste;
     Chambre chambre;
 
-    public Fenetre(Hotel h){
+    public Fenetre(Hotel h, Receptionniste r){
         hotel = h;
+        receptionniste = r;
 
         this.setJMenuBar(barre);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -73,7 +74,7 @@ public class Fenetre extends JFrame{
         gclient.add(afficherClient);
 
         greservation.add(affReservations);
-        greservation.add(ajouterReservation);
+        gsejour.add(ajouterSejour);
 
         gsejour.add(affSejour);
 
@@ -84,7 +85,6 @@ public class Fenetre extends JFrame{
         gemploye.add(afficherEmploye);
 
         gmenage.add(ajouterMenage);
-        gmenage.add(afficherMenage);
         ajouterChambre.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VueAjout vue = new VueAjout(hotel, Fenetre.this);
@@ -114,7 +114,7 @@ public class Fenetre extends JFrame{
         
         });
 
-        ajouterReservation.addActionListener(new ActionListener() {
+        ajouterSejour.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VueAjoutReservation vue = new VueAjoutReservation(hotel, Fenetre.this, chambre);
                 setContentPane(vue);
@@ -142,7 +142,7 @@ public class Fenetre extends JFrame{
             }
         });
 
-        afficherMenage.addActionListener(new ActionListener() {
+        ajouterMenage.addActionListener(new ActionListener() {
             public void actionPerformed (ActionEvent e){
                 VueGestionMenage vue = new VueGestionMenage(hotel);
                 setContentPane(vue);
@@ -150,7 +150,7 @@ public class Fenetre extends JFrame{
         });
         this.pack();
         this.setSize(1000, 750);
-        this.setLocationRelativeTo(null); // Centre la fenêtre
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         
     }

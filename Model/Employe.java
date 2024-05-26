@@ -1,7 +1,7 @@
 
 package Model;
 public class Employe {
-    private int count = 0;
+    public static int count = 0;
     public String nomEmploye;
     public int numEmploye;
     public String prenomEmploye;

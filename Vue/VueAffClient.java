@@ -15,6 +15,7 @@ import Model.Hotel;
 import Controler.ButtonEditeurSuppClient;
 import Controler.ControlRechercheClient;
 public class VueAffClient extends JPanel {
+    
     public Vector<String> nomColonne;
     public Vector<Vector<Object>> donnees;
     public JTextField nomClient;
@@ -57,16 +58,5 @@ public class VueAffClient extends JPanel {
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
         bouton.addActionListener(new ControlRechercheClient(hotel, nomClient, fenetre,this, table));
-    }
-
-    public void aJour(Vector<Vector<Object>> nouvellesDonnees){
-        this.donnees = nouvellesDonnees;
-        DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
-        table.setModel(model);
-        table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
-        //table.getColumn("Supprimer").setCellEditor(new ButtonEditor(new JCheckBox(), hotel, fenetre));
-        this.revalidate();
-        this.repaint();
-
     }
 }

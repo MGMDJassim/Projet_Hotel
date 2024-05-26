@@ -60,19 +60,15 @@ public class Client {
     public Hotel getHotel() {
         return hotel;
     }
-
     public void addReservation(Reservation reservation) {
         this.listReservation.add(reservation);
     }
-
     public void removeReservation(Reservation reservation) {
         this.listReservation.remove(reservation);
     }
-
     public void setListReservation(Vector<Reservation> listReservation) {
         this.listReservation = listReservation;
     }
-
     public Vector<Reservation> getListReservation() {
         return listReservation;
     }

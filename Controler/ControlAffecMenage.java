@@ -11,7 +11,7 @@ import Model.AgentEntretien;
 import Model.Chambre;
 import Model.Employe;
 import Model.Hotel;
-import Vue.VueGestionMenage;
+
 
 public class ControlAffecMenage implements ActionListener {
     Hotel hotel;
@@ -52,7 +52,7 @@ public class ControlAffecMenage implements ActionListener {
                 }
                 agentEntretien.nettoyerChambre(chambre);
 
-                
+
 
             }
         }

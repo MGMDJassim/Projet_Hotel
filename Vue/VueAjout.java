@@ -36,11 +36,6 @@ public class VueAjout extends JPanel{
         this.hotel = hotel;
         this.fenetre = fenetre;
         setLayout(null);
-        add(numPorte);
-        add(numP);
-        numPorte.setBounds(10, 10, 200, 20);
-        numP.setBounds(200, 10, 200, 20);
-
 
         add(typeChambre);
         add(tChambre);
@@ -59,7 +54,7 @@ public class VueAjout extends JPanel{
 
         ajoutButton.setBounds(200, 100, 200, 20);
 
-        ControlAjout controlAjout = new ControlAjout(numP, type, numEtag, hotel, fenetre);   
+        ControlAjout controlAjout = new ControlAjout(type, numEtag, hotel, fenetre);   
         ajoutButton.addActionListener(controlAjout);
 
 

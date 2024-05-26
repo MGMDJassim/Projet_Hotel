@@ -10,19 +10,20 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Model.Hotel;
 import Model.Produit;
+import Controler.ControlRechercheProduit;
 public class VueAffProduit extends JPanel {
     private Hotel hotel;
     private Fenetre fenetre;
 
-    JLabel nomProduit = new JLabel("Nom du produit");
-    JComboBox<String> nom = new JComboBox<>(new String[]{"Produit1", "Produit2", "Produit3", "Produit4", "Produit5"});
-    JButton rechercher = new JButton("Rechercher");
+    private JLabel nomProduit = new JLabel("Nom du produit");
+    private JComboBox<String> nom = new JComboBox<>(new String[]{"Produit 1", "Produit 2", "Produit 3", "Produit 4", "Produit 5"});
+    private JButton rechercher = new JButton("Rechercher");
 
-    JTable table = new JTable();
-    Vector <String> nomColonne;
-    Vector <Vector<Object>> donnees;
+    private JTable table = new JTable();
+    public Vector <String> nomColonne;
+    private Vector <Vector<Object>> donnees;
 
-    JPanel panel = new JPanel();
+    private JPanel panel = new JPanel();
     
     public VueAffProduit(Hotel hotel, Fenetre fenetre) {
         super(new BorderLayout());
@@ -49,8 +50,14 @@ public class VueAffProduit extends JPanel {
             donnees.add(ligne);
         }
         this.add(panel, BorderLayout.NORTH);
+
+
+
         DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
         table.setModel(model);
+        table.getColumn("Faire les stocks").setCellRenderer(new BottonRendu());
+        //table.getColumn("Faire les stocks").setCellEditor(new ButtonEditeurStock(new JCheckBox(), hotel, fenetre));
+        rechercher.addActionListener(new ControlRechercheProduit(nom ,hotel, fenetre, this, table));
         JScrollPane scrollPane = new JScrollPane(table);
         this.add(scrollPane, BorderLayout.CENTER);
     }

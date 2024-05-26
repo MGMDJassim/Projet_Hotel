@@ -4,7 +4,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
-import Controler.ControleAjoutClient;
 import Model.Hotel;
 
 
@@ -69,6 +68,6 @@ public class VueAjoutClient extends JPanel{
 
         add(panel, BorderLayout.CENTER);
         
-        new ControleAjoutClient(nomClient, prenomClient, dateDeNaissanceClient, telClient, hotel, fenetre);
+        
     }
 }
