@@ -154,6 +154,8 @@ public class Hotel {
         return null;
     }
 
+    
+
     //Recherche des chambres libres 
     public Vector<Chambre> getChambresLibres(LocalDate dateDebut, LocalDate dateFin) {
         if (dateFin.isBefore(dateDebut) || dateDebut.isBefore(LocalDate.now()) || dateFin.isBefore(LocalDate.now()) || dateDebut.isEqual(dateFin)) {

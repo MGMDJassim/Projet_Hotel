@@ -10,13 +10,15 @@ public class Reservation {
     public Vector<Sejour> sejour = new Vector<Sejour>();
     public Chambre chambre;
     public Client client;
+    public Receptionniste receptionniste;
 
-    public Reservation(LocalDate dateDebut, LocalDate dateFin, Chambre chambre, Client client) {
+    public Reservation(LocalDate dateDebut, LocalDate dateFin, Chambre chambre, Client client, Receptionniste receptionniste) {
         this.numRes = ++compteur;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.chambre = chambre;
         this.client = client;
+        this.receptionniste = receptionniste;
     }
 
     public void setDateDebut(LocalDate dateDebut) {

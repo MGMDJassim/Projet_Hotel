@@ -13,6 +13,7 @@ import Model.Client;
 import Model.Consommation;
 import Model.Hotel;
 import Model.Produit;
+import Model.Receptionniste;
 import Model.Reservation;
 import Model.Sejour;
 import Vue.Fenetre;
@@ -20,6 +21,7 @@ import Vue.Fenetre;
 public class ControlAjoutReservation implements ActionListener {
 
     private Hotel hotel;
+    private Receptionniste receptionniste;
     private JTextField ddebut;
     private JTextField dfin;
     private JTextField nom;
@@ -31,8 +33,9 @@ public class ControlAjoutReservation implements ActionListener {
     private JCheckBox[] produits;
     private JComboBox<Integer>[] quantites;
 
-    public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, Chambre chambre, Fenetre fenetre, JCheckBox[] produits, JComboBox<Integer>[] quantites) {
+    public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, Chambre chambre, Fenetre fenetre, JCheckBox[] produits, JComboBox<Integer>[] quantites, Receptionniste receptionniste) {
         this.hotel = hotel;
+        this.receptionniste = receptionniste;
         this.ddebut = ddebut;
         this.dfin = dfin;
         this.nom = nom;
@@ -55,7 +58,7 @@ public class ControlAjoutReservation implements ActionListener {
             LocalDate dn = LocalDate.parse(date.getText());
             int t = Integer.parseInt(tel.getText());
             Client client = new Client(nom.getText(), prenom.getText(), dn, t, hotel);
-            Reservation reservation = new Reservation(LocalDate.parse(ddebut.getText()), LocalDate.parse(dfin.getText()), chambre, client);
+            Reservation reservation = new Reservation(LocalDate.parse(ddebut.getText()), LocalDate.parse(dfin.getText()), chambre, client, receptionniste);
             Sejour sejour = new Sejour(reservation);
             Consommation consommation;
             for (int i = 0; i < produits.length; i++) {

@@ -116,7 +116,7 @@ public class Fenetre extends JFrame{
 
         ajouterSejour.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                VueAjoutReservation vue = new VueAjoutReservation(hotel, Fenetre.this, chambre);
+                VueAjoutReservation vue = new VueAjoutReservation(hotel, Fenetre.this, chambre, receptionniste);
                 setContentPane(vue);
             }
         });

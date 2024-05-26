@@ -6,6 +6,9 @@ import Model.*;
 public class Main {
   public static void main(String[] args) {
     Hotel hotel = new Hotel("Hotel", "adresse", 123456, "mail");
+ Receptionniste receptionniste = new Receptionniste("nom", "prenom");
+    Receptionniste receptionniste2 = new Receptionniste("nom2", "prenom2");
+    Receptionniste receptionniste3 = new Receptionniste("nom3", "prenom3");
 
     Presidentiel c11 = new Presidentiel( 1, hotel, "Presidentielle", true);
     Presidentiel c12 = new Presidentiel( 1, hotel, "Presidentielle", true);
@@ -21,9 +24,9 @@ public class Main {
     Client client3 = new Client("nom2", "prenom2", LocalDate.of(1999, 1, 1), 123456, hotel);
     Client client4 = new Client("Mougamadou", "Jassim", LocalDate.of(2000, 06, 19), 78281, hotel);
 
-    Reservation r2 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c11, client2);
-    Reservation r3 = new Reservation(LocalDate.of(2024, 05, 21), LocalDate.of(2024,05, 23), c12, client3);
-    Reservation r4 = new Reservation(LocalDate.of(2024, 05,27), LocalDate.of(2024, 05, 29), c24, client4);
+    Reservation r2 = new Reservation(LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 10), c11, client2, receptionniste);
+    Reservation r3 = new Reservation(LocalDate.of(2024, 05, 21), LocalDate.of(2024,05, 23), c12, client3, receptionniste2);
+    Reservation r4 = new Reservation(LocalDate.of(2024, 05,27), LocalDate.of(2024, 05, 29), c24, client4, receptionniste3);
 
     Produit p1 = new Produit("Produit 1", hotel, 10, 100);
     Produit p2 = new Produit("Produit 2", hotel, 20, 100);
@@ -37,10 +40,7 @@ public class Main {
     AgentEntretien ag = new AgentEntretien("nom", "prenom" );
     AgentEntretien ag2 = new AgentEntretien("nom2", "prenom2" );
 
-    Receptionniste receptionniste = new Receptionniste("nom", "prenom");
-    Receptionniste receptionniste2 = new Receptionniste("nom2", "prenom2");
-    Receptionniste receptionniste3 = new Receptionniste("nom3", "prenom3");
-
+   
 
     //Ajout des agents d'entretien
     hotel.ajouterEmploye(ag);

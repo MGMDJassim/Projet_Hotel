@@ -15,11 +15,13 @@ import Controler.ControlAjoutReservation;
 import Controler.ControlRecherche;
 import Model.Chambre;
 import Model.Hotel;
+import Model.Receptionniste;
 
 public class VueAjoutReservation extends JPanel {
     private Hotel hotel;
     private Fenetre fenetre;
     private Chambre chambre;
+    private Receptionniste receptionniste;
     JLabel dateDebut = new JLabel("Date de début (Année-Mois-Jour) :");
     JTextField Ddebut = new JTextField();
 
@@ -69,10 +71,11 @@ public class VueAjoutReservation extends JPanel {
     Vector<Vector<Object>> data;
     Vector<Chambre> chambresLibres;
 
-    public VueAjoutReservation(Hotel hotel, Fenetre fenetre, Chambre chambre) {
+    public VueAjoutReservation(Hotel hotel, Fenetre fenetre, Chambre chambre, Receptionniste receptionniste) {
         this.hotel = hotel;
         this.fenetre = fenetre;
         this.chambre = chambre;
+        this.receptionniste = receptionniste; 
         setLayout(new BorderLayout());
 
         JPanel leftPanel = new JPanel(new GridBagLayout());
@@ -236,7 +239,7 @@ public class VueAjoutReservation extends JPanel {
                     JCheckBox[] produits = new JCheckBox[]{produit1, produit2, produit3, produit4, produit5};
                     JComboBox<Integer>[] quantites = new JComboBox[]{quantite1, quantite2, quantite3, quantite4, quantite5};
 
-                    ControlAjoutReservation control = new ControlAjoutReservation(hotel, Ddebut, Dfin, nom, prenom, date, tel, chambre, fenetre, produits, quantites);
+                    ControlAjoutReservation control = new ControlAjoutReservation(hotel, Ddebut, Dfin, nom, prenom, date, tel, chambre, fenetre, produits, quantites, receptionniste);
                     ajouter.addActionListener(control);
 
                     if (chambre == null) {

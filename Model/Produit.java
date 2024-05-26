@@ -37,6 +37,11 @@ public class Produit {
             this.stock = stock;
         }
     }
+
+    public void ajouterQuantite(int quantite) {
+        this.stock += quantite;
+    }
+
     public Hotel getHotel() {
         return hotel;
     }

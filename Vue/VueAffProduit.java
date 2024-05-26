@@ -2,6 +2,7 @@ package Vue;
 import java.awt.BorderLayout;
 import java.util.Vector;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,18 +11,20 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Model.Hotel;
 import Model.Produit;
+import Controler.BouttonStock;
 import Controler.ControlRechercheProduit;
 public class VueAffProduit extends JPanel {
-    private Hotel hotel;
+    public Hotel hotel;
     private Fenetre fenetre;
 
     private JLabel nomProduit = new JLabel("Nom du produit");
     private JComboBox<String> nom = new JComboBox<>(new String[]{"Produit 1", "Produit 2", "Produit 3", "Produit 4", "Produit 5"});
     private JButton rechercher = new JButton("Rechercher");
 
-    private JTable table = new JTable();
+    public JTable table = new JTable();
     public Vector <String> nomColonne;
-    private Vector <Vector<Object>> donnees;
+    Vector <Vector<Object>> donnees;
+    DefaultTableModel model;
 
     private JPanel panel = new JPanel();
     
@@ -49,17 +52,17 @@ public class VueAffProduit extends JPanel {
 
             donnees.add(ligne);
         }
+
         this.add(panel, BorderLayout.NORTH);
-
-
-
-        DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
+        model = new DefaultTableModel(donnees, nomColonne);
         table.setModel(model);
         table.getColumn("Faire les stocks").setCellRenderer(new BottonRendu());
-        //table.getColumn("Faire les stocks").setCellEditor(new ButtonEditeurStock(new JCheckBox(), hotel, fenetre));
-        rechercher.addActionListener(new ControlRechercheProduit(nom ,hotel, fenetre, this, table));
+        for(int i = 0; i < table.getRowCount(); i++) {
+            Produit produit = hotel.listeProduit.get(i);
+            table.getColumn("Faire les stocks").setCellEditor(new BouttonStock(new JCheckBox(), hotel, produit, this, fenetre));
+        }
+        rechercher.addActionListener(new ControlRechercheProduit(nom ,hotel, fenetre, this, table, model));
         JScrollPane scrollPane = new JScrollPane(table);
         this.add(scrollPane, BorderLayout.CENTER);
     }
-    
 }
