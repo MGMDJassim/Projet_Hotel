@@ -1,45 +1,35 @@
 package Controler;
-
 import Model.Chambre;
 import Model.Hotel;
-
+import Model.Normale;
+import Model.Presidentiel;
+import Vue.Fenetre;
 import javax.swing.JTextField;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Vue.Fenetre;
-import Model.Presidentiel;
-import Model.Normale;
-
-
 public class ControlAjout implements ActionListener {
-    Chambre chambre;
-    Hotel hotel;
-    Fenetre fenetre;
-    JTextField numChambre;
-    String[] typeChambre;
-    JTextField numEtag;
-    public ControlAjout(JTextField numChambre, String[] type, JTextField numEtag2,Hotel h, Fenetre fenetre) {
-        
-        this.numChambre = numChambre;
+    private Chambre chambre;
+    private Hotel hotel;
+    private Fenetre fenetre;
+    private JTextField numeroChambre;
+    private String[] typeChambre;
+    private JTextField numeroEtage;
+    public ControlAjout(JTextField numeroChambre, String[] type, JTextField numeroEtage, Hotel hotel, Fenetre fenetre) {
+        this.numeroChambre = numeroChambre;
         this.typeChambre = type;
-        this.numEtag = numEtag2;
-        this.hotel = h;
+        this.numeroEtage = numeroEtage;
+        this.hotel = hotel;
         this.fenetre = fenetre;
-
     }
-	@Override
+    @Override
     public void actionPerformed(ActionEvent e) {
-    
+        int etage = Integer.parseInt(numeroEtage.getText());
         if (typeChambre[0].equals("Normale")) {
-            chambre = new Normale(Integer.parseInt(numEtag.getText()), hotel, typeChambre[0], true);
+            chambre = new Normale(etage, hotel, typeChambre[0], true);
         } else {
-            chambre = new Presidentiel(Integer.parseInt(numEtag.getText()), hotel, typeChambre[0], true);
-        hotel.addChambre(chambre);
+            chambre = new Presidentiel(etage, hotel, typeChambre[0], true);
+        }
+        hotel.ajouterChambre(chambre);
         new Vue.VueAjout(hotel, fenetre);
-        System.out.println("Ajouter une chambre");
-        
     }
-    
-}
 }

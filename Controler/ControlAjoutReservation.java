@@ -3,13 +3,18 @@ package Controler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import Model.Chambre;
 import Model.Client;
+import Model.Consommation;
 import Model.Hotel;
+import Model.Produit;
 import Model.Reservation;
-import Vue.VueAjoutSejour;
+import Model.Sejour;
 import Vue.Fenetre;
 
 public class ControlAjoutReservation implements ActionListener {
@@ -23,8 +28,10 @@ public class ControlAjoutReservation implements ActionListener {
     private JTextField tel;
     private Chambre chambre;
     private Fenetre fenetre;
+    private JCheckBox[] produits;
+    private JComboBox<Integer>[] quantites;
 
-    public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, Chambre chambre, Fenetre fenetre) {
+    public ControlAjoutReservation(Hotel hotel, JTextField ddebut, JTextField dfin, JTextField nom, JTextField prenom, JTextField date, JTextField tel, Chambre chambre, Fenetre fenetre, JCheckBox[] produits, JComboBox<Integer>[] quantites) {
         this.hotel = hotel;
         this.ddebut = ddebut;
         this.dfin = dfin;
@@ -34,38 +41,44 @@ public class ControlAjoutReservation implements ActionListener {
         this.tel = tel;
         this.chambre = chambre;
         this.fenetre = fenetre;
+        this.produits = produits;
+        this.quantites = quantites;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!ddebut.getText().isEmpty() && !dfin.getText().isEmpty() && !nom.getText().isEmpty() && !prenom.getText().isEmpty() && !date.getText().isEmpty() && !tel.getText().isEmpty()) {
             if (chambre == null) {
-                JOptionPane.showMessageDialog(null, "Veuillez sÃ©lectionner une chambre avant d'ajouter une rÃ©servation.");
+                JOptionPane.showMessageDialog(null, "Veuillez sélectionner une chambre avant d'ajouter une réservation.");
                 return;
             }
             LocalDate dn = LocalDate.parse(date.getText());
             int t = Integer.parseInt(tel.getText());
             Client client = new Client(nom.getText(), prenom.getText(), dn, t, hotel);
             Reservation reservation = new Reservation(LocalDate.parse(ddebut.getText()), LocalDate.parse(dfin.getText()), chambre, client);
-            reservation.addClient(client);
-            chambre.addReservation(reservation);
-            reservation.addChambre(chambre);
-            hotel.addReservation(reservation);
-
-            VueAjoutSejour vue = new VueAjoutSejour(reservation, hotel, fenetre);
-            fenetre.setContentPane(vue); // Utilisation directe du JPanel dans la fenÃªtre
+            Sejour sejour = new Sejour(reservation);
+            Consommation consommation;
+            for (int i = 0; i < produits.length; i++) {
+                System.out.println(produits[i].isSelected() + " " + quantites[i].getSelectedItem());
+                if (produits[i].isSelected() && (Integer)quantites[i].getSelectedItem() > 0) {
+                    Produit produit = hotel.getProduitParNom(produits[i].getText());
+                    int quantite = (Integer)quantites[i].getSelectedItem();
+                    if (produit != null) {
+                        consommation = new Consommation(produit, quantite,sejour);
+                        sejour.ajouterConsommation(consommation);
+                        hotel.ajouterConsommation(consommation);
+           
+                    }
+                }
+            }
+            reservation.ajouterSejour(sejour);
+            hotel.ajouterSejour(sejour);
+            reservation.ajouterClient(client);
+            chambre.ajouterReservation(reservation);
+            reservation.ajouterChambre(chambre);
+            hotel.ajouterReservation(reservation);
             fenetre.revalidate();
             fenetre.repaint();
-
-            //System.out.println("Reservation ajouté");
-            System.out.println(reservation.toString());
-            System.out.println("*******************");
-            System.out.println(chambre.getListReservation()+ "\n");
-            System.out.println("*******************");
-            System.out.println(hotel.getListReservation() + "\n");
-            System.out.println("*******************");
-            System.out.println(chambre.toString() + "\n");
-            
         }
     }
 }

@@ -1,26 +1,23 @@
 package Model;
-
 import java.time.LocalDate;
 import java.util.Vector;
-
-
 public class Sejour {
-    private int count = 0;
-    private int n;
+    private int compteur = 1;
+    private int numeroSejour;
     private Reservation reservation;
-    private Vector<Consommation> consommation = new Vector<Consommation>();
+    private Vector<Consommation> consommations = new Vector<Consommation>();
     private LocalDate dateDebut;
     private LocalDate dateFin;
 
     public Sejour(Reservation reservation) {
-        this.n = ++count;
+        this.numeroSejour = compteur++;
         this.reservation = reservation;
         this.dateDebut = reservation.getDateDebut();
         this.dateFin = reservation.getDateFin();
     }
 
-    public int numSejour(){
-        return n;
+    public int numeroSejour(){
+        return numeroSejour;
     }
 
     public Reservation getReservation() {
@@ -31,20 +28,20 @@ public class Sejour {
         this.reservation = reservation;
     }
 
-    public Vector<Consommation> getConsommation() {
-        return consommation;
+    public Vector<Consommation> getConsommations() {
+        return consommations;
     }
 
-    public void setConsommation(Vector<Consommation> consommation) {
-        this.consommation = consommation;
+    public void setConsommations(Vector<Consommation> consommations) {
+        this.consommations = consommations;
     }
 
-    public void addConsommation(Consommation consommation) {
-        this.consommation.add(consommation);
+    public void ajouterConsommation(Consommation consommation) {
+        this.consommations.add(consommation);
     }
 
-    public void removeConsommation(Consommation consommation) {
-        this.consommation.remove(consommation);
+    public void supprimerConsommation(Consommation consommation) {
+        this.consommations.remove(consommation);
     }
 
     public LocalDate getDateDebut() {
@@ -63,20 +60,19 @@ public class Sejour {
         this.dateFin = dateFin;
     }
 
-    //calculer le prix du sejour
+    public float calculerPrixConsommations() {
+        float prix = 0;
+        for (Consommation consommation : consommations) {
+            prix = prix + consommation.calculerPrix();
+        }
+        return prix;
+    }
 
     public float calculerPrix() {
         float prix = 0;
-        for (Consommation consommation : consommation) {
+        for (Consommation consommation : consommations) {
             prix = prix + consommation.calculerPrix();
         }
         return prix + reservation.calculerPrix();
     }
-
-    //afficher reservation
-
-    public void afficherReservation() {
-        System.out.println("Sejour{" + "reservation=" + getReservation() + ", consommations=" + getConsommation() + ", dateDebut=" + getDateDebut() + ", dateFin=" + getDateFin() + '}');
-    }
 }
-

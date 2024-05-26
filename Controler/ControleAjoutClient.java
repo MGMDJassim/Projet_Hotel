@@ -18,8 +18,6 @@ public class ControleAjoutClient implements ActionListener {
     private JTextField telClient;
     private Hotel hotel;
     public Fenetre fenetre;
-
-
     public ControleAjoutClient(JTextField nomClient, JTextField prenomClient, JTextField dateDeNaissanceClient,
             JTextField telClient, Hotel hotel, Fenetre fenetre) {
         this.nomClient = nomClient;
@@ -30,7 +28,6 @@ public class ControleAjoutClient implements ActionListener {
         this.fenetre = fenetre;
 
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!nomClient.getText().isEmpty() && !prenomClient.getText().isEmpty() && !dateDeNaissanceClient.getText().isEmpty()
@@ -38,9 +35,7 @@ public class ControleAjoutClient implements ActionListener {
             LocalDate date = LocalDate.parse(dateDeNaissanceClient.getText());
             Integer tel = Integer.parseInt(telClient.getText());
             Client  client = new Client(nomClient.getText(), prenomClient.getText(), date, tel, hotel);
-            hotel.addClient(client);
-            System.out.println("Client ajouté");
-            System.out.println(hotel.getListClient());
+            hotel.ajouterClient(client);
         }
     }
     

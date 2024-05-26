@@ -12,7 +12,6 @@ public class Employe {
         this.prenomEmploye = prenomEmploye;
     }
 
-    //mettre nom de famille en majuscule
     public void setNomEmploye(String nomEmploye) {
         this.nomEmploye = nomEmploye;
     }
@@ -29,7 +28,7 @@ public class Employe {
         }
     }
     public int getNumEmploye() {
-        return this.numEmploye;
+        return numEmploye;
     }
     public void setPrenomEmploye(String prenomEmploye) {
 
@@ -49,7 +48,7 @@ public class Employe {
     }
         
     public String getPrenomEmploye() {
-        return this.prenomEmploye;
+        return prenomEmploye;
     }
 //affichage info de l'employe
  public void afficherInfo() {

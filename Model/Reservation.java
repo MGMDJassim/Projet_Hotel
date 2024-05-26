@@ -2,38 +2,37 @@ package Model;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-
 public class Reservation {
-    private static int counter = 0;
+    private static int compteur = 0;
     public int numRes;
-    public LocalDate dateD;
-    public LocalDate datef;
+    public LocalDate dateDebut;
+    public LocalDate dateFin;
     public Vector<Sejour> sejour = new Vector<Sejour>();
     public Chambre chambre;
     public Client client;
 
-    public Reservation(LocalDate dateD, LocalDate dateF, Chambre chambre, Client client) {
-        this.numRes = ++counter;
-        this.dateD = dateD;
-        this.datef = dateF;
+    public Reservation(LocalDate dateDebut, LocalDate dateFin, Chambre chambre, Client client) {
+        this.numRes = ++compteur;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
         this.chambre = chambre;
         this.client = client;
     }
 
-    public void setDateD(LocalDate dateD) {
-        this.dateD = dateD;
+    public void setDateDebut(LocalDate dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
     public LocalDate getDateDebut() {
-        return dateD;
+        return dateDebut;
     }
 
-    public void setDateFin(LocalDate datef) {
-        this.datef = datef;
+    public void setDateFin(LocalDate dateFin) {
+        this.dateFin = dateFin;
     }
 
     public LocalDate getDateFin() {
-        return datef;
+        return dateFin;
     }
 
     public void setSejour(Vector<Sejour> sejour) {
@@ -60,27 +59,25 @@ public class Reservation {
         return client;
     }
 
-    public void addSejour(Sejour sejour) {
+    public void ajouterSejour(Sejour sejour) {
         this.sejour.add(sejour);
     }
 
-    public void removeSejour(Sejour sejour) {
+    public void supprimerSejour(Sejour sejour) {
         this.sejour.remove(sejour);
     }
 
-    public void addChambre(Chambre chambre) {
+    public void ajouterChambre(Chambre chambre) {
         this.chambre = chambre;
     }
 
-    public void removeChambre(Chambre chambre) {
+    public void supprimerChambre(Chambre chambre) {
         this.chambre = null;
     }
-
-    public void addClient(Client client) {
+    public void ajouterClient(Client client) {
         this.client = client;
     }
-
-    public void removeClient(Client client) {
+    public void supprimerClient(Client client) {
         this.client = null;
     }
     public void setNumRes(int numRes) {
@@ -91,36 +88,16 @@ public class Reservation {
         return numRes;
     }
 
-    public void addReservation(Reservation reservation) {
-        this.sejour.add(reservation.getSejour().get(0));
-        this.chambre = reservation.getChambre();
-        this.client = reservation.getClient();
-    }
-
-    public void removeReservation(Reservation reservation) {
-        this.sejour.remove(reservation.getSejour().get(0));
-        this.chambre = null;
-        this.client = null;
-    }
-
-    public void setListSejour(Vector<Sejour> sejour) {
+    public void setListeSejour(Vector<Sejour> sejour) {
         this.sejour = sejour;
     }
 
-    public Vector<Sejour> getListSejour() {
+    public Vector<Sejour> getListeSejour() {
         return sejour;
     }
 
-        public float calculerPrix() {
+    public float calculerPrix() {
         long jours = ChronoUnit.DAYS.between(getDateDebut(), getDateFin());
         return jours * chambre.getPrix();
     }
-
-    //facturation de la réservation
-
-
-    public String toString() {
-        return "Reservation [numRes=" + numRes + ", dateD=" + dateD + ", datef=" + datef + ", sejour=" + sejour + ", chambre=" + chambre + ", client=" + client + "]";
-    }
-
 }

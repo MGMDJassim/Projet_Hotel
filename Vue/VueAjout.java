@@ -36,12 +36,6 @@ public class VueAjout extends JPanel{
         this.hotel = hotel;
         this.fenetre = fenetre;
         setLayout(null);
-        /*GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(10, 10, 10, 10);*/
-
         add(numPorte);
         add(numP);
         numPorte.setBounds(10, 10, 200, 20);

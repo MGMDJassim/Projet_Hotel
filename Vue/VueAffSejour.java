@@ -1,5 +1,4 @@
 package Vue;
-
 import java.awt.BorderLayout;
 import java.util.Vector;
 import javax.swing.JCheckBox;
@@ -11,13 +10,11 @@ import Controler.ButtonConsulSejour;
 import Model.Hotel;
 import Vue.Fenetre;
 import Model.Sejour;
-
-
 public class VueAffSejour extends JPanel{
     private Hotel hotel;
     private Fenetre fenetre;
     public Vector<String> nomColonne;
-    public Vector<Vector<Object>> data;
+    public Vector<Vector<Object>> donnees;
     private JTable table;
 
     public VueAffSejour(Hotel hotel, Fenetre fenetre){
@@ -25,30 +22,29 @@ public class VueAffSejour extends JPanel{
         this.hotel = hotel;
         this.fenetre = fenetre;
         this.nomColonne = new Vector<String>();
-        this.data = new Vector<Vector<Object>>();
-
+        this.donnees = new Vector<Vector<Object>>();
         nomColonne.add("numéro de séjour ");
         nomColonne.add("n° de réservation");
         nomColonne.add("date de début");
         nomColonne.add("date de fin");
-        nomColonne.add("Consulter");
+        nomColonne.add("Autres");
 
-        for(Sejour sejour : hotel.listSejour){
-            Vector<Object> row = new Vector<Object>();
-            row.add(sejour.numSejour());
-            row.add(sejour.getReservation().getNumRes());
-            row.add(sejour.getDateDebut());
-            row.add(sejour.getDateFin());
-            row.add("Consulter");
-            data.add(row);
+        for(Sejour sejour : hotel.getListeSejour()){
+            Vector<Object> ligne = new Vector<Object>();
+            ligne.add(sejour.numeroSejour());
+            ligne.add(sejour.getReservation().getNumRes());
+            ligne.add(sejour.getDateDebut());
+            ligne.add(sejour.getDateFin());
+            ligne.add("Autres");
+            donnees.add(ligne);
         }
-        DefaultTableModel model = new DefaultTableModel(data,nomColonne);
+        DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
         table = new JTable(model);
-        table.getColumn("Consulter").setCellRenderer(new BottonRendu());
-        table.getColumn("Consulter").setCellRenderer(new BottonRendu());
+        table.getColumn("Autres").setCellRenderer(new BottonRendu());
+        table.getColumn("Autres").setCellRenderer(new BottonRendu());
         for(int i = 0; i < table.getRowCount(); i++) {
-            Sejour sejour = hotel.listSejour.get(i);
-            table.getColumn("Consulter").setCellEditor(new ButtonConsulSejour(new JCheckBox(),hotel, sejour));
+            Sejour sejour = hotel.listeSejour.get(i);
+            table.getColumn("Autres").setCellEditor(new ButtonConsulSejour(new JCheckBox(), hotel, sejour));
         }
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);

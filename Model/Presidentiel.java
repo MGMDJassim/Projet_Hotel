@@ -6,7 +6,6 @@ public class Presidentiel extends Chambre {
     
     public Presidentiel(int etage, Hotel hotel, String type, boolean etatChambre)  {
         super(etage, type, hotel, etatChambre);
-
         prix = 100;
     }
     

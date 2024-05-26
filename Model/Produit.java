@@ -2,6 +2,7 @@ package Model;
 import java.time.LocalDate;
 import java.util.*;
 
+
 public class Produit {
 
     public String nom;
@@ -10,15 +11,12 @@ public class Produit {
     public Hotel hotel;
     public Vector<Consommation> consommations;
     
-    // Constructeur avec paramètres
     public Produit(String nom,  Hotel hotel,int prix, int stock) {
         this.nom = nom;
         this.prix = prix;
         this.hotel = hotel;
         this.stock = stock;
     }
-    
-    // Getters et Setters
     public String getNom() {
         return nom;
     }
@@ -29,9 +27,7 @@ public class Produit {
         return prix;
     }
      public void setPrix(int prix) {
-        if (prix >= 0) {
-            this.prix = prix;
-        }
+        this.prix = prix;
     }
     public int getStock() {
         return stock;
@@ -44,34 +40,24 @@ public class Produit {
     public Hotel getHotel() {
         return hotel;
     }
-
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
-
     public Vector<Consommation> getConsommations() {
         return consommations;
     }
-
     public void setConsommations(Vector<Consommation> consommations) {
         this.consommations = consommations;
     }
-
-    // Méthode pour ajouter une consommation
-    public void addConsommation(Consommation consommation) {
+    public void ajouterConsommation(Consommation consommation) {
         this.consommations.add(consommation);
     }
-
-    // Méthode pour supprimer une consommation
-    public void removeConsommation(Consommation consommation) {
+    public void supprimerConsommation(Consommation consommation) {
         this.consommations.remove(consommation);
     }
-
-    //Méthodes qui enleve la quantité de stock en fonction de la date
-
-    public void removeStock(int quantite){
-        if(hotel.listReservation.size() > 0) {
-            for (Reservation reservation : hotel.listReservation) {
+    public void retirerStock(int quantite){
+        if(hotel.listeReservation.size() > 0) {
+            for (Reservation reservation : hotel.listeReservation) {
                 if (reservation.getDateDebut().isBefore(LocalDate.now()) && reservation.getDateFin().isAfter(LocalDate.now())) {
                     this.stock -= quantite;
                     break;
@@ -79,19 +65,12 @@ public class Produit {
             }
         }
     }
-
-    //verifier la disponibilité d'un produit
-
-    public boolean isAvailable(int quantite){
+    public boolean estDisponible(int quantite){
         return quantite <= stock && quantite > 0;
     }
-    //ajouter stock
-
-    public void addStock(int quantite){
+    public void ajouterStock(int quantite){
         if( quantite > 0){
             this.stock += quantite;
         }
     }
-    
-
 }

@@ -18,7 +18,6 @@ public class ControlRecherche implements ActionListener {
     private JTextField Dfin;
     private JComboBox<String> type;
     private VueAjoutReservation vueAjoutReservation;
-
     public ControlRecherche(Hotel hotel, JTextField Ddebut, JTextField Dfin, JComboBox<String> type, VueAjoutReservation panel) {
         this.hotel = hotel;
         this.Ddebut = Ddebut;
@@ -26,7 +25,6 @@ public class ControlRecherche implements ActionListener {
         this.type = type;
         this.vueAjoutReservation = panel;
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!Ddebut.getText().isEmpty() && !Dfin.getText().isEmpty() && !type.getSelectedItem().toString().isEmpty()) {
@@ -34,7 +32,7 @@ public class ControlRecherche implements ActionListener {
                 LocalDate debut = LocalDate.parse(Ddebut.getText());
                 LocalDate fin = LocalDate.parse(Dfin.getText());
                 String typeChambre = type.getSelectedItem().toString();
-                Vector<Chambre> freeRooms = hotel.getFreeRooms(debut, fin);
+                Vector<Chambre> freeRooms = hotel.getChambresLibres(debut, fin);
                 if (freeRooms != null) {
                     Vector<Chambre> filteredRooms = new Vector<Chambre>();
                     for (Chambre chambre : freeRooms) {

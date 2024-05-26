@@ -1,28 +1,24 @@
 package Model;
-//import java.io.*;
+
 import java.util.*;
 
 public class Receptionniste extends Employe {
-    public Vector<Reservation> listResa;
-    public Receptionniste(String nomEmploye, int numEmploye, String prenomEmploye, Vector<Reservation> listResa) {
-        super(nomEmploye, numEmploye, prenomEmploye);
-        this.listResa = listResa;
+    public Vector<Reservation> listeReservations;
+    public Receptionniste(String nomEmploye, int numEmploye, String prenomEmploye) {
+        super(nomEmploye, prenomEmploye);
+    }
+    public Vector<Reservation> getListeResa() {
+        return listeReservations;
+    }
+    public void setListeResa(Vector<Reservation> listeReservations) {
+        this.listeReservations = listeReservations;
     }
 
-    public Vector<Reservation> getListResa() {
-        return listResa;
+    public void ajouterReservation(Reservation resavation) {
+        this.listeReservations.add(resavation);
     }
 
-    public void setListResa(Vector<Reservation> listResa) {
-        this.listResa = listResa;
+    public void supprimerReservation(Reservation resavation) {
+        this.listeReservations.remove(resavation);
     }
-
-    //ajouter reservation au receptionnsite
-    public void associerResa(Reservation reservation){
-        if(!listResa.contains(reservation)){
-            listResa.add(reservation);
-                reservation.setReceptionniste(this);
-        }
-    }
-    
 }

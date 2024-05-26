@@ -11,30 +11,32 @@ import Model.Hotel;
 import Model.Sejour;
 import Vue.VueAffConsulSejour;
 
-
-
 public class ButtonConsulSejour extends DefaultCellEditor {
-    Hotel hotel;
-    private JButton button;
+    private Hotel hotel;
+    private JButton boutton;
     private JTable table;
     private Sejour sejour;
-    int row;
+    private int row;
+
     public ButtonConsulSejour(JCheckBox checkBox, Hotel hotel, Sejour sejour) {
         super(checkBox);
-        this.hotel=hotel;
+        this.hotel = hotel;
         this.sejour = sejour;
-        this.button= new JButton();
-        this.button.setOpaque(true);
-        this.button.addActionListener(new ActionListener() {
-            public void actionPerformed (ActionEvent e){
-                new VueAffConsulSejour(hotel, sejour);
-            }
-        });
+        this.boutton = new JButton();
+        this.boutton.setOpaque(true);
+        this.boutton.addActionListener(new ButtonActionListener());
     }
-    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+
+    public Component getTableCellEditorComponent(JTable table, Object valeur, boolean estSelectionne, int ligne, int column) {
         this.table = table;
-        this.row = row;
-        button.setText(value.toString());
-        return button;
+        this.row = ligne;
+        boutton.setText(valeur.toString());
+        return boutton;
+    }
+
+    private class ButtonActionListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            new VueAffConsulSejour(hotel, sejour);
+        }
     }
 }

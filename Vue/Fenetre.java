@@ -1,50 +1,52 @@
 package Vue;
+
 import java.awt.event.ActionListener;
 import Model.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 
-// Import the TableModel class
+
+// Importer la classe TableModel
 
 
 public class Fenetre extends JFrame{
     JMenuBar barre = new JMenuBar();  
 
-    JLabel label = new JLabel("Porjet Hôtel", HEIGHT);
+    JLabel label = new JLabel("Projet Hôtel", HEIGHT);
 
     JButton reservation = new JButton("Réservations");
-    JButton agentEntretient = new JButton("Agent d'entretient");
-    JButton employe = new JButton("Employes");
+    JButton agentEntretien = new JButton("Agent d'entretien");
+    JButton employe = new JButton("Employés");
 
     JMenu gchambre = new JMenu("Gestion des chambres");
     JMenu gclient = new JMenu("Gestion des clients");
-    JMenu greservation = new JMenu("Gestion des reservations");
-    JMenu gsejour = new JMenu("Gestion des sejours");
-    JMenu gemploye = new JMenu("Gestion des employes");
-    JMenu gmenage = new JMenu("Gestion du menage");
+    JMenu greservation = new JMenu("Gestion des réservations");
+    JMenu gsejour = new JMenu("Gestion des séjours");
+    JMenu gemploye = new JMenu("Gestion des employés");
+    JMenu gmenage = new JMenu("Gestion du ménage");
     JMenu gproduit = new JMenu("Gestion des produits");
 
-    JMenuItem ajouterchambre = new JMenuItem("Ajouter une chambre");
+    JMenuItem ajouterChambre = new JMenuItem("Ajouter une chambre");
     JMenuItem afficherChambre = new JMenuItem("Afficher les chambres");
 
     JMenuItem ajouterClient = new JMenuItem("Ajouter un client");
     JMenuItem afficherClient = new JMenuItem("Afficher les clients");
 
-    JMenuItem affReservations = new JMenuItem("Afficher les reservations");
-    JMenuItem ajouterReservation = new JMenuItem("Ajouter une reservation");
+    JMenuItem affReservations = new JMenuItem("Afficher les réservations");
+    JMenuItem ajouterReservation = new JMenuItem("Ajouter une réservation");
 
     JMenuItem affSejour = new JMenuItem("Afficher les séjours");
 
     JMenuItem affProduit = new JMenuItem("Afficher les produits");
     
-    JMenuItem ajouterEmploye = new JMenuItem("Ajouter un employe");
-    JMenuItem supprimerEmploye = new JMenuItem("Supprimer un employe");
-    JMenuItem afficherEmploye = new JMenuItem("Afficher les employes");
+    JMenuItem ajouterEmploye = new JMenuItem("Ajouter un employé");
+    JMenuItem supprimerEmploye = new JMenuItem("Supprimer un employé");
+    JMenuItem afficherEmploye = new JMenuItem("Afficher les employés");
     
-    JMenuItem ajouterMenage = new JMenuItem("Ajouter une tache de menage");
-    JMenuItem supprimerMenage = new JMenuItem("Supprimer une tache de menage");
-    JMenuItem afficherMenage = new JMenuItem("Afficher les taches de menage");
+    JMenuItem ajouterMenage = new JMenuItem("Ajouter une tâche de ménage");
+    JMenuItem supprimerMenage = new JMenuItem("Supprimer une tâche de ménage");
+    JMenuItem afficherMenage = new JMenuItem("Afficher les tâches de ménage");
     
     JPanel currentPanel = new JPanel();
     Hotel hotel;
@@ -64,7 +66,7 @@ public class Fenetre extends JFrame{
         barre.add(gproduit);
         barre.add(gmenage);
 
-        gchambre.add(ajouterchambre);
+        gchambre.add(ajouterChambre);
         gchambre.add(afficherChambre);
 
         gclient.add(ajouterClient);
@@ -83,7 +85,7 @@ public class Fenetre extends JFrame{
 
         gmenage.add(ajouterMenage);
         gmenage.add(afficherMenage);
-        ajouterchambre.addActionListener(new ActionListener() {
+        ajouterChambre.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VueAjout vue = new VueAjout(hotel, Fenetre.this);
                 setContentPane(vue);
@@ -147,7 +149,7 @@ public class Fenetre extends JFrame{
             }
         });
         this.pack();
-        this.setSize(1000, 500);
+        this.setSize(1000, 750);
         this.setLocationRelativeTo(null); // Centre la fenêtre
         this.setVisible(true);
         
@@ -161,8 +163,3 @@ public class Fenetre extends JFrame{
         repaint();
     }
 }
-
-
-
-
-

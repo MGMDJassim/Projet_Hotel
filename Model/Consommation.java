@@ -1,6 +1,4 @@
 package Model;
-
-
 public class Consommation {
     public Sejour sejour;
     public int quantite;
@@ -15,6 +13,7 @@ public class Consommation {
     public void setQuantite(int quatite) {
         this.quantite = quatite;
     }
+    
     public int getQuantite() {
         return quantite;
     }
@@ -46,10 +45,9 @@ public class Consommation {
             return false;
         }
     }
-
     //calculer le prix de la consommation
     public int calculerPrix() {
-        return quantite * produit.prix;
+        return quantite * getProduit().getPrix();
     }
 
 }

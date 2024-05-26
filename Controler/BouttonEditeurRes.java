@@ -15,44 +15,43 @@ import Model.Sejour;
 import Vue.Fenetre;
 
 public class BouttonEditeurRes extends DefaultCellEditor {
-    public Hotel hotel;
-    public Fenetre fenetre;
-    private JButton button;
-    private JTable table;
-    private int row;
-
+    private Hotel hotel;
+    private Fenetre fenetre;
+    private JButton bouton;
+    private JTable tableau;
+    private int ligne;
     public BouttonEditeurRes(JCheckBox checkBox, Hotel hotel, Fenetre fenetre) {
         super(checkBox);
         this.hotel = hotel;
         this.fenetre = fenetre;
-        this.button = new JButton();
-            this.button.setOpaque(true);
-            this.button.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    fireEditingStopped();
-                    Reservation reservation = hotel.listReservation.get(row);
-                    Chambre chambre = reservation.getChambre();
-                    Sejour sejour = hotel.listSejour.get(row);
-                    chambre.removeReservation(reservation);
-                    hotel.removeReservation(reservation);
-                    hotel.removeSejour(sejour);
-                    System.out.println("Reservation : " + hotel.getListReservation()+ "\n");
-                    System.out.println("Chambre : " + chambre.getListReservation()+ "\n");
-                    DefaultTableModel model = (DefaultTableModel) table.getModel();
-                    model.removeRow(row);
-                    fenetre.setContentPane(new Vue.VueReservation(hotel, fenetre));
-                    fenetre.revalidate();
-                    System.out.println("Reservation : " + hotel.getListReservation()+ "\n");
-                }
-            });
+        this.bouton = new JButton();
+        this.bouton.setOpaque(true);
+        this.bouton.addActionListener(new BoutonActionListener());
     }
-
-    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        this.table = table;
-        this.row = row;
-        button.setText((value == null) ? "" : value.toString());
-        return button;
+    public Component getTableCellEditorComponent(JTable table, Object valeur, boolean selectionne, int ligne, int column) {
+        this.tableau = table;
+        this.ligne = ligne;
+        if (valeur == null) {
+            bouton.setText("");
+        } else {
+            bouton.setText(valeur.toString());
+        }
+        return bouton;
+    }
+    private class BoutonActionListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            fireEditingStopped();
+            Reservation reservation = hotel.listeReservation.get(ligne);
+            Chambre chambre = reservation.getChambre();
+            Sejour sejour = hotel.listeSejour.get(ligne);
+            chambre.supprimerReservation(reservation);
+            hotel.supprimerReservation(reservation);
+            hotel.supprimerSejour(sejour);
+            DefaultTableModel model = (DefaultTableModel) tableau.getModel();
+            model.removeRow(ligne);
+            fenetre.setContentPane(new Vue.VueReservation(hotel, fenetre));
+            fenetre.revalidate();
+        }
     }
 }
-
 

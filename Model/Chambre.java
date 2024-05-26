@@ -1,13 +1,14 @@
+
 package Model;
 import java.util.Vector;
 import java.time.*;
 
 public abstract class Chambre {
-    private static int idCounter = 0;
+    private static int compteurId = 0;
 
     public int etage;
     public int numeroPorte;
-    private Vector<Reservation> listReservation = new Vector<Reservation>();
+    private Vector<Reservation> listeReservation = new Vector<Reservation>();
     public Hotel hotel;
     public String type;
     public boolean etat;
@@ -16,7 +17,7 @@ public abstract class Chambre {
     public Chambre(int etage, String type, Hotel hotel, boolean etat) {
 
         this.etage = etage;
-        this.numeroPorte = ++idCounter;
+        this.numeroPorte = ++compteurId;
         this.type = type;
         this.hotel = hotel;
         this.etat = etat;
@@ -38,15 +39,15 @@ public abstract class Chambre {
         this.numeroPorte = numeroPorte;
     }
 
-    public void addReservation(Reservation reservation) {
-        listReservation.add(reservation);
+    public void ajouterReservation(Reservation reservation) {
+        listeReservation.add(reservation);
     }
 
-    public Vector<Reservation> getListReservation() {
-        return listReservation;
+    public Vector<Reservation> getListeReservation() {
+        return listeReservation;
     }
-    public void setListReservation(Vector<Reservation> listReservation) {
-        this.listReservation = listReservation;
+    public void setListeReservation(Vector<Reservation> listeReservation) {
+        this.listeReservation = listeReservation;
     }
 
     public void setHotel(Hotel hotel) {
@@ -74,19 +75,19 @@ public abstract class Chambre {
         return type;
     }
 
-    //methodes pour enlever la chambre
+    //méthodes pour supprimer la chambre
 
-    public void removeReservation(Reservation reservation) {
-        listReservation.remove(reservation);
+    public void supprimerReservation(Reservation reservation) {
+        listeReservation.remove(reservation);
     }
 
-    public void removeAllReservations() {
-        listReservation.clear();
+    public void supprimerToutesReservations() {
+        listeReservation.clear();
     }
 
     // Recherche des chambres libres
-    public boolean isFree(LocalDate dateDebut, LocalDate dateFin) {
-        for (Reservation reservation : listReservation) {
+    public boolean estLibre(LocalDate dateDebut, LocalDate dateFin) {
+        for (Reservation reservation : listeReservation) {
             if ((dateDebut.isEqual(reservation.getDateDebut()) || dateDebut.isAfter(reservation.getDateDebut())) && dateDebut.isBefore(reservation.getDateFin())) {
                 return false;
             }
@@ -101,26 +102,14 @@ public abstract class Chambre {
         return "Chambre " + type + " à l'étage " + etage + ", à la porte " + numeroPorte + "\n";
     }
 
-    //Recherche des chambres salles
+    //Recherche des chambres sales
 
-    public void cSalle(LocalDate ajd){
-        for(Reservation r : listReservation){
+    public boolean estSale(LocalDate ajd){
+        for(Reservation r : listeReservation){
             if(ajd.isAfter(r.getDateFin())){
-                setEtatChambre(false);
-            }
-        }
-    }
-
-    //Chambre salle
-
-    public boolean ChambreSalle(LocalDate dateFin){
-        for(Reservation r : listReservation){
-            if(!r.getChambre().getEtatChambre()){
                 return true;
             }
         }
-        
         return false;
-
     }
 }

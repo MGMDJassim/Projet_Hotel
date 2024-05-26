@@ -2,19 +2,21 @@ package Model;
 import java.util.*;
 import java.time.LocalDate;
 
+
 public class Hotel {
 
     public String nom;
     public String adresse;
     public int telephone;
     public String mail;
-    public Vector<Chambre> listechambre = new Vector<Chambre>();
-    public Vector<Client> listClient = new Vector<Client>();
-    public Vector<Produit> listProduit = new Vector<Produit>();
-    public Vector<Reservation> listReservation = new Vector<Reservation>();
-    public Vector<Sejour> listSejour = new Vector<Sejour>();
-    public Vector<Consommation> listConsommation = new Vector<Consommation>();
-    public Vector<Employe> listEmploye = new Vector<Employe>();
+    public Vector<Chambre> listeChambre = new Vector<Chambre>();
+    public Vector<Client> listeClient = new Vector<Client>();
+    public Vector<Produit> listeProduit = new Vector<Produit>();
+    public Vector<Reservation> listeReservation = new Vector<Reservation>();
+    public Vector<Sejour> listeSejour = new Vector<Sejour>();
+    public Vector<Consommation> listeConsommation = new Vector<Consommation>();
+    public Vector<Employe> listeEmploye = new Vector<Employe>();
+    public Sejour[] listSejour;
     
     public Hotel (String nom, String adresse, int telephone, String mail){
         this.nom = nom;
@@ -23,60 +25,60 @@ public class Hotel {
         this.mail = mail;
     }
 
-    public void addChambre(Chambre chambre){
-        this.listechambre.add(chambre);
+    public void ajouterChambre(Chambre chambre){
+        this.listeChambre.add(chambre);
     }
 
-    public void removeChambre(Chambre chambre){
-        this.listechambre.remove(chambre);
+    public void supprimerChambre(Chambre chambre){
+        this.listeChambre.remove(chambre);
     }
 
-    public void addClient(Client client){
-        this.listClient.add(client);
+    public void ajouterClient(Client client){
+        this.listeClient.add(client);
     }
 
-    public void removeClient(Client client){
-        this.listClient.remove(client);
+    public void supprimerClient(Client client){
+        this.listeClient.remove(client);
     }
 
-    public void addProduit(Produit produit){
-        this.listProduit.add(produit);
+    public void ajouterProduit(Produit produit){
+        this.listeProduit.add(produit);
     }
 
-    public void removeProduit(Produit produit){
-        this.listProduit.remove(produit);
+    public void supprimerProduit(Produit produit){
+        this.listeProduit.remove(produit);
     }
 
-    public void addSejour(Sejour sejour){
-        this.listSejour.add(sejour);
+    public void ajouterSejour(Sejour sejour){
+        this.listeSejour.add(sejour);
     }
 
-    public void removeSejour(Sejour sejour){
-        this.listSejour.remove(sejour);
+    public void supprimerSejour(Sejour sejour){
+        this.listeSejour.remove(sejour);
     }
 
-    public void addReservation(Reservation reservation){
-        this.listReservation.add(reservation);
+    public void ajouterReservation(Reservation reservation){
+        this.listeReservation.add(reservation);
     }
     
-    public void removeReservation(Reservation reservation) {
-        this.listReservation.remove(reservation);
+    public void supprimerReservation(Reservation reservation) {
+        this.listeReservation.remove(reservation);
     }
 
-    public void addConsommation(Consommation consommation){
-        this.listConsommation.add(consommation);
+    public void ajouterConsommation(Consommation consommations){
+        this.listeConsommation.add(consommations);
     }
 
-    public void removeConsommation(Consommation consommation){
-        this.listConsommation.remove(consommation);
+    public void supprimerConsommation(Consommation consommation){
+        this.listeConsommation.remove(consommation);
     }
 
-    public void addEmploye(Employe employe){
-        this.listEmploye.add(employe);
+    public void ajouterEmploye(Employe employe){
+        this.listeEmploye.add(employe);
     }
 
-    public void removeEmploye(Employe employe){
-        this.listEmploye.remove(employe);
+    public void supprimerEmploye(Employe employe){
+        this.listeEmploye.remove(employe);
     }
 
     public void setNom(String nom) {
@@ -111,92 +113,109 @@ public class Hotel {
         return mail;
     }
 
-    public void setListechambre(Vector<Chambre> listechambre) {
-        this.listechambre = listechambre;
+    public void setListeChambre(Vector<Chambre> listeChambre) {
+        this.listeChambre = listeChambre;
     }
 
-    public Vector<Chambre> getListechambre() {
-        return listechambre;
+    public Vector<Chambre> getListeChambre() {
+        return listeChambre;
     }
 
-    public void setListClient(Vector<Client> listClient) {
-        this.listClient = listClient;
+    public void setListeClient(Vector<Client> listeClient) {
+        this.listeClient = listeClient;
     }
 
-    public Vector<Client> getListClient() {
-        return listClient;
+    public Vector<Client> getListeClient() {
+        return listeClient;
     }
 
-    public void setListProduit(Vector<Produit> listProduit) {
-        this.listProduit = listProduit;
+    public void setListeProduit(Vector<Produit> listeProduit) {
+        this.listeProduit = listeProduit;
     }
 
-    public Vector<Produit> getListProduit() {
-        return listProduit;
+    public Vector<Produit> getListeProduit() {
+        return listeProduit;
+    }
+        
+    public Produit getProduitParNom(String nom) {
+        for (Produit produit : listeProduit) {
+            if (produit.getNom().equals(nom)) {
+                return produit;
+            }
+        }
+        return null;
     }
 
-    public void setListReservation(Vector<Reservation> listReservation) {
-        this.listReservation = listReservation;
+
+    public void setListeReservation(Vector<Reservation> listeReservation) {
+        this.listeReservation = listeReservation;
     }
 
-    public Vector<Reservation> getListReservation() {
-        return listReservation;
+    public Vector<Reservation> getListeReservation() {
+        return listeReservation;
     }
 
-    public void setListSejour(Vector<Sejour> listSejour) {
-        this.listSejour = listSejour;
+    public void setListeSejour(Vector<Sejour> listeSejour) {
+        this.listeSejour = listeSejour;
     }
 
-    public Vector<Sejour> getListSejour() {
-        return listSejour;
+    public Vector<Sejour> getListeSejour() {
+        return listeSejour;
     }
 
-    public void setListConsommation(Vector<Consommation> listConsommation) {
-        this.listConsommation = listConsommation;
+    public void setListeConsommation(Vector<Consommation> listeConsommation) {
+        this.listeConsommation = listeConsommation;
     }
 
-    public Vector<Consommation> getListConsommation() {
-        return listConsommation;
+    public Vector<Consommation> getListeConsommation() {
+        return listeConsommation;
     }
 
-    public Vector<Employe> getListEmployes(){
-        return listEmploye;
+    public Vector<Employe> getListeEmployes(){
+        return listeEmploye;
     }
 
+    public Employe getEmployeParNumero(int numero) {
+        for (Employe employe : listeEmploye) {
+            if (employe.getNumEmploye() == numero) {
+                return employe;
+            }
+        }
+        return null;
+    }
 
     //Recherche des chambres libres 
-    public Vector<Chambre> getFreeRooms(LocalDate dateDebut, LocalDate dateFin) {
+    public Vector<Chambre> getChambresLibres(LocalDate dateDebut, LocalDate dateFin) {
         if (dateFin.isBefore(dateDebut) || dateDebut.isBefore(LocalDate.now()) || dateFin.isBefore(LocalDate.now()) || dateDebut.isEqual(dateFin)) {
             return null;
         }
-        Vector<Chambre> freeRooms = new Vector<Chambre>();
-        for (Chambre chambre : listechambre) {
-            if (chambre.isFree(dateDebut, dateFin)) { // Supprimez le "!" pour vérifier si la chambre est libre
-                freeRooms.add(chambre);
+        Vector<Chambre> chambresLibres = new Vector<Chambre>();
+        for (Chambre chambre : listeChambre) {
+            if (chambre.estLibre(dateDebut, dateFin)) { // Supprimez le "!" pour vérifier si la chambre est libre
+                chambresLibres.add(chambre);
             }
         }
-        return freeRooms;
+        return chambresLibres;
     }
-    public Vector<Vector<Object>> rechercheClient(String nom) {
-        Vector<Client> listClient = getListClient();
-        Vector<Vector<Object>> foundClients = new Vector<Vector<Object>>();
-        for (Client client : listClient) {
+    public Vector<Vector<Object>> rechercherClient(String nom) {
+        Vector<Client> listeClient = getListeClient();
+        Vector<Vector<Object>> clientsTrouves = new Vector<Vector<Object>>();
+        for (Client client : listeClient) {
             if (client.getNomClient().equals(nom)) {
-                Vector<Object> clientData = new Vector<Object>();
-                clientData.add(client.getNomClient());
-                clientData.add(client.getPrenomClient());
-                clientData.add(client.getDateDeNaissance());
-                clientData.add(client.getTelClient());
-                // Ajoutez d'autres attributs du client à clientData si nécessaire
-                foundClients.add(clientData);
+                Vector<Object> donneesClient = new Vector<Object>();
+                donneesClient.add(client.getNomClient());
+                donneesClient.add(client.getPrenomClient());
+                donneesClient.add(client.getDateDeNaissance());
+                donneesClient.add(client.getTelClient());
+                clientsTrouves.add(donneesClient);
             }
         }
-        return foundClients;
+        return clientsTrouves;
     }
-    public Vector<Chambre> chambreSalle(LocalDate ajd){
+    public Vector<Chambre> chambreSale(LocalDate ajd){
        Vector <Chambre> cs = new Vector<Chambre>();
-       for(Chambre c : listechambre){
-        if(c.ChambreSalle(ajd)){
+       for(Chambre c : listeChambre){
+        if(c.estSale(ajd)){
         cs.add(c);
         }
        }

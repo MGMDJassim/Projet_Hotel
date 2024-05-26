@@ -1,8 +1,6 @@
 package Vue;
-
 import java.awt.BorderLayout;
 import java.util.Vector;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -10,10 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 import Model.Hotel;
 import Model.Produit;
-
 public class VueAffProduit extends JPanel {
     private Hotel hotel;
     private Fenetre fenetre;
@@ -24,7 +20,7 @@ public class VueAffProduit extends JPanel {
 
     JTable table = new JTable();
     Vector <String> nomColonne;
-    Vector <Vector<Object>> data;
+    Vector <Vector<Object>> donnees;
 
     JPanel panel = new JPanel();
     
@@ -38,22 +34,22 @@ public class VueAffProduit extends JPanel {
         panel.add(rechercher);
 
         nomColonne = new Vector<String>();
-        data = new Vector<Vector<Object>>();
+        donnees = new Vector<Vector<Object>>();
 
         nomColonne.add("Nom");
         nomColonne.add("Stock");
         nomColonne.add("Faire les stocks");
 
-        for (Produit produit : hotel.getListProduit()) {
-            Vector<Object> row = new Vector<Object>();
-            row.add(produit.getNom());
-            row.add(produit.getStock());
-            row.add("Faire les stocks");
+        for (Produit produit : hotel.getListeProduit()) {
+            Vector<Object> ligne = new Vector<Object>();
+            ligne.add(produit.getNom());
+            ligne.add(produit.getStock());
+            ligne.add("Faire les stocks");
 
-            data.add(row);
+            donnees.add(ligne);
         }
         this.add(panel, BorderLayout.NORTH);
-        DefaultTableModel model = new DefaultTableModel(data, nomColonne);
+        DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
         table.setModel(model);
         JScrollPane scrollPane = new JScrollPane(table);
         this.add(scrollPane, BorderLayout.CENTER);
