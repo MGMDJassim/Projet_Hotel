@@ -56,6 +56,10 @@ public class ControlAjoutReservation implements ActionListener {
                 return;
             }
             LocalDate dn = LocalDate.parse(date.getText());
+            if(dn.isAfter(LocalDate.now().minusYears(18))) {
+                JOptionPane.showMessageDialog(null, "Le client doit être majeur pour effectuer une réservation.");
+                return;
+            }
             int t = Integer.parseInt(tel.getText());
             Client client = new Client(nom.getText(), prenom.getText(), dn, t, hotel);
             Reservation reservation = new Reservation(LocalDate.parse(ddebut.getText()), LocalDate.parse(dfin.getText()), chambre, client, receptionniste);

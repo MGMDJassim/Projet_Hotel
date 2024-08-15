@@ -81,8 +81,13 @@ public class Client {
         this.listReservation.remove(client.getListReservation().get(0));
     }
 
-    public boolean mineur(){
-  return Period.between(dateDeNaissance, LocalDate.now()).getYears() < 18;
-}
+    public boolean estmineur(LocalDate dateDeNaissance){
+        LocalDate now = LocalDate.now();
+        Period period = Period.between(dateDeNaissance, now);
+        if (period.getYears() < 18) {
+            return false;
+        }
+    return true;
+    }
 
 }

@@ -24,7 +24,7 @@ public class FenetreReceptionniste extends JFrame {
     public FenetreReceptionniste(Hotel hotel) {
         this.hotel = hotel;
         this.setLayout(new GridBagLayout());
-
+        setTitle("Hotel");
         GridBagConstraints gbc = new GridBagConstraints();
         contenue.setLayout(new BoxLayout(contenue, BoxLayout.Y_AXIS));
 
