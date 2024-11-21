@@ -3,55 +3,53 @@ package Controler;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
 import Model.Hotel;
 import Model.Produit;
 import Vue.Fenetre;
-
 import Vue.VueAffProduit;
 import Vue.VueQuantitStock;
 
-public class BouttonStock extends DefaultCellEditor{
+public class BouttonStock extends DefaultCellEditor {
 
     private Hotel hotel;
     private Fenetre fenetre;
-    private JButton boutton;
-    Produit produit;
-    JTable table;
-    DefaultTableModel model;
+    private JButton bouton;
     private VueAffProduit vueAffProduit;
-    private int ligne;
 
-
-    public BouttonStock(JCheckBox checkBox, Hotel hotel, Produit produit, VueAffProduit vueAffProduit, Fenetre fenetre) {
+    public BouttonStock(JCheckBox checkBox, Hotel hotel, VueAffProduit vueAffProduit, Fenetre fenetre) {
         super(checkBox);
         this.hotel = hotel;
         this.fenetre = fenetre;
-        this.produit = produit;
         this.vueAffProduit = vueAffProduit;
-        this.boutton = new JButton();
-        this.boutton.setOpaque(true);
-        this.boutton.addActionListener(new ButtonActionListener());
+        this.bouton = new JButton();
+        this.bouton.setOpaque(true);
+        this.bouton.addActionListener(new ButtonActionListener());
     }
 
+    @Override
     public Component getTableCellEditorComponent(JTable table, Object valeur, boolean estSelectionne, int ligne, int column) {
-        this.table = table;
-        this.ligne = ligne;
-        boutton.setText(valeur.toString());
-        return boutton;
+        if (valeur != null) {
+            bouton.setText(valeur.toString());
+        } else {
+            bouton.setText("");
+        }
+        return bouton;
     }
 
     private class ButtonActionListener implements ActionListener {
-        Produit produit = hotel.getListeProduit().get(ligne);
+        @Override
         public void actionPerformed(ActionEvent e) {
-            new VueQuantitStock(produit, vueAffProduit, fenetre, hotel);
+            int row = vueAffProduit.table.getSelectedRow();
+            String nomProduit = vueAffProduit.table.getValueAt(row, 0).toString();
+            Produit produit = hotel.getProduitParNom(nomProduit);
+            if (produit != null) {
+                VueQuantitStock vueQuantitStock = new VueQuantitStock(produit, vueAffProduit, fenetre, hotel);
+                vueQuantitStock.setVisible(true); // Assurez-vous de rendre la fenêtre visible
+            }
         }
     }
-    
 }

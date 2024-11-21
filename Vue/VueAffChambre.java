@@ -14,8 +14,8 @@ import Controler.BouttonEditeur;
 import Model.*;
 
 public class VueAffChambre extends JPanel {
-    private Hotel hotel;
-    private Fenetre fenetre;
+     Hotel hotel;
+     Fenetre fenetre;
     Vector<String> nomColonne;
     Vector<Vector<Object>> donnees;
 
@@ -40,7 +40,7 @@ public class VueAffChambre extends JPanel {
         }
         DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
         JTable table = new JTable(model);
-        table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
+        table.getColumn("Supprimer").setCellRenderer(new ButtonRenderer());
         table.getColumn("Supprimer").setCellEditor(new BouttonEditeur(new JCheckBox(), hotel, fenetre));
         JScrollPane scrollPane = new JScrollPane(table);
         this.add(scrollPane);

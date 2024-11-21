@@ -53,7 +53,7 @@ public class VueAffClient extends JPanel {
         add(panel, BorderLayout.NORTH);
         DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
         table = new JTable(model);
-        table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
+        table.getColumn("Supprimer").setCellRenderer(new ButtonRenderer());
         table.getColumn("Supprimer").setCellEditor(new ButtonEditeurSuppClient(new JCheckBox(), hotel, fenetre));
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);

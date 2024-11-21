@@ -12,7 +12,7 @@ import Vue.Fenetre;
 import Model.Sejour;
 public class VueAffSejour extends JPanel{
     private Hotel hotel;
-    private Fenetre fenetre;
+    Fenetre fenetre;
     public Vector<String> nomColonne;
     public Vector<Vector<Object>> donnees;
     private JTable table;
@@ -40,7 +40,7 @@ public class VueAffSejour extends JPanel{
         }
         DefaultTableModel model = new DefaultTableModel(donnees, nomColonne);
         table = new JTable(model);
-        table.getColumn("Autres").setCellRenderer(new BottonRendu());
+        table.getColumn("Autres").setCellRenderer(new ButtonRenderer());
         for(int i = 0; i < table.getRowCount(); i++) {
             Sejour sejour = hotel.listeSejour.get(i);
             table.getColumn("Autres").setCellEditor(new ButtonConsulSejour(new JCheckBox(), hotel, sejour));

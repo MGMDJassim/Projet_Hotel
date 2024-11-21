@@ -46,7 +46,7 @@ public class VueReservation extends JPanel {
             ligne.add("Supprimer");
             donnees.add(ligne);
 
-            table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
+            table.getColumn("Supprimer").setCellRenderer(new ButtonRenderer());
             table.getColumn("Supprimer").setCellEditor(new Controler.BouttonEditeurRes(new JCheckBox(), hotel, fenetre));
         }
         JScrollPane scrollPane = new JScrollPane(table);

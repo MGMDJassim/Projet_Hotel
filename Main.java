@@ -87,21 +87,10 @@ public class Main {
     hotel.ajouterSejour(sejour1);
     hotel.ajouterConsommation(consommation1);
 
-    for(Employe e : hotel.getListeEmployes()){
-      System.out.println(e.getNomEmploye());
-      System.out.println(e.getPrenomEmploye());
-      System.out.println(e.getNumEmploye());
+    p1.ajouterQuantite(12);
+    p2.ajouterQuantite(10);
 
-    }
-
-      hotel.chambreSale(LocalDate.now());
-      for (Chambre c : hotel.chambreSale(LocalDate.now())) {
-        System.out.println("Chambre : " + c.getNumeroPorte()+" " + c.getEtage() +" Type + " + c.getType());
-  
-        
-      }
-
-    new FenetreReceptionniste(hotel);
+    FenetreReceptionniste fenetre = new FenetreReceptionniste(hotel);
   }
 
 }

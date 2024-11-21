@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Model.Hotel;
-import Vue.BottonRendu;
+import Vue.ButtonRenderer;
 import Vue.Fenetre;
 import Vue.VueAffClient;
 public class ControlRechercheClient implements ActionListener {
@@ -39,7 +39,7 @@ public class ControlRechercheClient implements ActionListener {
             }
             DefaultTableModel model = new DefaultTableModel(donnees, vueAffClient.nomColonne);
             table.setModel(model);
-            table.getColumn("Supprimer").setCellRenderer(new BottonRendu());
+            table.getColumn("Supprimer").setCellRenderer(new ButtonRenderer());
             table.getColumn("Supprimer").setCellEditor(new ButtonEditeurSuppClient(new JCheckBox(), hotel, fenetre));
         }
     }

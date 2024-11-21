@@ -116,7 +116,7 @@ public class Hotel {
     public Vector<Produit> getListeProduit() {
         return listeProduit;
     }   
-    public Produit getProduitParNom(String nom) {
+    public  Produit getProduitParNom(String nom) {
         for (Produit produit : listeProduit) {
             if (produit.getNom().equals(nom)) {
                 return produit;
