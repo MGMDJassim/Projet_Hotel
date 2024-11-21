@@ -149,7 +149,7 @@ public class Fenetre extends JFrame{
             }
         });
         this.pack();
-        this.setSize(1000, 750);
+        this.setSize(1280, 720 );
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         

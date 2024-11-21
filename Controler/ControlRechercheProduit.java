@@ -21,7 +21,7 @@ public class ControlRechercheProduit implements ActionListener {
     private VueAffProduit vueAffProduit;
     private Fenetre fenetre;
     private JTable table;
-    private DefaultTableModel model;
+    public DefaultTableModel model;
 
 
     public ControlRechercheProduit(JComboBox<String> nom, Hotel hotel, Fenetre fenetre, VueAffProduit vueAffProduit, JTable table, DefaultTableModel model) {

@@ -1,7 +1,6 @@
 package Controler;
 
 import java.awt.Component;
-import java.awt.GraphicsConfiguration;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import Model.Hotel;
 import Model.Produit;
 import Vue.Fenetre;
-import Vue.VueAffConsulSejour;
+
 import Vue.VueAffProduit;
 import Vue.VueQuantitStock;
 
@@ -23,9 +22,9 @@ public class BouttonStock extends DefaultCellEditor{
     private Hotel hotel;
     private Fenetre fenetre;
     private JButton boutton;
-    private Produit produit;
-    private JTable table;
-    private DefaultTableModel model;
+    Produit produit;
+    JTable table;
+    DefaultTableModel model;
     private VueAffProduit vueAffProduit;
     private int ligne;
 

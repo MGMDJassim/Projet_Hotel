@@ -14,9 +14,9 @@ import Vue.VueAffConsulSejour;
 public class ButtonConsulSejour extends DefaultCellEditor {
     private Hotel hotel;
     private JButton boutton;
-    private JTable table;
+    JTable table;
     private Sejour sejour;
-    private int ligne;
+    int ligne;
 
     public ButtonConsulSejour(JCheckBox checkBox, Hotel hotel, Sejour sejour) {
         super(checkBox);
