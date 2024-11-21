@@ -67,7 +67,6 @@ public class Fenetre extends JFrame{
         barre.add(gproduit);
         barre.add(gmenage);
 
-        gchambre.add(ajouterChambre);
         gchambre.add(afficherChambre);
 
         gclient.add(ajouterClient);
@@ -85,13 +84,6 @@ public class Fenetre extends JFrame{
         gemploye.add(afficherEmploye);
 
         gmenage.add(ajouterMenage);
-        ajouterChambre.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                VueAjout vue = new VueAjout(hotel, Fenetre.this);
-                setContentPane(vue);
-            }
-        });
-
         afficherChambre.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VueAffChambre vue = new VueAffChambre(hotel, Fenetre.this);
@@ -145,6 +137,13 @@ public class Fenetre extends JFrame{
         ajouterMenage.addActionListener(new ActionListener() {
             public void actionPerformed (ActionEvent e){
                 VueGestionMenage vue = new VueGestionMenage(hotel);
+                setContentPane(vue);
+            }
+        });
+
+        afficherEmploye.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                VueAgent vue = new VueAgent(hotel, Fenetre.this);
                 setContentPane(vue);
             }
         });

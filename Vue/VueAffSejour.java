@@ -11,7 +11,7 @@ import Model.Hotel;
 import Vue.Fenetre;
 import Model.Sejour;
 public class VueAffSejour extends JPanel{
-    private Hotel hotel;
+    Hotel hotel;
     Fenetre fenetre;
     public Vector<String> nomColonne;
     public Vector<Vector<Object>> donnees;

@@ -1,4 +1,3 @@
-
 package Model;
 import java.util.Vector;
 import java.time.*;
@@ -10,15 +9,13 @@ public abstract class Chambre {
     public int numeroPorte;
     private Vector<Reservation> listeReservation = new Vector<Reservation>();
     public Hotel hotel;
-    public String type;
+
     public boolean etat;
     public abstract float getPrix();
 
-    public Chambre(int etage, String type, Hotel hotel, boolean etat) {
-
+    public Chambre(int etage, Hotel hotel, boolean etat) {
         this.etage = etage;
         this.numeroPorte = ++compteurId;
-        this.type = type;
         this.hotel = hotel;
         this.etat = etat;
     }
@@ -35,6 +32,12 @@ public abstract class Chambre {
         this.etage = etage;
     }
 
+    public String getType() {
+        return this instanceof Normale ? "Normale" : 
+               this instanceof Presidentiel ? "Presidentielle" : "Inconnu";
+    }
+    
+
     public void setNumeroPorte(int numeroPorte) {
         this.numeroPorte = numeroPorte;
     }
@@ -46,6 +49,7 @@ public abstract class Chambre {
     public Vector<Reservation> getListeReservation() {
         return listeReservation;
     }
+
     public void setListeReservation(Vector<Reservation> listeReservation) {
         this.listeReservation = listeReservation;
     }
@@ -62,20 +66,9 @@ public abstract class Chambre {
         return numeroPorte;
     }
 
-
     public Hotel getHotel() {
         return hotel;
     }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    //méthodes pour supprimer la chambre
 
     public void supprimerReservation(Reservation reservation) {
         listeReservation.remove(reservation);
@@ -85,7 +78,6 @@ public abstract class Chambre {
         listeReservation.clear();
     }
 
-    // Recherche des chambres libres
     public boolean estLibre(LocalDate dateDebut, LocalDate dateFin) {
         for (Reservation reservation : listeReservation) {
             if ((dateDebut.isEqual(reservation.getDateDebut()) || dateDebut.isAfter(reservation.getDateDebut())) && dateDebut.isBefore(reservation.getDateFin())) {
@@ -98,15 +90,9 @@ public abstract class Chambre {
         return true;
     }
 
-    public String toString() {
-        return "Chambre " + type + " à l'étage " + etage + ", à la porte " + numeroPorte + "\n";
-    }
-
-    //Recherche des chambres sales
-
-    public boolean estSale(LocalDate ajd){
-        for(Reservation r : listeReservation){
-            if(ajd.isAfter(r.getDateFin())){
+    public boolean estSale(LocalDate ajd) {
+        for (Reservation r : listeReservation) {
+            if (ajd.isAfter(r.getDateFin())) {
                 return true;
             }
         }

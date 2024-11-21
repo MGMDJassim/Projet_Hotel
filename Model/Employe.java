@@ -12,6 +12,10 @@ public class Employe {
         this.prenomEmploye = prenomEmploye;
     }
 
+    public int getIdEmploye() {
+        return this.numEmploye;
+    }
+
     public void setNomEmploye(String nomEmploye) {
         this.nomEmploye = nomEmploye;
     }

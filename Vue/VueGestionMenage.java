@@ -40,14 +40,12 @@ public class VueGestionMenage extends JPanel {
 
         nomColonne.add("n° Chambre");
         nomColonne.add("Etage");
-        nomColonne.add("Type");
         nomColonne.add("Sélectionner");
 
         for (Chambre chambre : hotel.chambreSale(LocalDate.now())) {
             Vector<Object> row = new Vector<Object>();
             row.add(chambre.getNumeroPorte());
             row.add(chambre.getEtage());
-            row.add(chambre.getType());
             row.add(Boolean.FALSE);
             donnees.add(row);
         }

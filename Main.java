@@ -6,19 +6,19 @@ import Model.*;
 public class Main {
   public static void main(String[] args) {
     Hotel hotel = new Hotel("Hotel", "adresse", 123456, "mail");
- Receptionniste receptionniste = new Receptionniste("nom", "prenom");
+    Receptionniste receptionniste = new Receptionniste("nom", "prenom");
     Receptionniste receptionniste2 = new Receptionniste("nom2", "prenom2");
     Receptionniste receptionniste3 = new Receptionniste("nom3", "prenom3");
 
-    Presidentiel c11 = new Presidentiel( 1, hotel, "Presidentielle", true);
-    Presidentiel c12 = new Presidentiel( 1, hotel, "Presidentielle", true);
-    Presidentiel c13 = new Presidentiel( 1, hotel, "Presidentielle", true);
-    Presidentiel c14 = new Presidentiel( 1, hotel, "Presidentielle", true);
+    Presidentiel c11 = new Presidentiel( 1, hotel, true);
+    Presidentiel c12 = new Presidentiel( 1, hotel, true);
+    Presidentiel c13 = new Presidentiel( 1, hotel, true);
+    Presidentiel c14 = new Presidentiel( 1, hotel, true);
 
-    Normale c21 = new Normale( 2, hotel, "Normale", true);
-    Normale c22 = new Normale( 2, hotel, "Normale", true);
-    Normale c23 = new Normale( 2, hotel, "Normale", true);
-    Normale c24 = new Normale( 2, hotel, "Normale", true);
+    Normale c21 = new Normale( 2, hotel, true);
+    Normale c22 = new Normale( 2, hotel, true);
+    Normale c23 = new Normale( 2, hotel, true);
+    Normale c24 = new Normale( 2, hotel, true);
 
     Client client2 = new Client("nom", "prenom", LocalDate.of(1999, 1, 1), 123456, hotel);
     Client client3 = new Client("nom2", "prenom2", LocalDate.of(1999, 1, 1), 123456, hotel);

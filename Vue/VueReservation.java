@@ -38,7 +38,7 @@ public class VueReservation extends JPanel {
             Chambre chambre = hotel.listeReservation.get(i).getChambre();
             if (chambre != null) {
                 ligne.add(hotel.listeReservation.get(i).getChambre().getNumeroPorte());
-                ligne.add(hotel.listeReservation.get(i).getChambre().getType());
+                ligne.add(hotel.listeReservation.get(i).getChambre().getClass().getSimpleName());
                 ligne.add(hotel.listeReservation.get(i).getChambre().getEtage());
             }
             ligne.add(hotel.listeReservation.get(i).getDateDebut());
