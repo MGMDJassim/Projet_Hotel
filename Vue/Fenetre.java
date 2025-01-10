@@ -135,9 +135,11 @@ public class Fenetre extends JFrame{
         });
 
         ajouterMenage.addActionListener(new ActionListener() {
-            public void actionPerformed (ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 VueGestionMenage vue = new VueGestionMenage(hotel);
                 setContentPane(vue);
+                revalidate();
+                repaint();
             }
         });
 

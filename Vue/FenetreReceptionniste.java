@@ -9,6 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Model.Employe;
 import Model.Hotel;
@@ -17,6 +18,7 @@ import Model.Receptionniste;
 public class FenetreReceptionniste extends JFrame {
     Hotel hotel;
     Receptionniste receptionniste;
+    JLabel label = new JLabel("Veuillez vous connecter");
     JButton ajouter = new JButton("Commencer la journée");
     JPanel contenue = new JPanel();
 
@@ -37,12 +39,14 @@ public class FenetreReceptionniste extends JFrame {
         }
         numeroReceptionnistes.setPreferredSize(new Dimension(40, 20));
         ajouter.setPreferredSize(new Dimension(200, 30));
+        contenue.add(label);
         contenue.add(numeroReceptionnistes);
         contenue.add(Box.createRigidArea(new Dimension(0, 10)));
         contenue.add(ajouter);
         gbc.gridx = 0;
         gbc.gridy = 0;
         this.add(contenue, gbc);
+        
         ajouter.addActionListener(e -> {
             Receptionniste receptionniste = null;
             for (Employe employe : hotel.getListeEmployes()) {

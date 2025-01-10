@@ -1,80 +1,48 @@
 package Vue;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.time.LocalDate;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.util.Vector;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import Model.AgentEntretien;
 import Model.Chambre;
-import Model.Employe;
 import Model.Hotel;
-import Controler.ControlAffecMenage;
-
 
 public class VueGestionMenage extends JPanel {
-    Hotel hotel;
-    JLabel lblAgent = new JLabel("Affecter un agent d'entretien : ");
-    JButton boutonAffecter = new JButton("Affecter");
-    JComboBox<Integer> cmbEmploye = new JComboBox<Integer>();
+    private Hotel hotel;
     private JTable table;
-    public Vector<String> nomColonne;
-    public Vector<Vector<Object>> donnees;
-    JPanel panel;
-    JPanel panel2;
+    private DefaultTableModel model;
 
     public VueGestionMenage(Hotel hotel) {
         super(new BorderLayout());
         this.hotel = hotel;
 
-        this.nomColonne = new Vector<String>();
-        this.donnees = new Vector<Vector<Object>>();
-
-        nomColonne.add("n° Chambre");
+        // Initialisation des colonnes et des données du tableau
+        Vector<String> nomColonne = new Vector<>();
+        nomColonne.add("Numéro");
+        nomColonne.add("Type");
         nomColonne.add("Etage");
-        nomColonne.add("Sélectionner");
+        nomColonne.add("Etat");
 
-        for (Chambre chambre : hotel.chambreSale(LocalDate.now())) {
-            Vector<Object> row = new Vector<Object>();
-            row.add(chambre.getNumeroPorte());
-            row.add(chambre.getEtage());
-            row.add(Boolean.FALSE);
-            donnees.add(row);
+        Vector<Vector<Object>> donnees = new Vector<>();
+        for (Chambre chambre : hotel.listeChambre) {
+            Vector<Object> ligne = new Vector<>();
+            ligne.add(chambre.getNumeroPorte());
+            ligne.add(chambre.getType());
+            ligne.add(chambre.getEtage());
+            ligne.add(chambre.getEtatChambre() ? "Propre" : "Sale");
+            donnees.add(ligne);
         }
-        panel = new JPanel(new FlowLayout());
-        panel.add(lblAgent);
-        panel.add(cmbEmploye);
-        panel.add(boutonAffecter);
-        add(panel, BorderLayout.NORTH);
 
-        for (Employe employe : hotel.getListeEmployes()) {
-            if (employe instanceof AgentEntretien) {
-                cmbEmploye.addItem(employe.getNumEmploye());
-            }
-        }
-        DefaultTableModel model = new DefaultTableModel(donnees, nomColonne) {
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                if (columnIndex == 3) { 
-                    return Boolean.class;
-                }
-                return super.getColumnClass(columnIndex);
-            }
-        };
+        model = new DefaultTableModel(donnees, nomColonne);
         table = new JTable(model);
-        table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(new JCheckBox()));
-        ControlAffecMenage controlAffecMenage = new ControlAffecMenage(hotel, table, cmbEmploye);
-        boutonAffecter.addActionListener(controlAffecMenage);
+
+        // Vérifiez que le nombre de colonnes est correct
+        if (table.getColumnCount() != nomColonne.size()) {
+            throw new IllegalStateException("Le nombre de colonnes dans le modèle de table ne correspond pas au nombre de colonnes attendu.");
+        }
+
         JScrollPane scrollPane = new JScrollPane(table);
-        add(scrollPane, BorderLayout.CENTER);
-        setVisible(true);
+        this.add(scrollPane, BorderLayout.CENTER);
     }
 }

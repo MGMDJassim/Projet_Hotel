@@ -10,10 +10,10 @@ public class Main {
     Receptionniste receptionniste2 = new Receptionniste("nom2", "prenom2");
     Receptionniste receptionniste3 = new Receptionniste("nom3", "prenom3");
 
-    Presidentiel c11 = new Presidentiel( 1, hotel, true);
-    Presidentiel c12 = new Presidentiel( 1, hotel, true);
-    Presidentiel c13 = new Presidentiel( 1, hotel, true);
-    Presidentiel c14 = new Presidentiel( 1, hotel, true);
+    Presidentiel c11 = new Presidentiel(1, hotel, true);
+    Presidentiel c12 = new Presidentiel(1, hotel, true);
+    Presidentiel c13 = new Presidentiel(1, hotel, true);
+    Presidentiel c14 = new Presidentiel(1, hotel, true);
 
     Normale c21 = new Normale( 2, hotel, true);
     Normale c22 = new Normale( 2, hotel, true);
