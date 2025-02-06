@@ -1,13 +1,9 @@
 package Model;
-import java.util.Vector;
-import java.time.*;
 public class Employe {
     public static int count = 0;
     public String nomEmploye;
     public int numEmploye;
     public String prenomEmploye;
-    private Vector<Employe> listeEmploye = new Vector<Employe>();
-    
     public Employe(String nomEmploye, String prenomEmploye) {
         this.nomEmploye = nomEmploye;
         this.numEmploye = ++count;
