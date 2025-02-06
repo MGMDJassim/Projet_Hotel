@@ -27,6 +27,7 @@ public class VueAffEmploye extends JPanel{
             Vector<Object> row = new Vector<Object>();
             row.add(hotel.getListeEmployes().get(i).getNomEmploye());
             row.add(hotel.getListeEmployes().get(i).getPrenomEmploye());
+            row.add(hotel.getListeEmployes().get(i).getPoste());
             data.add(row);
         }
 

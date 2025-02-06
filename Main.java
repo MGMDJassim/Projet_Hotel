@@ -37,8 +37,8 @@ public class Main {
     Sejour sejour1 = new Sejour(r2);
     Consommation consommation1 = new Consommation(p1,2, sejour1);
 
-    AgentEntretien ag = new AgentEntretien("nom", "prenom" );
-    AgentEntretien ag2 = new AgentEntretien("nom2", "prenom2" );
+    AgentEntretien ag = new AgentEntretien("nom4", "prenom" );
+    AgentEntretien ag2 = new AgentEntretien("nom5", "prenom2" );
 
    
 

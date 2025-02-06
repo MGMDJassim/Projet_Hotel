@@ -154,6 +154,8 @@ public class Hotel {
         return null;
     }
 
+    // public Employe getEmployeParPoste()
+
     
 
     //Recherche des chambres libres 

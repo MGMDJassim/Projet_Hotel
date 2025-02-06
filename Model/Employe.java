@@ -1,10 +1,12 @@
-
 package Model;
+import java.util.Vector;
+import java.time.*;
 public class Employe {
     public static int count = 0;
     public String nomEmploye;
     public int numEmploye;
     public String prenomEmploye;
+    private Vector<Employe> listeEmploye = new Vector<Employe>();
     
     public Employe(String nomEmploye, String prenomEmploye) {
         this.nomEmploye = nomEmploye;
@@ -54,12 +56,10 @@ public class Employe {
     public String getPrenomEmploye() {
         return prenomEmploye;
     }
-//affichage info de l'employe
- public void afficherInfo() {
-        System.out.println("Nom: " + nomEmploye);
-        System.out.println("Numéro: " + numEmploye);
-        System.out.println("Prénom: " + prenomEmploye);
-    }
 
+    public String getPoste() {
+        return this instanceof Receptionniste ? "Receptionniste" : 
+               this instanceof AgentEntretien ? "Agent Entretien" : "Inconnu";
+    }
     
 }

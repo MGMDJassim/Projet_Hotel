@@ -145,10 +145,11 @@ public class Fenetre extends JFrame{
 
         afficherEmploye.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                VueAgent vue = new VueAgent(hotel, Fenetre.this);
+                VueAffEmploye vue = new VueAffEmploye(hotel, Fenetre.this);
                 setContentPane(vue);
             }
         });
+
         this.pack();
         this.setSize(1280, 720 );
         this.setLocationRelativeTo(null);
